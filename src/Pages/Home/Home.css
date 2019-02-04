@@ -1,0 +1,13 @@
+.imm__video,
+.imm__action-table {
+  box-shadow: 0rem 0rem 2rem rgba(190, 20, 27, 1) !important;
+}
+
+#action-words-table td {
+  vertical-align: middle;
+  font-size: 15px;
+}
+
+#checkmark-image {
+  box-shadow: 0rem 0rem 2rem rgba(190, 20, 27, 1) !important;
+}
