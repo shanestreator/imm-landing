@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 // CSS
 import './Home.css'
@@ -6,11 +7,8 @@ import './Home.css'
 export default class Home extends Component {
   render() {
     return (
-      <div className="container">
-        <div
-          id
-          className="embed-responsive embed-responsive-16by9 imm__video rounded mt-5"
-        >
+      <div className="container mt-5 pt-4">
+        <div className="embed-responsive embed-responsive-16by9 imm__video rounded shadow mt-5">
           <iframe
             title="Impact Motivation Manual Video"
             className="embed-responsive-item"
@@ -19,16 +17,16 @@ export default class Home extends Component {
           />
         </div>
 
-        <div className="text-center mt-5">
+        <div className="text-center mt-5 pt-3">
           <h3>
             <strong>
               Regardless of the business, sport, educational, operational or
               personal life goal you're pursuing, you can
             </strong>
           </h3>
-          <h1>
+          <h2 className="h2-font-spacing">
             <strong>MAXIMIZE PERFORMANCE</strong>
-          </h1>
+          </h2>
           <h3>
             <strong>
               in yourself, your workforce, personnel, students or team you lead.
@@ -54,12 +52,9 @@ export default class Home extends Component {
             powerful, positive characteristics such as:
           </p>
 
-          <div className="rounded mt-4">
-            <table
-              id="action-words-table"
-              class="table table-responsive table-borderless d-flex justify-content-center"
-            >
-              <tbody>
+          <div className="container table-responsive mt-4">
+            <table id="action-words-table" className="table table-borderless">
+              <tbody className="container">
                 <tr>
                   <td className="text-right pl-0 pr-1">
                     <img
@@ -191,8 +186,40 @@ export default class Home extends Component {
           </div>
 
           <hr className="mt-5" />
+
+          <p className="mt-5">
+            <strong>
+              How does your Business, School, City/Village or Team benefit{' '}
+            </strong>
+            With the possibility of improved performance and productivity
+            through the hands of more motivated, inspired, content, disciplined
+            and successful team/workforce.
+          </p>
+
+          <hr className="mt-5" />
+
+          <p className="mt-5">
+            <strong>
+              Motivate and inspire yourself and/or your team to a higher level
+              today!
+            </strong>
+          </p>
+
+          <p className="mt-4">
+            Get all the powerful, positive benefits described here for{' '}
+            <strong>as low as $2.50 per manual!</strong>
+          </p>
+
+          <Link to="/store">
+            <img
+              className="mt-5"
+              src="/images/Paypal-Buy-Now-Button.png"
+              alt=""
+            />
+          </Link>
+
+          <div className="py-2 my-5" />
         </div>
-        <div className="my-5 py-5" />
       </div>
     )
   }

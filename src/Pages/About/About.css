@@ -1,0 +1,14 @@
+.red-card-shadow {
+  box-shadow: 0 0.5rem 1rem rgba(190, 20, 27, 0.15) !important;
+}
+
+.carousel-width {
+  width: 100%;
+}
+
+h2,
+h3.card-title,
+h3 > strong,
+p > strong {
+  color: rgb(190, 20, 27);
+}
