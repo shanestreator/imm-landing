@@ -7,7 +7,7 @@ import './Navbar.css'
 export default class Navbar extends Component {
   render() {
     return (
-      <div className="main__navbar container fixed-top px-0">
+      <div className="main__navbar fixed-top px-0">
         <nav className="navbar navbar-expand-md navbar-light bg-light">
           <div className="container px-4">
             <Link className="navbar-brand" to="/">

@@ -7,7 +7,7 @@ import './Home.css'
 export default class Home extends Component {
   render() {
     return (
-      <div className="container mt-5 pt-4">
+      <div className="container p-5 bg-light">
         <div className="embed-responsive embed-responsive-16by9 imm__video rounded shadow mt-5">
           <iframe
             title="Impact Motivation Manual Video"
@@ -52,9 +52,12 @@ export default class Home extends Component {
             powerful, positive characteristics such as:
           </p>
 
-          <div className="container table-responsive mt-4">
-            <table id="action-words-table" className="table table-borderless">
-              <tbody className="container">
+          <div className="table-responsive px-4 mt-4">
+            <table
+              id="action-words-table"
+              className="table table-borderless pl-0"
+            >
+              <tbody className="container px-5">
                 <tr>
                   <td className="text-right pl-0 pr-1">
                     <img
@@ -93,7 +96,7 @@ export default class Home extends Component {
                       style={{ width: '30px', height: '30px' }}
                     />
                   </td>
-                  <td className="text-left pl-0 pr-3">
+                  <td className="text-left pl-0 pr-0">
                     <strong>DETERMINATION</strong>
                   </td>
                 </tr>
@@ -135,7 +138,7 @@ export default class Home extends Component {
                       style={{ width: '30px', height: '30px' }}
                     />
                   </td>
-                  <td className="text-left pl-0 pr-3">
+                  <td className="text-left pl-0 pr-0">
                     <strong>LEADERSHIP</strong>
                   </td>
                 </tr>
@@ -177,7 +180,7 @@ export default class Home extends Component {
                       style={{ width: '30px', height: '30px' }}
                     />
                   </td>
-                  <td className="text-left pl-0 pr-3">
+                  <td className="text-left pl-0 pr-0">
                     <strong>INDOMITABLE SPIRIT</strong>
                   </td>
                 </tr>
@@ -217,8 +220,6 @@ export default class Home extends Component {
               alt=""
             />
           </Link>
-
-          <div className="py-2 my-5" />
         </div>
       </div>
     )

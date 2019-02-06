@@ -5,9 +5,11 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Home from './Pages/Home/Home'
 import About from './Pages/About/About'
 import Store from './Pages/Store/Store'
+import Cart from './Pages/Cart/Cart'
 
 // Components
 import Navbar from './Components/Navbar/Navbar'
+import Spacer from './Components/Spacer/Spacer'
 import ScrollToTop from './Utils/ScrollToTop'
 import Footer from './Components/Footer/Footer'
 
@@ -20,10 +22,12 @@ class App extends Component {
         <ScrollToTop>
           <div id="wrapper" className="container">
             <Navbar />
+            <Spacer />
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/about" component={About} />
               <Route exact path="/store" component={Store} />
+              <Route exact path="/cart" component={Cart} />
             </Switch>
             <Footer />
           </div>
