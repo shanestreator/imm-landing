@@ -61,7 +61,7 @@ export default class Home extends Component {
                 <tr>
                   <td className="text-right pl-0 pr-1">
                     <img
-                      src="/images/checkmark-no-box.png"
+                      src="/images/checkmark-30px.png"
                       alt="checkmark"
                       style={{ width: '30px', height: '30px' }}
                     />
@@ -71,7 +71,7 @@ export default class Home extends Component {
                   </td>
                   <td className="text-right pl-0 pr-1">
                     <img
-                      src="/images/checkmark-no-box.png"
+                      src="/images/checkmark-30px.png"
                       alt="checkmark"
                       style={{ width: '30px', height: '30px' }}
                     />
@@ -81,7 +81,7 @@ export default class Home extends Component {
                   </td>
                   <td className="text-right pl-0 pr-1">
                     <img
-                      src="/images/checkmark-no-box.png"
+                      src="/images/checkmark-30px.png"
                       alt="checkmark"
                       style={{ width: '30px', height: '30px' }}
                     />
@@ -91,7 +91,7 @@ export default class Home extends Component {
                   </td>
                   <td className="text-right pl-0 pr-1">
                     <img
-                      src="/images/checkmark-no-box.png"
+                      src="/images/checkmark-30px.png"
                       alt="checkmark"
                       style={{ width: '30px', height: '30px' }}
                     />
@@ -103,7 +103,7 @@ export default class Home extends Component {
                 <tr>
                   <td className="text-right pl-0 pr-1">
                     <img
-                      src="/images/checkmark-no-box.png"
+                      src="/images/checkmark-30px.png"
                       alt="checkmark"
                       style={{ width: '30px', height: '30px' }}
                     />
@@ -113,7 +113,7 @@ export default class Home extends Component {
                   </td>
                   <td className="text-right pl-0 pr-1">
                     <img
-                      src="/images/checkmark-no-box.png"
+                      src="/images/checkmark-30px.png"
                       alt="checkmark"
                       style={{ width: '30px', height: '30px' }}
                     />
@@ -123,7 +123,7 @@ export default class Home extends Component {
                   </td>
                   <td className="text-right pl-0 pr-1">
                     <img
-                      src="/images/checkmark-no-box.png"
+                      src="/images/checkmark-30px.png"
                       alt="checkmark"
                       style={{ width: '30px', height: '30px' }}
                     />
@@ -133,7 +133,7 @@ export default class Home extends Component {
                   </td>
                   <td className="text-right pl-0 pr-1">
                     <img
-                      src="/images/checkmark-no-box.png"
+                      src="/images/checkmark-30px.png"
                       alt="checkmark"
                       style={{ width: '30px', height: '30px' }}
                     />
@@ -145,7 +145,7 @@ export default class Home extends Component {
                 <tr>
                   <td className="text-right pl-0 pr-1">
                     <img
-                      src="/images/checkmark-no-box.png"
+                      src="/images/checkmark-30px.png"
                       alt="checkmark"
                       style={{ width: '30px', height: '30px' }}
                     />
@@ -155,7 +155,7 @@ export default class Home extends Component {
                   </td>
                   <td className="text-right pl-0 pr-1">
                     <img
-                      src="/images/checkmark-no-box.png"
+                      src="/images/checkmark-30px.png"
                       alt="checkmark"
                       style={{ width: '30px', height: '30px' }}
                     />
@@ -165,7 +165,7 @@ export default class Home extends Component {
                   </td>
                   <td className="text-right pl-0 pr-1">
                     <img
-                      src="/images/checkmark-no-box.png"
+                      src="/images/checkmark-30px.png"
                       alt="checkmark"
                       style={{ width: '30px', height: '30px' }}
                     />
@@ -175,7 +175,7 @@ export default class Home extends Component {
                   </td>
                   <td className="text-right pl-0 pr-1">
                     <img
-                      src="/images/checkmark-no-box.png"
+                      src="/images/checkmark-30px.png"
                       alt="checkmark"
                       style={{ width: '30px', height: '30px' }}
                     />
@@ -215,10 +215,61 @@ export default class Home extends Component {
 
           <Link to="/store">
             <img
-              className="mt-5"
+              className="my-5 img-fluid"
               src="/images/Paypal-Buy-Now-Button.png"
               alt=""
             />
+          </Link>
+
+          <hr className="mt-5 border" />
+
+          <div className="" />
+
+          <div class="mt-5 pt-5">
+            <h3 className="card-title  my-4">
+              <strong>
+                The IMPACT MOTIVATION MANUAL is a great tool/gift for:
+              </strong>
+            </h3>
+            <div class="card-text text-left ml-5">
+              <ul style={{ listStyleImage: 'url(/images/checkmark-30px.png)' }}>
+                <li className="">
+                  <p>Yourself</p>
+                </li>
+                <li className="">
+                  <p>Your family</p>
+                </li>
+                <li className="">
+                  <p>Your friends</p>
+                </li>
+                <li className="">
+                  <p>Your team/athletes</p>
+                </li>
+                <li className="">
+                  <p>Your employees/personnel</p>
+                </li>
+                <li className="">
+                  <p>Your students/graduates/teachers</p>
+                </li>
+                <li className="">
+                  <p>
+                    Anyone that would benefit from improved and optimized
+                    performance!
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <hr className="my-5" />
+
+          <Link
+            // style={{ opacity: '.5' }}
+            to="/about"
+            type="button"
+            class="btn btn-secondary btn-lg"
+          >
+            <h4 className="mb-0 button-red">Click here to learn more!</h4>
           </Link>
         </div>
       </div>

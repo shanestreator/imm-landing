@@ -6,6 +6,7 @@ import Home from './Pages/Home/Home'
 import About from './Pages/About/About'
 import Store from './Pages/Store/Store'
 import Cart from './Pages/Cart/Cart'
+import ContactUs from './Pages/ContactUs/ContactUs'
 
 // Components
 import Navbar from './Components/Navbar/Navbar'
@@ -28,6 +29,7 @@ class App extends Component {
               <Route exact path="/about" component={About} />
               <Route exact path="/store" component={Store} />
               <Route exact path="/cart" component={Cart} />
+              <Route exact path="/contact-us" component={ContactUs} />
             </Switch>
             <Footer />
           </div>

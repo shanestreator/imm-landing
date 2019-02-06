@@ -2,6 +2,10 @@ body {
   font-size: 20px;
 }
 
+#button-red {
+  color: 0 0.25rem 1rem rgba(190, 20, 27, 0.1);
+}
+
 .imm__video {
   box-shadow: 0 0.5rem 1rem rgba(190, 20, 27, 0.15) !important;
 }
@@ -21,9 +25,24 @@ body {
 }
 
 #wrapper {
+  padding-left: 0px;
+  padding-right: 0px;
   height: 100%;
   width: 100%;
   background-image: url('/public/images/imm-stack.JPG');
   background-size: 100%;
   background-position: fixed;
+}
+
+@media (max-width: 769px) {
+  .h2-font-spacing {
+    letter-spacing: 1px;
+    font-size: 34px;
+  }
+}
+
+@media (max-width: 614px) {
+  img .card-img {
+    /* height: 700px; */
+  }
 }

@@ -8,10 +8,14 @@ export default class Navbar extends Component {
   render() {
     return (
       <div className="main__navbar fixed-top px-0">
-        <nav className="navbar navbar-expand-md navbar-light bg-light">
-          <div className="container px-4">
+        <nav className="navbar navbar-expand-md d-flex justify-content-center navbar-light bg-light">
+          <div className="container">
             <Link className="navbar-brand" to="/">
-              IMM
+              <img
+                style={{ width: '200px', height: '50px' }}
+                src="/images/imm-logo.png"
+                alt=""
+              />
             </Link>
             <button
               className="navbar-toggler"
@@ -28,26 +32,26 @@ export default class Navbar extends Component {
             <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
               <ul className="navbar-nav ml-auto mt-2 mt-lg-0">
                 <li className="nav-item">
-                  <Link className="nav-link active" to="/">
+                  <Link className="nav-link nav-text active" to="/">
                     Home
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/about">
+                  <Link className="nav-link nav-text" to="/about">
                     About
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/store">
+                  <Link className="nav-link nav-text" to="/store">
                     Store
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/cart">
+                  <Link className="nav-link nav-text pr-0 mr-0" to="/cart">
                     <img
                       className="mb-1 mr-1"
                       style={{ width: '20px', height: '17px' }}
-                      src="/images/shopping-cart.jpg"
+                      src="/images/shopping-cart.png"
                       alt=""
                     />
                     Cart
