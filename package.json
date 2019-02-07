@@ -1,28 +1,23 @@
 {
-  "name": "imm",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "react": "^16.7.0",
-    "react-dom": "^16.7.0",
-    "react-media": "^1.9.2",
-    "react-responsive-carousel": "^3.1.46",
-    "react-router-dom": "^4.3.1",
-    "react-scripts": "2.1.3"
-  },
+  "name": "impact-motivation-manual",
+  "version": "1.0.0",
+  "description": "imm-backend",
+  "main": "App.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+  "author": "Shane Streator",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "concurrently": "^4.1.0",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.10",
+    "nodemon": "^1.18.9",
+    "paypal-rest-sdk": "^1.8.1",
+    "volleyball": "^1.5.1"
+  }
 }
