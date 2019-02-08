@@ -195,16 +195,41 @@ class Options extends Component {
                             <small>(Pack of 10 manuals)</small>
                           </li>
                           <li>
-                            <div>
-                              <input
-                                className="form-control mt-5"
-                                onChange={this.onChange}
-                                type="text"
-                                name="familyPack"
-                                placeholder="Quantity: 1-100"
-                                value={this.state.familyPack}
-                              />
-                              {errors.familyPack && errorDiv('familyPack')}
+                            <div className="col-3 d-flex justify-content-center align-items-center">
+                              <div className="row">
+                                <div className="col-sm-12 col-md-6 d-flex align-items-center justify-content-center justify-content-md-end px-0">
+                                  <div className="mr-md-2 mb-sm-1">
+                                    <h6
+                                      className="mb-0"
+                                      htmlFor="quantity"
+                                      style={{ fontSize: '16px' }}
+                                    >
+                                      Qty:
+                                    </h6>
+                                  </div>
+                                </div>
+                                <div className="col-sm-12 col-md-6 d-flex justify-content-center align-items-center px-0">
+                                  <select
+                                    className="form-control-sm"
+                                    onChange={this.onChange}
+                                    name="familyPack"
+                                    defaultValue={this.state.familyPack}
+                                    id="quantity"
+                                  >
+                                    <option value="0">Select</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                  </select>
+                                </div>
+                              </div>
                             </div>
                           </li>
                         </ul>
@@ -243,16 +268,41 @@ class Options extends Component {
                             <small>(Pack of 25 manuals)</small>
                           </li>
                           <li>
-                            <div>
-                              <input
-                                className="form-control mt-5"
-                                onChange={this.onChange}
-                                type="text"
-                                name="groupPack"
-                                placeholder="Quantity: 1-100"
-                                value={this.state.groupPack}
-                              />
-                              {errors.groupPack && errorDiv('groupPack')}
+                            <div className="col-3 d-flex justify-content-center align-items-center">
+                              <div className="row">
+                                <div className="col-sm-12 col-md-6 d-flex align-items-center justify-content-center justify-content-md-end px-0">
+                                  <div className="mr-md-2 mb-sm-1">
+                                    <h6
+                                      className="mb-0"
+                                      htmlFor="quantity"
+                                      style={{ fontSize: '16px' }}
+                                    >
+                                      Qty:
+                                    </h6>
+                                  </div>
+                                </div>
+                                <div className="col-sm-12 col-md-6 d-flex justify-content-center align-items-center px-0">
+                                  <select
+                                    className="form-control-sm"
+                                    onChange={this.onChange}
+                                    name="groupPack"
+                                    defaultValue={this.state.groupPack}
+                                    id="quantity"
+                                  >
+                                    <option value="0">Select</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                  </select>
+                                </div>
+                              </div>
                             </div>
                           </li>
                         </ul>
@@ -291,16 +341,41 @@ class Options extends Component {
                             <small>(Pack of 100 manuals)</small>
                           </li>
                           <li>
-                            <div>
-                              <input
-                                className="form-control mt-5"
-                                onChange={this.onChange}
-                                type="text"
-                                name="businessPack"
-                                placeholder="Quantity: 1-100"
-                                value={this.state.businessPack}
-                              />
-                              {errors.businessPack && errorDiv('businessPack')}
+                            <div className="col-3 d-flex justify-content-center align-items-center">
+                              <div className="row">
+                                <div className="col-sm-12 col-md-6 d-flex align-items-center justify-content-center justify-content-md-end px-0">
+                                  <div className="mr-md-2 mb-sm-1">
+                                    <h6
+                                      className="mb-0"
+                                      htmlFor="quantity"
+                                      style={{ fontSize: '16px' }}
+                                    >
+                                      Qty:
+                                    </h6>
+                                  </div>
+                                </div>
+                                <div className="col-sm-12 col-md-6 d-flex justify-content-center align-items-center px-0">
+                                  <select
+                                    className="form-control-sm"
+                                    onChange={this.onChange}
+                                    name="businessPack"
+                                    defaultValue={this.state.businessPack}
+                                    id="quantity"
+                                  >
+                                    <option value="0">Select</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                  </select>
+                                </div>
+                              </div>
                             </div>
                           </li>
                         </ul>
@@ -339,16 +414,41 @@ class Options extends Component {
                             <small>(Pack of 1,000 manuals)</small>
                           </li>
                           <li>
-                            <div>
-                              <input
-                                className="form-control mt-5"
-                                onChange={this.onChange}
-                                type="text"
-                                name="companyPack"
-                                placeholder="Quantity: 1-100"
-                                value={this.state.companyPack}
-                              />
-                              {errors.companyPack && errorDiv('companyPack')}
+                            <div className="col-3 d-flex justify-content-center align-items-center">
+                              <div className="row">
+                                <div className="col-sm-12 col-md-6 d-flex align-items-center justify-content-center justify-content-md-end px-0">
+                                  <div className="mr-md-2 mb-sm-1">
+                                    <h6
+                                      className="mb-0"
+                                      htmlFor="quantity"
+                                      style={{ fontSize: '16px' }}
+                                    >
+                                      Qty:
+                                    </h6>
+                                  </div>
+                                </div>
+                                <div className="col-sm-12 col-md-6 d-flex justify-content-center align-items-center px-0">
+                                  <select
+                                    className="form-control-sm"
+                                    onChange={this.onChange}
+                                    name="companyPack"
+                                    defaultValue={this.state.companyPack}
+                                    id="quantity"
+                                  >
+                                    <option value="0">Select</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                  </select>
+                                </div>
+                              </div>
                             </div>
                           </li>
                         </ul>
@@ -387,17 +487,41 @@ class Options extends Component {
                             <small>(Pack of 5,000 manuals)</small>
                           </li>
                           <li>
-                            <div>
-                              <input
-                                className="form-control mt-5"
-                                onChange={this.onChange}
-                                type="text"
-                                name="bigCompanyPack"
-                                placeholder="Quantity: 1-100"
-                                value={this.state.bigCompanyPack}
-                              />
-                              {errors.bigCompanyPack &&
-                                errorDiv('bigCompanyPack')}
+                            <div className="col-3 d-flex justify-content-center align-items-center">
+                              <div className="row">
+                                <div className="col-sm-12 col-md-6 d-flex align-items-center justify-content-center justify-content-md-end px-0">
+                                  <div className="mr-md-2 mb-sm-1">
+                                    <h6
+                                      className="mb-0"
+                                      htmlFor="quantity"
+                                      style={{ fontSize: '16px' }}
+                                    >
+                                      Qty:
+                                    </h6>
+                                  </div>
+                                </div>
+                                <div className="col-sm-12 col-md-6 d-flex justify-content-center align-items-center px-0">
+                                  <select
+                                    className="form-control-sm"
+                                    onChange={this.onChange}
+                                    name="bigCompanyPack"
+                                    defaultValue={this.state.bigCompanyPack}
+                                    id="quantity"
+                                  >
+                                    <option value="0">Select</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                  </select>
+                                </div>
+                              </div>
                             </div>
                           </li>
                         </ul>
