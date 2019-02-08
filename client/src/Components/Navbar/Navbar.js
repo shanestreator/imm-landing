@@ -1,15 +1,17 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 // CSS
 import './Navbar.css'
 
-export default class Navbar extends Component {
+class Navbar extends Component {
   render() {
+    console.log('NavbarProps: ', this.props)
     return (
       <div className="main__navbar fixed-top px-0">
         <nav className="navbar navbar-expand-md d-flex justify-content-center navbar-light bg-light">
-          <div className="container">
+          <div id="container" className="container">
             <Link className="navbar-brand" to="/">
               <img
                 style={{ width: '200px', height: '50px' }}
@@ -65,3 +67,7 @@ export default class Navbar extends Component {
     )
   }
 }
+
+const mapState = ({ cart }) => ({ cart })
+
+export default connect(mapState)(Navbar)

@@ -1,11 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import './Footer.css'
+import './Footer.module.css'
 
 export default function Footer() {
   return (
-    <footer className="text-center container bg-light">
+    <footer id="container" className="text-center container bg-light">
       <div className="py-5" />
       <div>TODO: CAROUSEL OF TESTIMONIALS</div>
       <div className="row">

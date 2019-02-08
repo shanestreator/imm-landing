@@ -1,22 +1,22 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { validNumber, filterStoreOption } from '../../Validation/Store'
+import { filterStoreOption } from '../../Validation/Store'
 import uuidv1 from 'uuid/v1'
 
-import { testAction, addItemToCart } from '../../Redux/Actions/actions'
+import { addItemToCart } from '../../Redux/Actions/actions'
 
 // CSS
 import './Store.css'
 
 class Options extends Component {
   state = {
-    couplePack: '',
-    familyPack: '',
-    groupPack: '',
-    businessPack: '',
-    companyPack: '',
-    bigCompanyPack: '',
+    couplePack: '0',
+    familyPack: '0',
+    groupPack: '0',
+    businessPack: '0',
+    companyPack: '0',
+    bigCompanyPack: '0',
     errors: {}
   }
 
@@ -39,28 +39,16 @@ class Options extends Component {
   onChange = evt => {
     const { name, value } = evt.target
 
-    if (validNumber(value)) {
-      this.setState({
-        errors: { [name]: '*Please enter a valid number' },
-        couplePack: '',
-        familyPack: '',
-        groupPack: '',
-        businessPack: '',
-        companyPack: '',
-        bigCompanyPack: ''
-      })
-    } else {
-      const filteredName = this.filterName(name)
-      this.setState({
-        [name]: value,
-        [filteredName[0]]: '',
-        [filteredName[1]]: '',
-        [filteredName[2]]: '',
-        [filteredName[3]]: '',
-        [filteredName[4]]: '',
-        errors: {}
-      })
-    }
+    const filteredName = this.filterName(name)
+    this.setState({
+      [name]: value,
+      [filteredName[0]]: '0',
+      [filteredName[1]]: '0',
+      [filteredName[2]]: '0',
+      [filteredName[3]]: '0',
+      [filteredName[4]]: '0',
+      errors: {}
+    })
   }
 
   onSubmit = evt => {
@@ -68,19 +56,21 @@ class Options extends Component {
     // Expects an object with a single property (pack type) set equal to the quantity desired
     const pack = filterStoreOption(this.state)
     const packSelected = Object.keys(pack)[0]
-
+    // console.log('pack: ', typeof pack, 'selected: ', typeof packSelected)
     const itemData = {
       id: uuidv1(),
       pack: packSelected,
       quantity: Number(pack[packSelected]),
       created_At: Date()
     }
-
+    console.log('itemData: ', itemData)
     this.props.addItemToCart(itemData)
   }
 
   render() {
     console.log('PROPS: ', this.props)
+    // console.log('STATE: ', typeof this.state.couplePack)
+
     const { errors } = this.state
 
     const errorDiv = pack => (
@@ -133,16 +123,41 @@ class Options extends Component {
                             <small>(Pack of 2 manuals)</small>
                           </li>
                           <li>
-                            <div className="form-group">
-                              <input
-                                className="form-control mt-5"
-                                onChange={this.onChange}
-                                type="text"
-                                name="couplePack"
-                                placeholder="Quantity: 1-100"
-                                value={this.state.couplePack}
-                              />
-                              {errors.couplePack && errorDiv('couplePack')}
+                            <div className="col-3 d-flex justify-content-center align-items-center">
+                              <div className="row">
+                                <div className="col-sm-12 col-md-6 d-flex align-items-center justify-content-center justify-content-md-end px-0">
+                                  <div className="mr-md-2 mb-sm-1">
+                                    <h6
+                                      className="mb-0"
+                                      htmlFor="quantity"
+                                      style={{ fontSize: '16px' }}
+                                    >
+                                      Qty:
+                                    </h6>
+                                  </div>
+                                </div>
+                                <div className="col-sm-12 col-md-6 d-flex justify-content-center align-items-center px-0">
+                                  <select
+                                    className="form-control-sm"
+                                    onChange={this.onChange}
+                                    name="couplePack"
+                                    defaultValue={this.state.couplePack}
+                                    id="quantity"
+                                  >
+                                    <option value="0">Select</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                  </select>
+                                </div>
+                              </div>
                             </div>
                           </li>
                         </ul>
@@ -171,36 +186,38 @@ class Options extends Component {
                       <h1 className="card-title pricing-card-title">
                         $4.50 <small className="text-muted">/ ea</small>
                       </h1>
-                      <ul className="list-unstyled text-muted mt-3 mb-4">
-                        <li className="font-italic">
-                          <h3 className="mb-0">Family Pack</h3>
-                        </li>
-                        <li style={{ fontSize: '12px' }}>
-                          <small>(Pack of 10 manuals)</small>
-                        </li>
-                        <li>
-                          <div>
-                            <input
-                              className="form-control mt-5"
-                              onChange={this.onChange}
-                              type="text"
-                              name="familyPack"
-                              placeholder="Quantity: 1-100"
-                              value={this.state.familyPack}
+                      <form onSubmit={this.onSubmit}>
+                        <ul className="list-unstyled text-muted mt-3 mb-4">
+                          <li className="font-italic">
+                            <h3 className="mb-0">Family Pack</h3>
+                          </li>
+                          <li style={{ fontSize: '12px' }}>
+                            <small>(Pack of 10 manuals)</small>
+                          </li>
+                          <li>
+                            <div>
+                              <input
+                                className="form-control mt-5"
+                                onChange={this.onChange}
+                                type="text"
+                                name="familyPack"
+                                placeholder="Quantity: 1-100"
+                                value={this.state.familyPack}
+                              />
+                              {errors.familyPack && errorDiv('familyPack')}
+                            </div>
+                          </li>
+                        </ul>
+                        <div className="p-4">
+                          <button type="submit" className="p-0 border-0">
+                            <img
+                              className="img-fluid"
+                              src="/images/add-to-cart.png"
+                              alt="add to cart"
                             />
-                            {errors.familyPack && errorDiv('familyPack')}
-                          </div>
-                        </li>
-                      </ul>
-                      <div className="p-4">
-                        <Link to="/store">
-                          <img
-                            className="img-fluid"
-                            src="/images/add-to-cart.png"
-                            alt=""
-                          />
-                        </Link>
-                      </div>
+                          </button>
+                        </div>
+                      </form>
                     </div>
                   </div>
                 </div>
@@ -217,36 +234,38 @@ class Options extends Component {
                       <h1 className="card-title pricing-card-title">
                         $4 <small className="text-muted">/ ea</small>
                       </h1>
-                      <ul className="list-unstyled text-muted mt-3 mb-4">
-                        <li className="font-italic">
-                          <h3 className="mb-0">Group Pack</h3>
-                        </li>
-                        <li style={{ fontSize: '12px' }}>
-                          <small>(Pack of 25 manuals)</small>
-                        </li>
-                        <li>
-                          <div>
-                            <input
-                              className="form-control mt-5"
-                              onChange={this.onChange}
-                              type="text"
-                              name="groupPack"
-                              placeholder="Quantity: 1-100"
-                              value={this.state.groupPack}
+                      <form onSubmit={this.onSubmit}>
+                        <ul className="list-unstyled text-muted mt-3 mb-4">
+                          <li className="font-italic">
+                            <h3 className="mb-0">Group Pack</h3>
+                          </li>
+                          <li style={{ fontSize: '12px' }}>
+                            <small>(Pack of 25 manuals)</small>
+                          </li>
+                          <li>
+                            <div>
+                              <input
+                                className="form-control mt-5"
+                                onChange={this.onChange}
+                                type="text"
+                                name="groupPack"
+                                placeholder="Quantity: 1-100"
+                                value={this.state.groupPack}
+                              />
+                              {errors.groupPack && errorDiv('groupPack')}
+                            </div>
+                          </li>
+                        </ul>
+                        <div className="p-4">
+                          <button type="submit" className="p-0 border-0">
+                            <img
+                              className="img-fluid"
+                              src="/images/add-to-cart.png"
+                              alt="add to cart"
                             />
-                            {errors.groupPack && errorDiv('groupPack')}
-                          </div>
-                        </li>
-                      </ul>
-                      <div className="p-4">
-                        <Link to="/store">
-                          <img
-                            className="img-fluid"
-                            src="/images/add-to-cart.png"
-                            alt=""
-                          />
-                        </Link>
-                      </div>
+                          </button>
+                        </div>
+                      </form>
                     </div>
                   </div>
                 </div>
@@ -263,36 +282,38 @@ class Options extends Component {
                       <h1 className="card-title pricing-card-title">
                         $3.50 <small className="text-muted">/ ea</small>
                       </h1>
-                      <ul className="list-unstyled text-muted mt-3 mb-4">
-                        <li className="font-italic">
-                          <h3 className="mb-0">Business Pack</h3>
-                        </li>
-                        <li style={{ fontSize: '12px' }}>
-                          <small>(Pack of 100 manuals)</small>
-                        </li>
-                        <li>
-                          <div>
-                            <input
-                              className="form-control mt-5"
-                              onChange={this.onChange}
-                              type="text"
-                              name="businessPack"
-                              placeholder="Quantity: 1-100"
-                              value={this.state.businessPack}
+                      <form onSubmit={this.onSubmit}>
+                        <ul className="list-unstyled text-muted mt-3 mb-4">
+                          <li className="font-italic">
+                            <h3 className="mb-0">Business Pack</h3>
+                          </li>
+                          <li style={{ fontSize: '12px' }}>
+                            <small>(Pack of 100 manuals)</small>
+                          </li>
+                          <li>
+                            <div>
+                              <input
+                                className="form-control mt-5"
+                                onChange={this.onChange}
+                                type="text"
+                                name="businessPack"
+                                placeholder="Quantity: 1-100"
+                                value={this.state.businessPack}
+                              />
+                              {errors.businessPack && errorDiv('businessPack')}
+                            </div>
+                          </li>
+                        </ul>
+                        <div className="p-4">
+                          <button type="submit" className="p-0 border-0">
+                            <img
+                              className="img-fluid"
+                              src="/images/add-to-cart.png"
+                              alt="add to cart"
                             />
-                            {errors.businessPack && errorDiv('businessPack')}
-                          </div>
-                        </li>
-                      </ul>
-                      <div className="p-4">
-                        <Link to="/store">
-                          <img
-                            className="img-fluid"
-                            src="/images/add-to-cart.png"
-                            alt=""
-                          />
-                        </Link>
-                      </div>
+                          </button>
+                        </div>
+                      </form>
                     </div>
                   </div>
                 </div>
@@ -309,36 +330,38 @@ class Options extends Component {
                       <h1 className="card-title pricing-card-title">
                         $3 <small className="text-muted">/ ea</small>
                       </h1>
-                      <ul className="list-unstyled text-muted mt-3 mb-4">
-                        <li className="font-italic">
-                          <h3 className="mb-0">Company Pack</h3>
-                        </li>
-                        <li style={{ fontSize: '12px' }}>
-                          <small>(Pack of 1,000 manuals)</small>
-                        </li>
-                        <li>
-                          <div>
-                            <input
-                              className="form-control mt-5"
-                              onChange={this.onChange}
-                              type="text"
-                              name="companyPack"
-                              placeholder="Quantity: 1-100"
-                              value={this.state.companyPack}
+                      <form onSubmit={this.onSubmit}>
+                        <ul className="list-unstyled text-muted mt-3 mb-4">
+                          <li className="font-italic">
+                            <h3 className="mb-0">Company Pack</h3>
+                          </li>
+                          <li style={{ fontSize: '12px' }}>
+                            <small>(Pack of 1,000 manuals)</small>
+                          </li>
+                          <li>
+                            <div>
+                              <input
+                                className="form-control mt-5"
+                                onChange={this.onChange}
+                                type="text"
+                                name="companyPack"
+                                placeholder="Quantity: 1-100"
+                                value={this.state.companyPack}
+                              />
+                              {errors.companyPack && errorDiv('companyPack')}
+                            </div>
+                          </li>
+                        </ul>
+                        <div className="p-4">
+                          <Link to="/store">
+                            <img
+                              className="img-fluid"
+                              src="/images/add-to-cart.png"
+                              alt=""
                             />
-                            {errors.companyPack && errorDiv('companyPack')}
-                          </div>
-                        </li>
-                      </ul>
-                      <div className="p-4">
-                        <Link to="/store">
-                          <img
-                            className="img-fluid"
-                            src="/images/add-to-cart.png"
-                            alt=""
-                          />
-                        </Link>
-                      </div>
+                          </Link>
+                        </div>
+                      </form>
                     </div>
                   </div>
                 </div>
@@ -355,37 +378,39 @@ class Options extends Component {
                       <h1 className="card-title pricing-card-title">
                         $2.50 <small className="text-muted">/ ea</small>
                       </h1>
-                      <ul className="list-unstyled text-muted mt-3 mb-4">
-                        <li className="font-italic">
-                          <h3 className="mb-0">Big-Company Pack</h3>
-                        </li>
-                        <li style={{ fontSize: '12px' }}>
-                          <small>(Pack of 5,000 manuals)</small>
-                        </li>
-                        <li>
-                          <div>
-                            <input
-                              className="form-control mt-5"
-                              onChange={this.onChange}
-                              type="text"
-                              name="bigCompanyPack"
-                              placeholder="Quantity: 1-100"
-                              value={this.state.bigCompanyPack}
+                      <form onSubmit={this.onSubmit}>
+                        <ul className="list-unstyled text-muted mt-3 mb-4">
+                          <li className="font-italic">
+                            <h3 className="mb-0">Big-Company Pack</h3>
+                          </li>
+                          <li style={{ fontSize: '12px' }}>
+                            <small>(Pack of 5,000 manuals)</small>
+                          </li>
+                          <li>
+                            <div>
+                              <input
+                                className="form-control mt-5"
+                                onChange={this.onChange}
+                                type="text"
+                                name="bigCompanyPack"
+                                placeholder="Quantity: 1-100"
+                                value={this.state.bigCompanyPack}
+                              />
+                              {errors.bigCompanyPack &&
+                                errorDiv('bigCompanyPack')}
+                            </div>
+                          </li>
+                        </ul>
+                        <div className="p-4">
+                          <button type="submit" className="p-0 border-0">
+                            <img
+                              className="img-fluid"
+                              src="/images/add-to-cart.png"
+                              alt="add to cart"
                             />
-                            {errors.bigCompanyPack &&
-                              errorDiv('bigCompanyPack')}
-                          </div>
-                        </li>
-                      </ul>
-                      <div className="p-4">
-                        <Link to="/store">
-                          <img
-                            className="img-fluid"
-                            src="/images/add-to-cart.png"
-                            alt=""
-                          />
-                        </Link>
-                      </div>
+                          </button>
+                        </div>
+                      </form>
                     </div>
                   </div>
                 </div>
@@ -404,5 +429,5 @@ const mapState = ({ cart }) => ({
 
 export default connect(
   mapState,
-  { testAction, addItemToCart }
+  { addItemToCart }
 )(Options)

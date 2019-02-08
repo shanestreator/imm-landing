@@ -7,7 +7,7 @@ import './Home.css'
 export default class Home extends Component {
   render() {
     return (
-      <div className="container p-5 bg-light">
+      <div id="container" className="container p-5 bg-light">
         <div className="embed-responsive embed-responsive-16by9 imm__video rounded shadow mt-5">
           <iframe
             title="Impact Motivation Manual Video"

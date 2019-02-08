@@ -24,15 +24,11 @@ body {
   font-size: 40px;
 }
 
-/* #wrapper {
-  padding-left: 0px;
-  padding-right: 0px;
-  height: 100%;
-  width: 100%;
-  background-image: url('/public/images/imm-stack.JPG');
-  background-size: 100%;
-  background-position: fixed;
-} */
+@media (min-width: 960px) {
+  #container {
+    width: 930px;
+  }
+}
 
 @media (max-width: 769px) {
   .h2-font-spacing {
