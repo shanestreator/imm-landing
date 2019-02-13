@@ -225,13 +225,13 @@ export default class Home extends Component {
 
           <div className="" />
 
-          <div class="mt-5 pt-5">
+          <div className="mt-5 pt-5">
             <h3 className="card-title  my-4">
               <strong>
                 The IMPACT MOTIVATION MANUAL is a great tool/gift for:
               </strong>
             </h3>
-            <div class="card-text text-left ml-5">
+            <div className="card-text text-left ml-5">
               <ul style={{ listStyleImage: 'url(/images/checkmark-30px.png)' }}>
                 <li className="">
                   <p>Yourself</p>
@@ -243,13 +243,13 @@ export default class Home extends Component {
                   <p>Your friends</p>
                 </li>
                 <li className="">
-                  <p>Your team/athletes</p>
+                  <p>Your team / athletes</p>
                 </li>
                 <li className="">
-                  <p>Your employees/personnel</p>
+                  <p>Your employees / personnel</p>
                 </li>
                 <li className="">
-                  <p>Your students/graduates/teachers</p>
+                  <p>Your students / graduates / teachers</p>
                 </li>
                 <li className="">
                   <p>
@@ -267,9 +267,10 @@ export default class Home extends Component {
             // style={{ opacity: '.5' }}
             to="/about"
             type="button"
-            class="btn btn-secondary btn-lg"
           >
-            <h4 className="mb-0 button-red">Click here to learn more!</h4>
+            <button className="btn btn-secondary btn-lg">
+              <h4 className="mb-0 button-red">Click here to learn more!</h4>
+            </button>
           </Link>
         </div>
       </div>

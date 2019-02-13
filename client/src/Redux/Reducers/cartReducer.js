@@ -3,7 +3,7 @@ import {
   ADD_CART_ITEM,
   REMOVE_CART_ITEM,
   UPDATE_CART_ITEM
-} from '../Actions/types'
+} from '../Actions/Cart/types'
 
 const initialState = []
 

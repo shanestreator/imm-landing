@@ -32,8 +32,10 @@ body {
 
 @media (max-width: 769px) {
   .h2-font-spacing {
+    display: flex;
+    justify-content: center;
     letter-spacing: 1px;
-    font-size: 34px;
+    font-size: 30px;
   }
 }
 

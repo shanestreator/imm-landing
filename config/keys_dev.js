@@ -1,6 +1,5 @@
 // Development
 module.exports = {
-  mongoURI:
-    'mongodb://shane:shane1@ds151222.mlab.com:51222/project_devconnector',
+  mongoURI: 'mongodb://shane:shane12345@ds133865.mlab.com:33865/imm',
   secretOrKey: 'secret'
 }

@@ -1,0 +1,2 @@
+export const SET_ADMIN_USER = 'SET_ADMIN_USER'
+export const REMOVE_ADMIN_USER = 'REMOVE_ADMIN_USER'

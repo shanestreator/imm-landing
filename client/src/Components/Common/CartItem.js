@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { packInfo } from '../../Utils/Utils'
+import { packInfo, priceRight } from '../../Utils/Utils'
 import { connect } from 'react-redux'
-import { updateCartItem } from '../../Redux/Actions/actions'
+import commaNumber from 'comma-number'
+import { updateCartItem } from '../../Redux/Actions/Cart/actions'
 
 class CartItem extends Component {
   constructor(props) {
@@ -34,10 +35,10 @@ class CartItem extends Component {
     // Functions
     const { removeItemFromCart } = this.props
     // PackInfo returns the correct pack information given as property
-    const { title, description, price } = packInfo(pack)
+    const { title, description, price, multiplier } = packInfo(pack)
     // Item total from quantity selected and price of pack
-    const itemTotal = quantity * price
-
+    const itemTotal = commaNumber(priceRight(quantity, +price, +multiplier))
+    console.log('itemTotal: ', itemTotal)
     return (
       <React.Fragment>
         <li className="list-group-item container">

@@ -4,8 +4,6 @@ const bodyParser = require('body-parser')
 const volleyball = require('volleyball')
 const path = require('path')
 
-const cart = require('./routes/api/cart')
-
 const app = express()
 
 // Logging Middleware
@@ -25,7 +23,11 @@ mongoose
   .catch(err => console.log(err))
 
 // Use Routes
-app.use('/api/cart', cart)
+const admin = require('./routes/admin')
+const product = require('./routes/api/product')
+
+app.use('/admin', admin)
+app.use('/api/product', product)
 
 // Serve static assets if in production
 if (process.env.NODE_ENV === 'production') {
@@ -39,4 +41,9 @@ if (process.env.NODE_ENV === 'production') {
 
 const port = process.env.PORT || 5000
 
-app.listen(port, () => console.log(`Server running on port ${port}`))
+app.listen(port, () => console.log(`Server running on port ${port}...`))
+
+// mongoConnect(client => {
+//   console.log(client)
+//   app.listen(port)
+// })

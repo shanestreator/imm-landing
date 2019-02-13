@@ -9,7 +9,7 @@ import './About.css'
 export default class About extends Component {
   render() {
     return (
-      <div className="container p-5 bg-light">
+      <div id="container" className="container p-5 bg-light">
         <div className="conainter">
           <div className="card red-card-shadow my-4">
             <div className="card-body text-center">
@@ -64,7 +64,7 @@ export default class About extends Component {
                         dynamicHeight
                         centerMode
                         showStatus={false}
-                        interval={4500}
+                        interval={4000}
                         transitionTime={1000}
                         showArrows={true}
                         showIndicators={false}
@@ -72,16 +72,19 @@ export default class About extends Component {
                         centerSlidePercentage={100}
                       >
                         <div>
-                          <img src="/images/imm-1.PNG" alt="..." />
-                          <p className="legend">Legend 1</p>
+                          <img src="/images/fight/fight-pic-1.jpg" alt="..." />
                         </div>
                         <div>
-                          <img src="/images/imm-10.PNG" alt="..." />
-                          <p className="legend">Legend 2</p>
+                          <img src="/images/fight/fight-pic-2.jpg" alt="..." />
                         </div>
                         <div>
-                          <img src="/images/imm-25.PNG" alt="..." />
-                          <p className="legend">Legend 3</p>
+                          <img src="/images/fight/fight-pic-3.jpg" alt="..." />
+                        </div>
+                        <div>
+                          <img src="/images/fight/fight-pic-4.jpg" alt="..." />
+                        </div>
+                        <div>
+                          <img src="/images/fight/fight-pic-5.jpg" alt="..." />
                         </div>
                       </Carousel>
                     ) : (
@@ -94,7 +97,7 @@ export default class About extends Component {
                         dynamicHeight
                         centerMode
                         showStatus={false}
-                        interval={4500}
+                        interval={4000}
                         transitionTime={1000}
                         showArrows={true}
                         showIndicators={false}
@@ -102,16 +105,19 @@ export default class About extends Component {
                         centerSlidePercentage={33}
                       >
                         <div>
-                          <img src="/images/imm-1.PNG" alt="..." />
-                          <p className="legend">Legend 1</p>
+                          <img src="/images/fight/fight-pic-1.jpg" alt="..." />
                         </div>
                         <div>
-                          <img src="/images/imm-10.PNG" alt="..." />
-                          <p className="legend">Legend 2</p>
+                          <img src="/images/fight/fight-pic-2.jpg" alt="..." />
                         </div>
                         <div>
-                          <img src="/images/imm-25.PNG" alt="..." />
-                          <p className="legend">Legend 3</p>
+                          <img src="/images/fight/fight-pic-3.jpg" alt="..." />
+                        </div>
+                        <div>
+                          <img src="/images/fight/fight-pic-4.jpg" alt="..." />
+                        </div>
+                        <div>
+                          <img src="/images/fight/fight-pic-5.jpg" alt="..." />
                         </div>
                       </Carousel>
                     )
@@ -136,35 +142,77 @@ export default class About extends Component {
                 business which I run in my spare time.
               </p>
               <div className="container card-text carousel-width d-flex justify-content-center w-100">
-                <Carousel
-                  className="carousel-width w-100"
-                  autoPlay
-                  infiniteLoop
-                  swipeable
-                  stopOnHover
-                  dynamicHeight
-                  centerMode
-                  showStatus={false}
-                  interval={4500}
-                  transitionTime={1000}
-                  showArrows={true}
-                  showIndicators={false}
-                  showThumbs={false}
-                  centerSlidePercentage={33}
-                >
-                  <div>
-                    <img src="/images/imm-1.PNG" alt="..." />
-                    <p className="legend">Legend 1</p>
-                  </div>
-                  <div>
-                    <img src="/images/imm-10.PNG" alt="..." />
-                    <p className="legend">Legend 2</p>
-                  </div>
-                  <div>
-                    <img src="/images/imm-25.PNG" alt="..." />
-                    <p className="legend">Legend 3</p>
-                  </div>
-                </Carousel>
+                <Media query="(max-width: 480px)">
+                  {matches =>
+                    matches ? (
+                      <Carousel
+                        className="carousel-width w-100"
+                        autoPlay
+                        infiniteLoop
+                        swipeable
+                        stopOnHover
+                        dynamicHeight
+                        centerMode
+                        showStatus={false}
+                        interval={4000}
+                        transitionTime={1000}
+                        showArrows={true}
+                        showIndicators={false}
+                        showThumbs={false}
+                        centerSlidePercentage={100}
+                      >
+                        <div>
+                          <img src="/images/fight/fight-pic-1.jpg" alt="..." />
+                        </div>
+                        <div>
+                          <img src="/images/fight/fight-pic-2.jpg" alt="..." />
+                        </div>
+                        <div>
+                          <img src="/images/fight/fight-pic-3.jpg" alt="..." />
+                        </div>
+                        <div>
+                          <img src="/images/fight/fight-pic-4.jpg" alt="..." />
+                        </div>
+                        <div>
+                          <img src="/images/fight/fight-pic-5.jpg" alt="..." />
+                        </div>
+                      </Carousel>
+                    ) : (
+                      <Carousel
+                        className="carousel-width w-100"
+                        autoPlay
+                        infiniteLoop
+                        swipeable
+                        stopOnHover
+                        dynamicHeight
+                        centerMode
+                        showStatus={false}
+                        interval={4000}
+                        transitionTime={1000}
+                        showArrows={true}
+                        showIndicators={false}
+                        showThumbs={false}
+                        centerSlidePercentage={33}
+                      >
+                        <div>
+                          <img src="/images/fight/fight-pic-1.jpg" alt="..." />
+                        </div>
+                        <div>
+                          <img src="/images/fight/fight-pic-2.jpg" alt="..." />
+                        </div>
+                        <div>
+                          <img src="/images/fight/fight-pic-3.jpg" alt="..." />
+                        </div>
+                        <div>
+                          <img src="/images/fight/fight-pic-4.jpg" alt="..." />
+                        </div>
+                        <div>
+                          <img src="/images/fight/fight-pic-5.jpg" alt="..." />
+                        </div>
+                      </Carousel>
+                    )
+                  }
+                </Media>
               </div>
             </div>
           </div>
@@ -182,35 +230,89 @@ export default class About extends Component {
                 have had only happiness with from the beginning.
               </p>
               <div className="container card-text carousel-width d-flex justify-content-center w-100">
-                <Carousel
-                  className="carousel-width w-100"
-                  autoPlay
-                  infiniteLoop
-                  swipeable
-                  stopOnHover
-                  dynamicHeight
-                  centerMode
-                  showStatus={false}
-                  interval={4500}
-                  transitionTime={1000}
-                  showArrows={true}
-                  showIndicators={false}
-                  showThumbs={false}
-                  centerSlidePercentage={33}
-                >
-                  <div>
-                    <img src="/images/imm-1.PNG" alt="..." />
-                    <p className="legend">Legend 1</p>
-                  </div>
-                  <div>
-                    <img src="/images/imm-10.PNG" alt="..." />
-                    <p className="legend">Legend 2</p>
-                  </div>
-                  <div>
-                    <img src="/images/imm-25.PNG" alt="..." />
-                    <p className="legend">Legend 3</p>
-                  </div>
-                </Carousel>
+                <Media query="(max-width: 480px)">
+                  {matches =>
+                    matches ? (
+                      <Carousel
+                        className="carousel-width w-100"
+                        autoPlay
+                        infiniteLoop
+                        swipeable
+                        stopOnHover
+                        dynamicHeight
+                        centerMode
+                        showStatus={false}
+                        interval={4000}
+                        transitionTime={1000}
+                        showArrows={true}
+                        showIndicators={false}
+                        showThumbs={false}
+                        centerSlidePercentage={100}
+                      >
+                        <div>
+                          <img src="/images/fam/fam-pic-1.JPG" alt="..." />
+                        </div>
+                        <div>
+                          <img src="/images/fam/fam-pic-2.jpg" alt="..." />
+                        </div>
+                        <div>
+                          <img src="/images/fam/fam-pic-3.jpg" alt="..." />
+                        </div>
+                        <div>
+                          <img src="/images/wed/wed-pic-1.jpg" alt="..." />
+                        </div>
+                        <div>
+                          <img src="/images/wed/wed-pic-2.jpg" alt="..." />
+                        </div>
+                        <div>
+                          <img src="/images/wed/wed-pic-3.jpg" alt="..." />
+                        </div>
+                        <div>
+                          <img src="/images/wed/wed-pic-4.jpg" alt="..." />
+                        </div>
+                      </Carousel>
+                    ) : (
+                      <Carousel
+                        className="carousel-width w-100"
+                        autoPlay
+                        infiniteLoop
+                        swipeable
+                        stopOnHover
+                        dynamicHeight
+                        centerMode
+                        showStatus={false}
+                        interval={4000}
+                        transitionTime={1000}
+                        showArrows={true}
+                        showIndicators={false}
+                        showThumbs={false}
+                        centerSlidePercentage={33}
+                      >
+                        <div>
+                          <img src="/images/fam/fam-pic-1.JPG" alt="..." />
+                        </div>
+                        <div>
+                          <img src="/images/fam/fam-pic-2.jpg" alt="..." />
+                        </div>
+                        <div>
+                          <img src="/images/fam/fam-pic-3.jpg" alt="..." />
+                        </div>
+                        <div>
+                          <img src="/images/wed/wed-pic-1.jpg" alt="..." />
+                        </div>
+                        <div>
+                          <img src="/images/wed/wed-pic-2.jpg" alt="..." />
+                        </div>
+                        <div>
+                          <img src="/images/wed/wed-pic-3.jpg" alt="..." />
+                        </div>
+                        <div>
+                          <img src="/images/wed/wed-pic-4.jpg" alt="..." />
+                        </div>
+                      </Carousel>
+                    )
+                  }
+                </Media>
               </div>
             </div>
           </div>

@@ -7,7 +7,7 @@ import './Navbar.css'
 
 class Navbar extends Component {
   render() {
-    console.log('NavbarProps: ', this.props)
+    // console.log('NavbarProps: ', this.props)
     return (
       <div className="main__navbar fixed-top px-0">
         <nav className="navbar navbar-expand-md d-flex justify-content-center navbar-light bg-light">

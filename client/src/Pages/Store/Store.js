@@ -1,10 +1,15 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { filterStoreOption } from '../../Validation/Store'
 import uuidv1 from 'uuid/v1'
 
-import { addItemToCart } from '../../Redux/Actions/actions'
+import { addItemToCart } from '../../Redux/Actions/Cart/actions'
+import { addItem } from '../../Redux/Actions/Item/actions'
+import { packInfo } from '../../Utils/Utils'
+
+// Components
+import StoreCartItem from '../../Components/Common/StoreCartItem'
+import StoreProductItem from '../../Components/Common/StoreProductItem'
 
 // CSS
 import './Store.css'
@@ -16,13 +21,7 @@ class Options extends Component {
     groupPack: '0',
     businessPack: '0',
     companyPack: '0',
-    bigCompanyPack: '0',
-    errors: {}
-  }
-
-  componentDidMount() {
-    // console.log('COMPONENT_DID_MOUNT')
-    // this.props.testAction()
+    bigCompanyPack: '0'
   }
 
   filterName = name => {
@@ -36,18 +35,22 @@ class Options extends Component {
     ].filter(el => el !== name)
   }
 
+  onClickGoToCart = () => {
+    this.props.history.push('/cart')
+  }
+
   onChange = evt => {
     const { name, value } = evt.target
 
     const filteredName = this.filterName(name)
+    console.log('filteredName: ', filteredName)
     this.setState({
       [name]: value,
       [filteredName[0]]: '0',
       [filteredName[1]]: '0',
       [filteredName[2]]: '0',
       [filteredName[3]]: '0',
-      [filteredName[4]]: '0',
-      errors: {}
+      [filteredName[4]]: '0'
     })
   }
 
@@ -56,38 +59,32 @@ class Options extends Component {
     // Expects an object with a single property (pack type) set equal to the quantity desired
     const pack = filterStoreOption(this.state)
     const packSelected = Object.keys(pack)[0]
-    // console.log('pack: ', typeof pack, 'selected: ', typeof packSelected)
+
+    const item = {
+      pack: packSelected,
+      quantity: Number(pack[packSelected]),
+      price: packInfo(packSelected).price
+    }
+
+    this.props.addItem(item)
+
     const itemData = {
       id: uuidv1(),
       pack: packSelected,
       quantity: Number(pack[packSelected]),
       created_At: Date()
     }
-    console.log('itemData: ', itemData)
+
     this.props.addItemToCart(itemData)
   }
 
   render() {
-    console.log('PROPS: ', this.props)
-    // console.log('STATE: ', typeof this.state.couplePack)
-
-    const { errors } = this.state
-
-    const errorDiv = pack => (
-      <div className="pt-2" style={{ fontSize: '16px' }}>
-        <p style={{ color: 'red' }}>
-          <small>{errors[pack]}</small>
-        </p>
-        <p>
-          <small>
-            More than 100? <Link to="/contact">Contact Us!</Link>
-          </small>
-        </p>
-      </div>
-    )
-
+    console.log('state: ', this.state)
     return (
-      <div className="container py-5 pb-3 bg-light d-flex justify-content-center">
+      <div
+        id="container"
+        className="container py-5 pb-3 bg-light d-flex justify-content-center"
+      >
         <div className="row">
           <div className="pricing-header px-5 text-center">
             <h1 className="display-4">Pricing</h1>
@@ -102,442 +99,83 @@ class Options extends Component {
             <div className="card-deck mb-3 text-center">
               <div className="row">
                 {/* -------------------- $5 -------------------- */}
-                <div className="col-xs-12 col-sm-6 col-md-6 col-lg-4 ">
-                  <div className="card card-red-hover mb-4">
-                    <img
-                      src="/images/imm-1.PNG"
-                      className="card-img-top"
-                      alt="..."
-                    />
-
-                    <div className="card-body">
-                      <h1 className="card-title pricing-card-title">
-                        $5 <small className="text-muted">/ ea</small>
-                      </h1>
-                      <form onSubmit={this.onSubmit}>
-                        <ul className="list-unstyled text-muted mt-3 mb-4">
-                          <li className="font-italic">
-                            <h3 className="mb-0">Couple Pack</h3>
-                          </li>
-                          <li style={{ fontSize: '12px' }}>
-                            <small>(Pack of 2 manuals)</small>
-                          </li>
-                          <li>
-                            <div className="col-3 d-flex justify-content-center align-items-center">
-                              <div className="row">
-                                <div className="col-sm-12 col-md-6 d-flex align-items-center justify-content-center justify-content-md-end px-0">
-                                  <div className="mr-md-2 mb-sm-1">
-                                    <h6
-                                      className="mb-0"
-                                      htmlFor="quantity"
-                                      style={{ fontSize: '16px' }}
-                                    >
-                                      Qty:
-                                    </h6>
-                                  </div>
-                                </div>
-                                <div className="col-sm-12 col-md-6 d-flex justify-content-center align-items-center px-0">
-                                  <select
-                                    className="form-control-sm"
-                                    onChange={this.onChange}
-                                    name="couplePack"
-                                    defaultValue={this.state.couplePack}
-                                    id="quantity"
-                                  >
-                                    <option value="0">Select</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="10">10</option>
-                                  </select>
-                                </div>
-                              </div>
-                            </div>
-                          </li>
-                        </ul>
-                        <div className="p-4">
-                          <button type="submit" className="p-0 border-0">
-                            <img
-                              className="img-fluid"
-                              src="/images/add-to-cart.png"
-                              alt="add to cart"
-                            />
-                          </button>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
+                <StoreProductItem
+                  title="Couple Pack"
+                  name="couplePack"
+                  imgUrl="/images/manuals/imm-2.png"
+                  priceEach="5"
+                  numManuals="2"
+                  item={this.props.item}
+                  statePack={this.state.couplePack}
+                  onClickGoToCart={this.onClickGoToCart}
+                  onChange={this.onChange}
+                  onSubmit={this.onSubmit}
+                />
                 {/* -------------------- $4.50 -------------------- */}
-                <div className="col-xs-12 col-sm-6 col-md-6 col-lg-4 ">
-                  <div className="card card-red-hover mb-4 shadow">
-                    <img
-                      src="/images/imm-10.PNG"
-                      className="card-img-top"
-                      alt="..."
-                    />
-                    <div className="card-body">
-                      <h1 className="card-title pricing-card-title">
-                        $4.50 <small className="text-muted">/ ea</small>
-                      </h1>
-                      <form onSubmit={this.onSubmit}>
-                        <ul className="list-unstyled text-muted mt-3 mb-4">
-                          <li className="font-italic">
-                            <h3 className="mb-0">Family Pack</h3>
-                          </li>
-                          <li style={{ fontSize: '12px' }}>
-                            <small>(Pack of 10 manuals)</small>
-                          </li>
-                          <li>
-                            <div className="col-3 d-flex justify-content-center align-items-center">
-                              <div className="row">
-                                <div className="col-sm-12 col-md-6 d-flex align-items-center justify-content-center justify-content-md-end px-0">
-                                  <div className="mr-md-2 mb-sm-1">
-                                    <h6
-                                      className="mb-0"
-                                      htmlFor="quantity"
-                                      style={{ fontSize: '16px' }}
-                                    >
-                                      Qty:
-                                    </h6>
-                                  </div>
-                                </div>
-                                <div className="col-sm-12 col-md-6 d-flex justify-content-center align-items-center px-0">
-                                  <select
-                                    className="form-control-sm"
-                                    onChange={this.onChange}
-                                    name="familyPack"
-                                    defaultValue={this.state.familyPack}
-                                    id="quantity"
-                                  >
-                                    <option value="0">Select</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="10">10</option>
-                                  </select>
-                                </div>
-                              </div>
-                            </div>
-                          </li>
-                        </ul>
-                        <div className="p-4">
-                          <button type="submit" className="p-0 border-0">
-                            <img
-                              className="img-fluid"
-                              src="/images/add-to-cart.png"
-                              alt="add to cart"
-                            />
-                          </button>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
+                <StoreProductItem
+                  title="Family Pack"
+                  name="familyPack"
+                  imgUrl="/images/manuals/imm-10.png"
+                  priceEach="4.50"
+                  numManuals="10"
+                  item={this.props.item}
+                  statePack={this.state.familyPack}
+                  onClickGoToCart={this.onClickGoToCart}
+                  onChange={this.onChange}
+                  onSubmit={this.onSubmit}
+                />
                 {/* -------------------- $4 -------------------- */}
-                <div className="col-xs-12 col-sm-6 col-md-6 col-lg-4 ">
-                  <div className="card card-red-hover mb-4 shadow">
-                    <img
-                      src="/images/imm-25.PNG"
-                      className="card-img-top"
-                      alt="..."
-                    />
-
-                    <div className="card-body">
-                      <h1 className="card-title pricing-card-title">
-                        $4 <small className="text-muted">/ ea</small>
-                      </h1>
-                      <form onSubmit={this.onSubmit}>
-                        <ul className="list-unstyled text-muted mt-3 mb-4">
-                          <li className="font-italic">
-                            <h3 className="mb-0">Group Pack</h3>
-                          </li>
-                          <li style={{ fontSize: '12px' }}>
-                            <small>(Pack of 25 manuals)</small>
-                          </li>
-                          <li>
-                            <div className="col-3 d-flex justify-content-center align-items-center">
-                              <div className="row">
-                                <div className="col-sm-12 col-md-6 d-flex align-items-center justify-content-center justify-content-md-end px-0">
-                                  <div className="mr-md-2 mb-sm-1">
-                                    <h6
-                                      className="mb-0"
-                                      htmlFor="quantity"
-                                      style={{ fontSize: '16px' }}
-                                    >
-                                      Qty:
-                                    </h6>
-                                  </div>
-                                </div>
-                                <div className="col-sm-12 col-md-6 d-flex justify-content-center align-items-center px-0">
-                                  <select
-                                    className="form-control-sm"
-                                    onChange={this.onChange}
-                                    name="groupPack"
-                                    defaultValue={this.state.groupPack}
-                                    id="quantity"
-                                  >
-                                    <option value="0">Select</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="10">10</option>
-                                  </select>
-                                </div>
-                              </div>
-                            </div>
-                          </li>
-                        </ul>
-                        <div className="p-4">
-                          <button type="submit" className="p-0 border-0">
-                            <img
-                              className="img-fluid"
-                              src="/images/add-to-cart.png"
-                              alt="add to cart"
-                            />
-                          </button>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
+                <StoreProductItem
+                  title="Group Pack"
+                  name="groupPack"
+                  imgUrl="/images/manuals/imm-25.png"
+                  priceEach="4"
+                  numManuals="25"
+                  item={this.props.item}
+                  statePack={this.state.groupPack}
+                  onClickGoToCart={this.onClickGoToCart}
+                  onChange={this.onChange}
+                  onSubmit={this.onSubmit}
+                />
                 {/* -------------------- $3.50 -------------------- */}
-                <div className="col-xs-12 col-sm-6 col-md-6 col-lg-4 ">
-                  <div className="card card-red-hover mb-4 shadow">
-                    <img
-                      src="/images/imm-25.PNG"
-                      className="card-img-top"
-                      alt="..."
-                    />
-
-                    <div className="card-body">
-                      <h1 className="card-title pricing-card-title">
-                        $3.50 <small className="text-muted">/ ea</small>
-                      </h1>
-                      <form onSubmit={this.onSubmit}>
-                        <ul className="list-unstyled text-muted mt-3 mb-4">
-                          <li className="font-italic">
-                            <h3 className="mb-0">Business Pack</h3>
-                          </li>
-                          <li style={{ fontSize: '12px' }}>
-                            <small>(Pack of 100 manuals)</small>
-                          </li>
-                          <li>
-                            <div className="col-3 d-flex justify-content-center align-items-center">
-                              <div className="row">
-                                <div className="col-sm-12 col-md-6 d-flex align-items-center justify-content-center justify-content-md-end px-0">
-                                  <div className="mr-md-2 mb-sm-1">
-                                    <h6
-                                      className="mb-0"
-                                      htmlFor="quantity"
-                                      style={{ fontSize: '16px' }}
-                                    >
-                                      Qty:
-                                    </h6>
-                                  </div>
-                                </div>
-                                <div className="col-sm-12 col-md-6 d-flex justify-content-center align-items-center px-0">
-                                  <select
-                                    className="form-control-sm"
-                                    onChange={this.onChange}
-                                    name="businessPack"
-                                    defaultValue={this.state.businessPack}
-                                    id="quantity"
-                                  >
-                                    <option value="0">Select</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="10">10</option>
-                                  </select>
-                                </div>
-                              </div>
-                            </div>
-                          </li>
-                        </ul>
-                        <div className="p-4">
-                          <button type="submit" className="p-0 border-0">
-                            <img
-                              className="img-fluid"
-                              src="/images/add-to-cart.png"
-                              alt="add to cart"
-                            />
-                          </button>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
+                <StoreProductItem
+                  title="Business Pack"
+                  name="businessPack"
+                  imgUrl="/images/manuals/imm-100.png"
+                  priceEach="3.50"
+                  numManuals="100"
+                  item={this.props.item}
+                  statePack={this.state.businessPack}
+                  onClickGoToCart={this.onClickGoToCart}
+                  onChange={this.onChange}
+                  onSubmit={this.onSubmit}
+                />
                 {/* -------------------- $3 -------------------- */}
-                <div className="col-xs-12 col-sm-6 col-md-6 col-lg-4 ">
-                  <div className="card card-red-hover mb-4 shadow">
-                    <img
-                      src="/images/imm-25.PNG"
-                      className="card-img-top"
-                      alt="..."
-                    />
-
-                    <div className="card-body">
-                      <h1 className="card-title pricing-card-title">
-                        $3 <small className="text-muted">/ ea</small>
-                      </h1>
-                      <form onSubmit={this.onSubmit}>
-                        <ul className="list-unstyled text-muted mt-3 mb-4">
-                          <li className="font-italic">
-                            <h3 className="mb-0">Company Pack</h3>
-                          </li>
-                          <li style={{ fontSize: '12px' }}>
-                            <small>(Pack of 1,000 manuals)</small>
-                          </li>
-                          <li>
-                            <div className="col-3 d-flex justify-content-center align-items-center">
-                              <div className="row">
-                                <div className="col-sm-12 col-md-6 d-flex align-items-center justify-content-center justify-content-md-end px-0">
-                                  <div className="mr-md-2 mb-sm-1">
-                                    <h6
-                                      className="mb-0"
-                                      htmlFor="quantity"
-                                      style={{ fontSize: '16px' }}
-                                    >
-                                      Qty:
-                                    </h6>
-                                  </div>
-                                </div>
-                                <div className="col-sm-12 col-md-6 d-flex justify-content-center align-items-center px-0">
-                                  <select
-                                    className="form-control-sm"
-                                    onChange={this.onChange}
-                                    name="companyPack"
-                                    defaultValue={this.state.companyPack}
-                                    id="quantity"
-                                  >
-                                    <option value="0">Select</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="10">10</option>
-                                  </select>
-                                </div>
-                              </div>
-                            </div>
-                          </li>
-                        </ul>
-                        <div className="p-4">
-                          <Link to="/store">
-                            <img
-                              className="img-fluid"
-                              src="/images/add-to-cart.png"
-                              alt=""
-                            />
-                          </Link>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
+                <StoreProductItem
+                  title="Company Pack"
+                  name="companyPack"
+                  imgUrl="/images/manuals/imm-1000.png"
+                  priceEach="3.00"
+                  numManuals="1,000"
+                  item={this.props.item}
+                  statePack={this.state.companyPack}
+                  onClickGoToCart={this.onClickGoToCart}
+                  onChange={this.onChange}
+                  onSubmit={this.onSubmit}
+                />
                 {/* -------------------- $2.50 -------------------- */}
-                <div className="col-xs-12 col-sm-6 col-md-6 col-lg-4 ">
-                  <div className="card card-red-hover mb-4 shadow">
-                    <img
-                      src="/images/imm-25.PNG"
-                      className="card-img-top"
-                      alt="..."
-                    />
-
-                    <div className="card-body">
-                      <h1 className="card-title pricing-card-title">
-                        $2.50 <small className="text-muted">/ ea</small>
-                      </h1>
-                      <form onSubmit={this.onSubmit}>
-                        <ul className="list-unstyled text-muted mt-3 mb-4">
-                          <li className="font-italic">
-                            <h3 className="mb-0">Big-Company Pack</h3>
-                          </li>
-                          <li style={{ fontSize: '12px' }}>
-                            <small>(Pack of 5,000 manuals)</small>
-                          </li>
-                          <li>
-                            <div className="col-3 d-flex justify-content-center align-items-center">
-                              <div className="row">
-                                <div className="col-sm-12 col-md-6 d-flex align-items-center justify-content-center justify-content-md-end px-0">
-                                  <div className="mr-md-2 mb-sm-1">
-                                    <h6
-                                      className="mb-0"
-                                      htmlFor="quantity"
-                                      style={{ fontSize: '16px' }}
-                                    >
-                                      Qty:
-                                    </h6>
-                                  </div>
-                                </div>
-                                <div className="col-sm-12 col-md-6 d-flex justify-content-center align-items-center px-0">
-                                  <select
-                                    className="form-control-sm"
-                                    onChange={this.onChange}
-                                    name="bigCompanyPack"
-                                    defaultValue={this.state.bigCompanyPack}
-                                    id="quantity"
-                                  >
-                                    <option value="0">Select</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="10">10</option>
-                                  </select>
-                                </div>
-                              </div>
-                            </div>
-                          </li>
-                        </ul>
-                        <div className="p-4">
-                          <button type="submit" className="p-0 border-0">
-                            <img
-                              className="img-fluid"
-                              src="/images/add-to-cart.png"
-                              alt="add to cart"
-                            />
-                          </button>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
+                <StoreProductItem
+                  title="Big-Company Pack"
+                  name="bigCompanyPack"
+                  imgUrl="/images/manuals/imm-5000.png"
+                  priceEach="2.50"
+                  numManuals="5,000"
+                  item={this.props.item}
+                  statePack={this.state.bigCompanyPack}
+                  onClickGoToCart={this.onClickGoToCart}
+                  onChange={this.onChange}
+                  onSubmit={this.onSubmit}
+                />
               </div>
             </div>
           </div>
@@ -547,11 +185,11 @@ class Options extends Component {
   }
 }
 
-const mapState = ({ cart }) => ({
-  cart
+const mapState = ({ item }) => ({
+  item
 })
 
 export default connect(
   mapState,
-  { addItemToCart }
+  { addItemToCart, addItem }
 )(Options)
