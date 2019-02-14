@@ -74,19 +74,22 @@ export const addProduct = itemData => async dispatch => {
 // ---------------------------------- UPDATE ---------------------------------- //
 
 // Action
-export const putProduct = newProduct => {
+export const putProduct = updatedProd => {
   return {
     type: UPDATE_PRODUCT,
-    payload: newProduct
+    payload: updatedProd
   }
 }
 
 // Add a new product to the database
-export const updateProduct = newItemData => async dispatch => {
+export const updateProduct = newProductInfo => async dispatch => {
   try {
-    const result = await axios.put('/api/product', newItemData)
-    console.log('PUT_RESULT: ', result)
-    // dispatch(putProduct())
+    const { data: updatedProd } = await axios.put(
+      '/api/product',
+      newProductInfo
+    )
+
+    dispatch(putProduct(updatedProd))
   } catch (error) {
     console.error(error)
   }

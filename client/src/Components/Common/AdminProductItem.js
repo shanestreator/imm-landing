@@ -1,8 +1,10 @@
 import React from 'react'
+import { connect } from 'react-redux'
+
+import { updateProduct } from '../../Redux/Actions/productActions'
 
 // Components
-import StoreCartItem from '../../Components/Common/StoreCartItem'
-import AdminEditProduct from '../../Components/Common/AdminEditProduct'
+import AdminEditProductModal from '../../Components/Common/AdminEditProductModal'
 
 class AdminProductItem extends React.Component {
   state = {}
@@ -22,8 +24,7 @@ class AdminProductItem extends React.Component {
       imgUrl,
       priceEach,
       numManuals,
-      getOneProduct,
-      deleteProduct
+      getOneProduct
     } = this.props
 
     return (
@@ -110,55 +111,13 @@ class AdminProductItem extends React.Component {
           </div>
         </div>
 
-        <div
-          className="modal fade"
-          id="editModal"
-          tabIndex="-1"
-          role="dialog"
-          aria-labelledby="editModalLabel"
-          aria-hidden="true"
-        >
-          <div className="modal-dialog" role="document">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title" id="editModalLabel">
-                  Edit Product
-                </h5>
-                <button
-                  type="button"
-                  className="close"
-                  data-dismiss="modal"
-                  aria-label="Close"
-                >
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div className="modal-body">
-                <AdminEditProduct />
-              </div>
-              <div className="modal-footer">
-                <button
-                  type="button"
-                  className="btn btn-primary"
-                  data-dismiss="modal"
-                >
-                  Save
-                </button>
-                <button
-                  type="button"
-                  className="btn btn-secondary"
-                  data-dismiss="modal"
-                  aria-label="Close"
-                >
-                  Close
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+        <AdminEditProductModal />
       </React.Fragment>
     )
   }
 }
 
-export default AdminProductItem
+export default connect(
+  null,
+  { updateProduct }
+)(AdminProductItem)

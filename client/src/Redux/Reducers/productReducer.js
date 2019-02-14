@@ -2,7 +2,8 @@ import {
   GET_ONE_PRODUCT,
   GET_ALL_PRODUCTS,
   DELETE_PRODUCT,
-  ADD_PRODUCT
+  ADD_PRODUCT,
+  UPDATE_PRODUCT
 } from '../Actions/types'
 
 const initialState = {
@@ -20,6 +21,18 @@ export default function(state = initialState, action) {
     }
     case ADD_PRODUCT: {
       return { ...state, allProducts: [...state.allProducts, action.payload] }
+    }
+    case UPDATE_PRODUCT: {
+      return {
+        ...state,
+        allProducts: state.allProducts.map(product => {
+          if (product._id === action.payload._id) {
+            return action.payload
+          } else {
+            return product
+          }
+        })
+      }
     }
     case DELETE_PRODUCT: {
       return {

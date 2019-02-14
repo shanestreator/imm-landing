@@ -62,6 +62,30 @@ router.post('/', async (req, res, next) => {
   }
 })
 
+// Creating a new product (pack)
+// PUT /api/product
+router.put('/', async (req, res, next) => {
+  try {
+    const { id, imageUrl, title, manualsPerPack, price } = req.body
+
+    const newProductInfo = {
+      imageUrl,
+      title,
+      manualsPerPack,
+      price
+    }
+
+    const updatedProduct = await Product.findByIdAndUpdate(id, newProductInfo, {
+      new: true
+    })
+
+    res.status(200).json(updatedProduct)
+  } catch (error) {
+    console.log('ERROR: ', error)
+    next(error)
+  }
+})
+
 // Delete one product from database
 // DELETE /api/:prodId
 router.delete('/:prodId', async (req, res, next) => {

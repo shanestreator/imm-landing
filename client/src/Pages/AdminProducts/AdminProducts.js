@@ -45,7 +45,7 @@ class AdminProducts extends Component {
   }
 
   render() {
-    console.log('ADMIN_PRODUCTS_PROPS: ', this.props)
+    // console.log('ADMIN_PRODUCTS_PROPS: ', this.props)
     // console.log('ADMIN_PRODUCTS_STATE: ', this.state)
     const { allProducts } = this.props.product
     // console.log('ALL_PRODUCTS: ', allProducts)
