@@ -1,14 +1,16 @@
 const router = require('express')()
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
+const passport = require('passport')
 const keys = require('../../config/keys')
 
-// const { requireAdmin } = require('../utils/requireAdmin')
+const validateLoginInput = require('../validation/login')
 
 const Admin = require('../../models/Admin')
 
-// Register Admin User
-// POST /admin/register
+// @route   POST admin/register
+// @desc    Sign up a new admin user (uncomment and use postman)
+// @access  Public
 // router.post('/register', async (req, res, next) => {
 //   try {
 //     console.log('REGISTER_REQ_BODY: ', req.body)
@@ -47,34 +49,43 @@ const Admin = require('../../models/Admin')
 //   }
 // })
 
-// Login Admin User
-// POST /admin/login
+// @route   POST admin/login
+// @desc    Login in as admin
+// @access  Public
 router.post('/login', async (req, res, next) => {
   try {
+    const { errors, isValid } = validateLoginInput(req.body)
+
+    // Check validation
+    if (!isValid) return res.status(400).json(errors)
+
     const { email, password } = req.body
 
     const user = await Admin.findOne({ email })
 
     if (!user) {
-      return res.send({
-        message: 'Invalid email'
-      })
+      errors.email = 'Invalid Email'
+      return res.status(404).json(errors)
     }
 
     bcrypt.compare(password, user.password, (err, resolve) => {
       if (resolve) {
-        const payload = { id: user._id, name: user.name, email }
+        const payload = { id: user.id, name: user.name, email }
 
-        const token = jwt.sign(payload, keys.secretOrKey, { expiresIn: '7d' })
-        console.log('TOKEN: ', token)
-
-        res.header('Authorization', token)
-        return res.status(200).json(payload)
+        jwt.sign(
+          payload,
+          keys.secretOrKey,
+          { expiresIn: '7d' },
+          (err, token) => {
+            res.json({
+              success: true,
+              token: 'Bearer ' + token
+            })
+          }
+        )
       } else {
-        console.log('ERROR: ', err)
-        res.send({
-          message: 'Incorrect Password'
-        })
+        errors.password = 'Incorrect Password'
+        return res.status(400).json(errors)
       }
     })
   } catch (error) {
@@ -82,21 +93,25 @@ router.post('/login', async (req, res, next) => {
   }
 })
 
-router.get('/user/:userId', async (req, res, next) => {
-  try {
-    console.log('REQ.PARAMS: ', req.params)
-    const id = req.params.userId
-    const { _id, name, email } = await Admin.findById(id)
-
-    const adminUserInfo = {
-      id: _id,
-      name,
-      email
-    }
-    res.send(adminUserInfo)
-  } catch (error) {
-    next(error)
+// @route   GET api/profile
+// @desc    Get current users profile
+// @access  Private
+router.get(
+  '/',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    const errors = {}
+    Profile.findOne({ user: req.user.id })
+      .populate('user', ['name', 'avatar'])
+      .then(profile => {
+        if (!profile) {
+          errors.noprofile = 'There is no profile for this user'
+          res.status(404).json(errors)
+        }
+        res.json(profile)
+      })
+      .catch(err => res.status(404).json(err))
   }
-})
+)
 
 module.exports = router

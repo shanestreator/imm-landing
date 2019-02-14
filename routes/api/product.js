@@ -3,13 +3,42 @@ const router = require('express')()
 
 const Product = require('../../models/Product')
 
+// Get one product from database
+// GET /api/one/:prodId
+router.get('/one/:prodId', async (req, res, next) => {
+  try {
+    const prodId = req.params.prodId
+
+    const product = await Product.findOne({ _id: prodId })
+    console.log('ONE_PRODUCT: ', product)
+
+    res.status(200).json(product)
+  } catch (error) {
+    console.log('ERROR: ', error)
+    next(error)
+  }
+})
+
+// Get all products from database
+// GET /api/product/all
+router.get('/all', async (req, res, next) => {
+  try {
+    const allProducts = await Product.find({})
+
+    res.status(200).json(allProducts)
+  } catch (error) {
+    console.log('ERROR: ', error)
+    next(error)
+  }
+})
+
 // Creating a new product (pack)
-// POST /api/product/
+// POST /api/product
 router.post('/', async (req, res, next) => {
   try {
-    const { name, amount, price } = req.body
+    const { imageUrl, title, manualsPerPack, price } = req.body
 
-    const productExists = await Product.findOne({ name: name })
+    const productExists = await Product.findOne({ title: title })
 
     if (productExists) {
       res.send({
@@ -17,20 +46,37 @@ router.post('/', async (req, res, next) => {
       })
     } else {
       const newPack = {
-        name,
-        amount,
+        imageUrl,
+        title,
+        manualsPerPack,
         price
       }
-      console.log('NEW_PACK: ', newPack)
 
-      Pack.create(newPack)
+      const result = await Product.create(newPack)
 
-      res.status(200).send({
-        message: 'Success'
-      })
+      res.status(200).json(result)
     }
   } catch (error) {
     console.log('ERROR: ', error)
+    next(error)
+  }
+})
+
+// Delete one product from database
+// DELETE /api/:prodId
+router.delete('/:prodId', async (req, res, next) => {
+  try {
+    const prodId = req.params.prodId
+    console.log('DELETED_PRODUCT: ', prodId)
+
+    const product = await Product.findByIdAndRemove(prodId)
+
+    res.status(202).json({
+      message: 'Successfully deleted'
+    })
+  } catch (error) {
+    console.log('ERROR: ', error)
+    next(error)
   }
 })
 

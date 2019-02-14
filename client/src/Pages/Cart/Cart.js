@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import commaNumber from 'comma-number'
 import { packInfo } from '../../Utils/Utils'
 
-import { removeItemFromCart } from '../../Redux/Actions/Cart/actions'
+import { removeItemFromCart } from '../../Redux/Actions/cartActions'
 
 // Components
 import CartItem from '../../Components/Common/CartItem'

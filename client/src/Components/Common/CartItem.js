@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { packInfo, priceRight } from '../../Utils/Utils'
 import { connect } from 'react-redux'
 import commaNumber from 'comma-number'
-import { updateCartItem } from '../../Redux/Actions/Cart/actions'
+import { updateCartItem } from '../../Redux/Actions/cartActions'
 
 class CartItem extends Component {
   constructor(props) {
@@ -38,7 +38,7 @@ class CartItem extends Component {
     const { title, description, price, multiplier } = packInfo(pack)
     // Item total from quantity selected and price of pack
     const itemTotal = commaNumber(priceRight(quantity, +price, +multiplier))
-    console.log('itemTotal: ', itemTotal)
+    // console.log('itemTotal: ', itemTotal)
     return (
       <React.Fragment>
         <li className="list-group-item container">

@@ -3,12 +3,12 @@ import { connect } from 'react-redux'
 import { filterStoreOption } from '../../Validation/Store'
 import uuidv1 from 'uuid/v1'
 
-import { addItemToCart } from '../../Redux/Actions/Cart/actions'
-import { addItem } from '../../Redux/Actions/Item/actions'
+// import { addItemToCart } from '../../Redux/Actions/cartActions'
+import { getAllProducts } from '../../Redux/Actions/productActions'
 import { packInfo } from '../../Utils/Utils'
 
 // Components
-import StoreCartItem from '../../Components/Common/StoreCartItem'
+// import StoreCartItem from '../../Components/Common/StoreCartItem'
 import StoreProductItem from '../../Components/Common/StoreProductItem'
 
 // CSS
@@ -43,7 +43,7 @@ class Options extends Component {
     const { name, value } = evt.target
 
     const filteredName = this.filterName(name)
-    console.log('filteredName: ', filteredName)
+    // console.log('filteredName: ', filteredName)
     this.setState({
       [name]: value,
       [filteredName[0]]: '0',
@@ -79,7 +79,7 @@ class Options extends Component {
   }
 
   render() {
-    console.log('state: ', this.state)
+    // console.log('state: ', this.state)
     return (
       <div
         id="container"
@@ -191,5 +191,5 @@ const mapState = ({ item }) => ({
 
 export default connect(
   mapState,
-  { addItemToCart, addItem }
+  { getAllProducts }
 )(Options)

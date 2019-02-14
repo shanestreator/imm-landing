@@ -3,7 +3,7 @@ import {
   ADD_CART_ITEM,
   REMOVE_CART_ITEM,
   UPDATE_CART_ITEM
-} from '../Actions/Cart/types'
+} from '../Actions/types'
 
 const initialState = []
 
@@ -25,7 +25,7 @@ export default function(state = initialState, action) {
       })
     }
     case REMOVE_CART_ITEM: {
-      console.log('STATE: ', state, 'PAYLOAD: ', action.payload)
+      // console.log('STATE: ', state, 'PAYLOAD: ', action.payload)
       return state.filter(item => item.id !== action.payload)
     }
     default: {

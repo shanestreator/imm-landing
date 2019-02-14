@@ -49,7 +49,7 @@ export const putItem = item => {
 export const updateCartItem = itemData => async dispatch => {
   try {
     // const res = await axios.post('/api/cart', itemData)
-    console.log('UPDATE_CART_ITEM: ', itemData)
+    // console.log('UPDATE_CART_ITEM: ', itemData)
     dispatch(putItem(itemData))
 
     // const { data: getItem } = await axios.get('/cart')

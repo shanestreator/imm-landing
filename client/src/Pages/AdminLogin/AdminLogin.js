@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { loginUserAdmin } from '../../Redux/Actions/Admin/actions'
+import { loginUser } from '../../Redux/Actions/authActions'
 
 // Components
 import TextFieldGroup from '../../Components/Common/TextFieldGroup'
@@ -9,7 +9,18 @@ import TextFieldGroup from '../../Components/Common/TextFieldGroup'
 class AdminLogin extends Component {
   state = {
     email: '',
-    password: ''
+    password: '',
+    errors: {}
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.auth.isAuthenticated) {
+      this.props.history.push('/dashboard')
+    }
+
+    if (nextProps.errors) {
+      this.setState({ errors: nextProps.errors })
+    }
   }
 
   onChange = evt => {
@@ -26,11 +37,12 @@ class AdminLogin extends Component {
       password
     }
 
-    this.props.loginUserAdmin(userData, this.props.history)
+    this.props.loginUser(userData, this.props.history)
   }
 
   render() {
     // console.log('THIS.PROPS: ', this.props)
+    const { errors } = this.state
     return (
       <div id="container" className="container bg-light p-5 vh-100">
         <div className="row justify-content-center py-5 bg-dark text-white">
@@ -50,7 +62,7 @@ class AdminLogin extends Component {
                     type="text"
                     className="form-control"
                     placeholder="Email"
-                    // error={errors.email}
+                    error={errors.email}
                   />
                 </div>
                 <div className="row">
@@ -63,7 +75,7 @@ class AdminLogin extends Component {
                     type="text"
                     className="form-control"
                     placeholder="Password"
-                    // error={errors.password}
+                    error={errors.password}
                   />
                 </div>
                 <div className="row justify-content-end pt-4">
@@ -84,9 +96,9 @@ class AdminLogin extends Component {
   }
 }
 
-const mapState = ({ admin }) => ({ admin })
+const mapState = ({ auth, errors }) => ({ auth, errors })
 
 export default connect(
   mapState,
-  { loginUserAdmin }
+  { loginUser }
 )(AdminLogin)

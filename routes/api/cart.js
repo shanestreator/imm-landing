@@ -10,7 +10,7 @@ const User = require('../../models/User')
 // @access  Public
 router.get('/test', (req, res) => {
   try {
-    console.log('BACK_END_CART_TEST_ROUTE')
+    // console.log('BACK_END_CART_TEST_ROUTE')
     res.json({ msg: 'Cart Works' })
   } catch (error) {
     next(error)
@@ -22,7 +22,7 @@ router.get('/test', (req, res) => {
 // @access  Public
 router.post('/', (req, res, next) => {
   try {
-    console.log('BACK_END_CART_POST')
+    // console.log('BACK_END_CART_POST')
     const item = req.body
     console.log('ITEM<<<<<<: ', item)
     res.status(200).json(item)

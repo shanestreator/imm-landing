@@ -17,7 +17,7 @@ const StoreProductItem = ({
 }) => {
   return (
     <React.Fragment>
-      <div className="col-xs-12 col-sm-6 col-md-4 col-lg-4 ">
+      <div className="col-xs-12 col-sm-6 col-md-6 col-lg-4 ">
         <div className="card card-red-hover mb-4">
           <img src={imgUrl} className="card-img-top" alt="..." />
 

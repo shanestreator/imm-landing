@@ -3,11 +3,15 @@ const Schema = mongoose.Schema
 
 // Create Schema
 const ProductSchema = new Schema({
-  name: {
+  imageUrl: {
     type: String,
     required: true
   },
-  amount: {
+  title: {
+    type: String,
+    required: true
+  },
+  manualsPerPack: {
     type: String,
     required: true
   },
