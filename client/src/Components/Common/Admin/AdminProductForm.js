@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import AdminTextFieldGroup from '../../Components/Common/AdminTextFieldGroup'
+import AdminTextFieldGroup from './AdminTextFieldGroup'
 
 class AdminProductForm extends Component {
   render() {

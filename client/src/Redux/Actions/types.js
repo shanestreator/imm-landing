@@ -10,9 +10,10 @@ export const DELETE_PRODUCT = 'DELETE_PRODUCT'
 
 // Cart
 export const SET_CART = 'SET_CART'
-export const ADD_CART_ITEM = 'ADD_CART_ITEM'
-export const UPDATE_CART_ITEM = 'UPDATE_CART_ITEM'
-export const REMOVE_CART_ITEM = 'REMOVE_CART_ITEM'
+export const ADD_ITEM_TO_CART = 'ADD_ITEM_TO_CART'
+export const UPDATE_QUANTITY = 'UPDATE_QUANTITY'
+export const UPDATE_CART_TOTAL = 'UPDATE_CART_TOTAL'
+export const REMOVE_ITEM_FROM_CART = 'REMOVE_ITEM_FROM_CART'
 
 // Error
 export const GET_ERRORS = 'GET_ERRORS'

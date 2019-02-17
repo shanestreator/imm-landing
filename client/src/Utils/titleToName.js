@@ -1,4 +1,5 @@
 // title = 'Family Pack'
+// name = 'familyPack'
 export default title => {
   const firstChar = title
     .split(' ')[0]

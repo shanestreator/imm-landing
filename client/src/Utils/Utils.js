@@ -1,57 +1,42 @@
-export const packInfo = pack => {
-  switch (pack) {
-    case 'couplePack': {
-      return {
-        title: 'Couple Pack',
-        description: 'Pack of 2',
-        price: '5.00',
-        multiplier: '2'
-      }
+// Input - productsInCart: array
+// Output - String
+export const calcForCartTotal = productsInCart => {
+  let total = 0
+
+  productsInCart.map(product => {
+    const price = product.total.split(',').join('')
+
+    if (product.total.indexOf(',') > -1) {
+      console.log('PRICE: ', price)
+      total += +price
+    } else {
+      total += +product.total
     }
-    case 'familyPack': {
-      return {
-        title: 'Family Pack',
-        description: 'Pack of 10',
-        price: '4.50',
-        multiplier: '10'
-      }
-    }
-    case 'groupPack': {
-      return {
-        title: 'Group Pack',
-        description: 'Pack of 25',
-        price: '4.00',
-        multiplier: '25'
-      }
-    }
-    case 'businessPack': {
-      return {
-        title: 'Business Pack',
-        description: 'Pack of 100',
-        price: '3.50',
-        multiplier: '100'
-      }
-    }
-    case 'companyPack': {
-      return {
-        title: 'Company Pack',
-        description: 'Pack of 1,000',
-        price: '3.00',
-        multiplier: '1000'
-      }
-    }
-    case 'bigCompanyPack': {
-      return {
-        title: 'Big-Company Pack',
-        description: 'Pack of 5,000',
-        price: '2.50',
-        multiplier: '5000'
-      }
-    }
-    default: {
-      return null
-    }
+  })
+  return String(total + '.00')
+}
+
+// Input - price: string, quantity: string, manualsPerPack: string
+// Output - String
+export const calcForItemTotal = (price, quantity, manualsPerPack) => {
+  const manualsPerPackString = manualsPerPack
+  price = +price
+  quantity = +quantity
+  manualsPerPack = +manualsPerPack
+
+  let total
+
+  if (manualsPerPackString.indexOf(',') > -1) {
+    const manuals = manualsPerPackString.split(',').join('')
+
+    total = price * quantity * manuals
+  } else {
+    total = price * quantity * manualsPerPack
   }
+
+  total = String(total + '.00')
+
+  return total
 }
 
 // Input - Quantity: Number, Price: Number

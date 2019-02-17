@@ -1,70 +1,68 @@
 import React, { Component } from 'react'
-import { packInfo, priceRight } from '../../Utils/Utils'
+// import { packInfo, priceRight } from '../../Utils/Utils'
 import { connect } from 'react-redux'
 import commaNumber from 'comma-number'
-import { updateCartItem } from '../../Redux/Actions/cartActions'
+import uuidv1 from 'uuid/v1'
+
+import { getAllProducts } from '../../Redux/Actions/productActions'
+
+import {
+  removeItemFromCart,
+  updateCartItem
+} from '../../Redux/Actions/cartActions'
 
 class CartItem extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      id: props.id,
-      pack: props.pack,
-      quantity: props.quantity,
-      created_At: Date()
-    }
+  state = {
+    quantity: this.props.product.quantity
   }
 
-  componentDidUpdate(prevProps) {
-    if (+this.state.quantity !== prevProps.quantity) {
-      this.props.updateCartItem(this.state)
+  onConfirmDelete = () => {
+    const result = window.confirm(
+      'Are you sure you want to remove this item from the cart?'
+    )
+    if (result) {
+      const { _id, uniqueId } = this.props.product
+      const itemIdInfo = { _id, uniqueId }
+
+      this.props.removeItemFromCart(itemIdInfo)
     }
   }
 
   onChange = evt => {
-    const { name, value } = evt.target
-    // console.log('name: ', name, 'value: ', value)
-    this.setState({
-      [name]: value
-    })
+    const { uniqueId } = this.props.product
+    const { value: quantity } = evt.target
+    const updateQuantity = { uniqueId, quantity }
+
+    console.log('onChange: ', updateQuantity)
+    this.props.updateCartItem(updateQuantity)
   }
 
   render() {
-    const { id, pack, quantity } = this.state
-    // Functions
-    const { removeItemFromCart } = this.props
-    // PackInfo returns the correct pack information given as property
-    const { title, description, price, multiplier } = packInfo(pack)
-    // Item total from quantity selected and price of pack
-    const itemTotal = commaNumber(priceRight(quantity, +price, +multiplier))
-    // console.log('itemTotal: ', itemTotal)
+    // console.log('CART.PROPS: ', this.props)
+    // const { onChange } = this.props
+    const { title, manualsPerPack, quantity, price, total } = this.props.product
+
     return (
       <React.Fragment>
         <li className="list-group-item container">
           <div className="row">
-            <div className="col-6 d-flex align-items-center">
+            <div className="col-7 d-flex align-items-center">
               <h5 className="my-0">
                 {title}
-                <p style={{ fontSize: '12px' }} className="text-muted mb-0">
-                  {description}
+                <p style={{ fontSize: '9px' }} className="text-muted mb-0">
+                  Pack of {manualsPerPack} manuals
                 </p>
-                <button
-                  onClick={() => removeItemFromCart(id)}
-                  className="btn btn-sm text-dark p-0"
-                  style={{ fontSize: '8.5px' }}
-                >
-                  delete
-                </button>
-              </h5>
-            </div>
-
-            <div className="col-3 d-flex justify-content-end align-items-center">
-              <div className="row">
-                <div className="col ">
-                  <span className="text-muted">${itemTotal}</span>
+                <div className="row mt-2">
+                  <div className="col-12">
+                    <span className="text-muted">${commaNumber(total)}</span>
+                  </div>
+                  <div className="col-12" style={{ fontSize: '8.5px' }}>
+                    <span className="text-muted">
+                      (${price} x {manualsPerPack} x {quantity})
+                    </span>
+                  </div>
                 </div>
-              </div>
+              </h5>
             </div>
 
             <div className="col-3 d-flex justify-content-center align-items-center">
@@ -102,6 +100,16 @@ class CartItem extends Component {
                 </div>
               </div>
             </div>
+
+            <div className="col-2 d-flex justify-content-end align-items-center">
+              <button
+                onClick={this.onConfirmDelete}
+                className="btn btn-sm text-dark p-0"
+                style={{ fontSize: '8.5px' }}
+              >
+                delete
+              </button>
+            </div>
           </div>
         </li>
       </React.Fragment>
@@ -109,7 +117,9 @@ class CartItem extends Component {
   }
 }
 
+const mapState = ({ cart }) => ({ cart })
+
 export default connect(
-  null,
-  { updateCartItem }
+  mapState,
+  { getAllProducts, removeItemFromCart, updateCartItem }
 )(CartItem)

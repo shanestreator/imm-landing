@@ -1,15 +1,15 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { updateProduct } from '../../Redux/Actions/productActions'
+import { updateProduct } from '../../../Redux/Actions/productActions'
 
 // Components
-import AdminEditProductModal from '../../Components/Common/AdminEditProductModal'
+import AdminEditProductModal from './AdminEditProductModal'
 
 class AdminProductItem extends React.Component {
   state = {}
 
-  confirmDelete = () => {
+  onConfirmDelete = () => {
     const result = window.confirm('Confirm delete, cannot be undone.')
     if (result) {
       this.props.deleteProduct(this.props.id)
@@ -29,7 +29,7 @@ class AdminProductItem extends React.Component {
 
     return (
       <React.Fragment>
-        <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 p-5">
+        <div className="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 p-2">
           <div className="card card-red-hover mb-4">
             <img src={imgUrl} className="card-img-top" alt="..." />
 
@@ -97,7 +97,7 @@ class AdminProductItem extends React.Component {
                     <div className="col">
                       <button
                         className="btn btn-danger m-2"
-                        onClick={this.confirmDelete}
+                        onClick={this.onConfirmDelete}
                       >
                         <span>
                           <i className="fas fa-trash-alt" />

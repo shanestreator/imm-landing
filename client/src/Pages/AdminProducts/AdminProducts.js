@@ -7,11 +7,12 @@ import {
   getOneProduct,
   deleteProduct
 } from '../../Redux/Actions/productActions'
+
 import titleToName from '../../Utils/titleToName'
 
 // Components
-import AdminProductItem from '../../Components/Common/AdminProductItem'
-import AdminProductForm from '../../Components/Common/AdminProductForm'
+import AdminProductItem from '../../Components/Common/Admin/AdminProductItem'
+import AdminProductForm from '../../Components/Common/Admin/AdminProductForm'
 
 class AdminProducts extends Component {
   state = {
@@ -42,6 +43,12 @@ class AdminProducts extends Component {
     }
 
     this.props.addProduct(itemData)
+    this.setState({
+      imageUrl: '',
+      title: '',
+      manualsPerPack: '',
+      price: ''
+    })
   }
 
   render() {
@@ -65,7 +72,11 @@ class AdminProducts extends Component {
             />
 
             <div className="d-flex justify-content-end mt-2">
-              <button className="btn btn-secondary" onClick={this.onSubmit}>
+              <button
+                disabled={!this.state.title}
+                className="btn btn-secondary"
+                onClick={this.onSubmit}
+              >
                 Add Product
               </button>
             </div>

@@ -22,7 +22,7 @@ export const fetchProduct = product => {
 export const getOneProduct = prodId => async dispatch => {
   try {
     const { data: product } = await axios.get(`/api/product/one/${prodId}`)
-    console.log('GET_ONE_PRODUCTS: ', product)
+    // console.log('GET_ONE_PRODUCTS: ', product)
     dispatch(fetchProduct(product))
   } catch (error) {
     console.error(error)
@@ -43,7 +43,7 @@ export const fetchProducts = allProducts => {
 export const getAllProducts = () => async dispatch => {
   try {
     const { data: allProducts } = await axios.get('/api/product/all')
-    console.log('GET_ALL_PRODUCTS: ', allProducts)
+
     dispatch(fetchProducts(allProducts))
   } catch (error) {
     console.error(error)

@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 // Create Schema
-const UserSchema = new Schema({
+const OrderSchema = new Schema({
   name: {
     type: String,
     required: true
@@ -11,10 +11,14 @@ const UserSchema = new Schema({
     type: String,
     required: true
   },
-  date: {
+  products: {
+    type: Array,
+    required: true
+  },
+  created_At: {
     type: Date,
-    default: Date.now
+    required: true
   }
 })
 
-module.exports = User = mongoose.model('users', UserSchema)
+module.exports = Order = mongoose.model('orders', OrderSchema)

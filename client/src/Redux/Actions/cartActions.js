@@ -1,10 +1,12 @@
 // import axios from 'axios'
 
+import { getAllProducts } from './productActions'
+
 import {
   SET_CART,
-  ADD_CART_ITEM,
-  UPDATE_CART_ITEM,
-  REMOVE_CART_ITEM
+  ADD_ITEM_TO_CART,
+  UPDATE_QUANTITY,
+  REMOVE_ITEM_FROM_CART
 } from './types'
 
 // Action
@@ -15,10 +17,12 @@ export const getItem = itemData => {
   }
 }
 
+// --------------------------- ADD ITEM --------------------------- //
+
 // Action
 export const postItem = item => {
   return {
-    type: ADD_CART_ITEM,
+    type: ADD_ITEM_TO_CART,
     payload: item
   }
 }
@@ -26,53 +30,48 @@ export const postItem = item => {
 // Add an item to cart
 export const addItemToCart = itemData => async dispatch => {
   try {
-    // const res = await axios.post('/api/cart', itemData)
-    // console.log('FRONT_END_ITEM: ', res.data)
     dispatch(postItem(itemData))
-
-    // const { data: getItem } = await axios.get('/cart')
-    // dispatch(getItem(getItem))
+    dispatch(getAllProducts())
   } catch (error) {
     console.error(error)
   }
 }
 
+// --------------------------- UPDATE QUANTITY --------------------------- //
+
 // Action
-export const putItem = item => {
+export const putItem = quantityObj => {
   return {
-    type: UPDATE_CART_ITEM,
-    payload: item
+    type: UPDATE_QUANTITY,
+    payload: quantityObj
   }
 }
 
 // Add an item to cart
-export const updateCartItem = itemData => async dispatch => {
+export const updateCartItem = quantityObj => async dispatch => {
   try {
-    // const res = await axios.post('/api/cart', itemData)
-    // console.log('UPDATE_CART_ITEM: ', itemData)
-    dispatch(putItem(itemData))
-
-    // const { data: getItem } = await axios.get('/cart')
-    // dispatch(getItem(getItem))
+    console.log('cart_action: ', quantityObj)
+    dispatch(putItem(quantityObj))
   } catch (error) {
     console.error(error)
   }
 }
 
+// --------------------------- DELETE --------------------------- //
+
 // Action
-export const deleteItem = itemId => {
+export const deleteItem = itemIdInfo => {
   return {
-    type: REMOVE_CART_ITEM,
-    payload: itemId
+    type: REMOVE_ITEM_FROM_CART,
+    payload: itemIdInfo
   }
 }
 
 // Remove an item from cart
-export const removeItemFromCart = itemId => async dispatch => {
+export const removeItemFromCart = itemIdInfo => async dispatch => {
   try {
-    // const res = await axios.delete('/api/cart', itemId)
-
-    dispatch(deleteItem(itemId))
+    // itemIdInfo is an object that contains product id and a unique id
+    dispatch(deleteItem(itemIdInfo))
   } catch (error) {
     console.error(error)
   }

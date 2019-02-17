@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { updateProduct } from '../../Redux/Actions/productActions'
+import { updateProduct } from '../../../Redux/Actions/productActions'
 
 // Components
-import AdminProductForm from '../../Components/Common/AdminProductForm'
+import AdminProductForm from './AdminProductForm'
 
 class AdminEditProduct extends Component {
   state = {
