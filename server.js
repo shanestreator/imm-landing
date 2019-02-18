@@ -26,10 +26,12 @@ mongoose
 const admin = require('./routes/admin')
 const product = require('./routes/api/product')
 const payment = require('./routes/api/payment')
+const order = require('./routes/api/order')
 
 app.use('/admin', admin)
 app.use('/api/product', product)
 app.use('/api/payment', payment)
+app.use('/api/order', order)
 
 // Serve static assets if in production
 if (process.env.NODE_ENV === 'production') {

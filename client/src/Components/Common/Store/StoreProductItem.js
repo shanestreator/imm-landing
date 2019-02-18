@@ -67,7 +67,9 @@ class StoreProductItem extends React.Component {
                     <h3 className="mb-0">{title}</h3>
                   </li>
                   <li style={{ fontSize: '12px' }}>
-                    <small>(Pack of {manualsPerPack} manuals)</small>
+                    <small>
+                      (Pack of {commaNumber(manualsPerPack)} manuals)
+                    </small>
                   </li>
                   <li>
                     <div className="col d-flex justify-content-center align-items-center px-0 mt-5">
@@ -151,7 +153,7 @@ class StoreProductItem extends React.Component {
 
                 <StoreCartItem />
 
-                {/* ----------------- STORE CART ITEM ----------------- */}
+                {/* --------------------------------------------------- */}
               </div>
               <div className="modal-footer">
                 <button

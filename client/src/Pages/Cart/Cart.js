@@ -82,7 +82,7 @@ class Cart extends Component {
                   <div className="col-12 d-flex justify-content-end align-items-center">
                     {/* ----------------- STRIPE CHECKOUT ----------------- */}
                     <UseStripeCheckout
-                      name={'The Road to learn React'}
+                      name={'Stripe Checkout'}
                       description={'Only the Book'}
                       amount={total}
                     />

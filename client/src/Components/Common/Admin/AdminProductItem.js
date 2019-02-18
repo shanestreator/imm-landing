@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import commaNumber from 'comma-number'
 
 import { updateProduct } from '../../../Redux/Actions/productActions'
 
@@ -43,7 +44,7 @@ class AdminProductItem extends React.Component {
                     <h3 className="mb-0">{title}</h3>
                   </li>
                   <li style={{ fontSize: '12px' }}>
-                    <small>(Pack of {numManuals} manuals)</small>
+                    <small>(Pack of {commaNumber(numManuals)} manuals)</small>
                   </li>
                   <li>
                     <div className="col d-flex justify-content-center align-items-center px-0 mt-5">

@@ -3,12 +3,20 @@ const Schema = mongoose.Schema
 
 // Create Schema
 const OrderSchema = new Schema({
-  name: {
+  type: {
     type: String,
     required: true
   },
   email: {
     type: String,
+    required: true
+  },
+  billing: {
+    type: Object,
+    required: true
+  },
+  shipping: {
+    type: Object,
     required: true
   },
   products: {
