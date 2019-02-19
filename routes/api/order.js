@@ -45,9 +45,9 @@ router.post('/stripe', async (req, res, next) => {
       products: productsInCart,
       created_At: Date()
     }
-    console.log('>>>>>ORDER_INFO<<<<<: ', orderInfo)
+    // console.log('>>>>>ORDER_INFO<<<<<: ', orderInfo)
 
-    // const order = await Order.create(orderInfo)
+    const order = await Order.create(orderInfo)
 
     res.status(200).json({
       message: 'Success'

@@ -5,6 +5,8 @@ import StripeCheckout from 'react-stripe-checkout'
 import STRIPE_PUBLISHABLE from '../../../Config/stripe'
 import PAYMENT_SERVER_URL from '../../../Config/server'
 
+import { removeAllFromCart } from '../../../Redux/Actions/cartActions'
+
 import store from '../../../Redux/store'
 
 console.log('STORE: ', store.getState().cart.productsInCart)
@@ -50,6 +52,7 @@ const onToken = (amount, description) => async (token, billingAndShipping) => {
     // console.log('SHIP: ', billingAndShipping)
 
     if (data.status === 200) {
+      store.dispatch(removeAllFromCart())
       successPayment(data)
     }
   } catch (error) {

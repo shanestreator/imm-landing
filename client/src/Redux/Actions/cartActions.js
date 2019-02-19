@@ -6,7 +6,8 @@ import {
   SET_CART,
   ADD_ITEM_TO_CART,
   UPDATE_QUANTITY,
-  REMOVE_ITEM_FROM_CART
+  REMOVE_ITEM_FROM_CART,
+  REMOVE_ALL_FROM_CART
 } from './types'
 
 // Action
@@ -72,6 +73,26 @@ export const removeItemFromCart = itemIdInfo => async dispatch => {
   try {
     // itemIdInfo is an object that contains product id and a unique id
     dispatch(deleteItem(itemIdInfo))
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+// --------------------------- DELETE ALL --------------------------- //
+
+// Action
+export const clearCart = () => {
+  return {
+    type: REMOVE_ALL_FROM_CART
+  }
+}
+
+// Remove an item from cart
+export const removeAllFromCart = () => async dispatch => {
+  try {
+    console.log('!!!!! ----- REMOVE_ALL_FROM_CART ----- !!!!!')
+    // Sets all of the cartReducer's props to initail state
+    dispatch(clearCart())
   } catch (error) {
     console.error(error)
   }

@@ -5,9 +5,10 @@ import { calcForItemTotal } from '../../Utils/Utils'
 import {
   SET_CART,
   ADD_ITEM_TO_CART,
-  REMOVE_ITEM_FROM_CART,
+  UPDATE_CART_TOTAL,
   UPDATE_QUANTITY,
-  UPDATE_CART_TOTAL
+  REMOVE_ITEM_FROM_CART,
+  REMOVE_ALL_FROM_CART
 } from '../Actions/types'
 
 const initialState = {
@@ -57,11 +58,13 @@ export default function(state = initialState, action) {
       return {
         ...state,
         productsInCart: state.productsInCart.filter(item => {
-          console.log('action.payload: ', action.payload)
           const { _id, uniqueId } = action.payload
           return item.uniqueId !== uniqueId
         })
       }
+    }
+    case REMOVE_ALL_FROM_CART: {
+      return initialState
     }
     default: {
       return state
