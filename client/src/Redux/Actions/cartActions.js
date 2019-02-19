@@ -11,10 +11,18 @@ import {
 } from './types'
 
 // Action
-export const getItem = itemData => {
+export const getAllItems = () => {
   return {
-    type: SET_CART,
-    payload: itemData
+    type: SET_CART
+  }
+}
+
+// Get all products in cart
+export const getAllCartItems = () => async dispatch => {
+  try {
+    dispatch(getAllItems())
+  } catch (error) {
+    console.log('ERROR: ', error)
   }
 }
 
@@ -32,7 +40,7 @@ export const postItem = item => {
 export const addItemToCart = itemData => async dispatch => {
   try {
     dispatch(postItem(itemData))
-    dispatch(getAllProducts())
+    // dispatch(getAllProducts())
   } catch (error) {
     console.error(error)
   }
@@ -51,7 +59,6 @@ export const putItem = quantityObj => {
 // Add an item to cart
 export const updateCartItem = quantityObj => async dispatch => {
   try {
-    console.log('cart_action: ', quantityObj)
     dispatch(putItem(quantityObj))
   } catch (error) {
     console.error(error)
@@ -61,18 +68,18 @@ export const updateCartItem = quantityObj => async dispatch => {
 // --------------------------- DELETE --------------------------- //
 
 // Action
-export const deleteItem = itemIdInfo => {
+export const deleteItem = prodId => {
   return {
     type: REMOVE_ITEM_FROM_CART,
-    payload: itemIdInfo
+    payload: prodId
   }
 }
 
 // Remove an item from cart
-export const removeItemFromCart = itemIdInfo => async dispatch => {
+export const removeItemFromCart = prodId => async dispatch => {
   try {
     // itemIdInfo is an object that contains product id and a unique id
-    dispatch(deleteItem(itemIdInfo))
+    dispatch(deleteItem(prodId))
   } catch (error) {
     console.error(error)
   }
@@ -90,7 +97,6 @@ export const clearCart = () => {
 // Remove an item from cart
 export const removeAllFromCart = () => async dispatch => {
   try {
-    console.log('!!!!! ----- REMOVE_ALL_FROM_CART ----- !!!!!')
     // Sets all of the cartReducer's props to initail state
     dispatch(clearCart())
   } catch (error) {

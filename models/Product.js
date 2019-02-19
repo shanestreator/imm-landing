@@ -12,11 +12,11 @@ const ProductSchema = new Schema({
     required: true
   },
   manualsPerPack: {
-    type: String,
+    type: Number,
     required: true
   },
   price: {
-    type: String,
+    type: Number,
     required: true
   }
 })

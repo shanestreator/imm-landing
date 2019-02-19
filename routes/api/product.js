@@ -3,7 +3,7 @@ const router = require('express')()
 const Product = require('../../models/Product')
 
 // Get one product from database
-// GET /api/one/:prodId
+// GET /api/product/one/:prodId
 router.get('/one/:prodId', async (req, res, next) => {
   try {
     const prodId = req.params.prodId

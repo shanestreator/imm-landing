@@ -1,8 +1,12 @@
 import React, { Component } from 'react'
 // import { packInfo, priceRight } from '../../../Utils/Utils'
 import { connect } from 'react-redux'
-// import commaNumber from 'comma-number'
+import commaNumber from 'comma-number'
 import { getOneProduct } from '../../../Redux/Actions/productActions'
+import {
+  itemModalAddZeros,
+  storeCardAddOneOrTwoZeros
+} from '../../../Utils/Utils'
 
 class StoreCartItem extends Component {
   render() {
@@ -19,26 +23,29 @@ class StoreCartItem extends Component {
       <React.Fragment>
         <div className="group-item container">
           <div className="row">
-            <div className="col-6 d-flex align-items-center">
+            <div className="col-6 d-flex text-left pl-0 align-items-center">
               <h5 className="my-0">
                 {title}
                 <p
                   style={{ fontSize: '12px' }}
                   className="text-muted pt-1 mb-0"
                 >
-                  Pack of {manualsPerPack} manuals
+                  Pack of {commaNumber(manualsPerPack)} manuals
                 </p>
               </h5>
             </div>
 
             <div className="col-3 d-flex justify-content-end align-items-center">
               <div className="row">
-                <div className="col ">
-                  <span className="text-muted">${total}</span>
-                </div>
-                <div className="col" style={{ fontSize: '12px' }}>
+                <div className="col-12">
                   <span className="text-muted">
-                    (${price} x {manualsPerPack} x {quantity})
+                    ${commaNumber(itemModalAddZeros(total))}
+                  </span>
+                </div>
+                <div className="col-12" style={{ fontSize: '12px' }}>
+                  <span className="text-muted">
+                    (${storeCardAddOneOrTwoZeros(price)} x{' '}
+                    {commaNumber(manualsPerPack)} x {quantity})
                   </span>
                 </div>
               </div>

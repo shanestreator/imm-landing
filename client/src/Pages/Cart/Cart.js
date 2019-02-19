@@ -1,12 +1,9 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import axios from 'axios'
 import UseStripeCheckout from '../../Components/Common/Checkout/UseStripeCheckout'
 import commaNumber from 'comma-number'
 import { calcForCartTotal } from '../../Utils/Utils'
-
-import { updateCartItem } from '../../Redux/Actions/cartActions'
 
 // Components
 import CartItem from '../../Components/Common/CartItem'
@@ -14,23 +11,12 @@ import CartItem from '../../Components/Common/CartItem'
 import './Cart.css'
 
 class Cart extends Component {
-  onToken = token => {
-    fetch('/save-stripe-token', {
-      method: 'POST',
-      body: JSON.stringify(token)
-    }).then(response => {
-      response.json().then(data => {
-        alert(`We are in business, ${data.email}`)
-      })
-    })
-  }
-
   render() {
     // console.log('this.props: ', this.props)
     const { productsInCart } = this.props.cart
 
     const total = commaNumber(calcForCartTotal(productsInCart))
-    console.log('TOTAL: ', total)
+    // console.log('TOTAL: ', total)
     return (
       <div id="container" className="container vh-100 bg-light p-5">
         <div className="row">
@@ -76,7 +62,7 @@ class Cart extends Component {
                       style={{ fontSize: '14px' }}
                     >
                       <strong style={{ fontSize: '16px' }}>Subtotal</strong> (
-                      {productsInCart.length} items): ${total}
+                      {productsInCart.length} items): ${total}.00
                     </span>
                   </div>
                   <div className="col-12 d-flex justify-content-end align-items-center">
@@ -110,7 +96,7 @@ class Cart extends Component {
                       style={{ fontSize: '14px' }}
                     >
                       <strong style={{ fontSize: '16px' }}>Subtotal</strong> (
-                      {productsInCart.length} items): ${total}
+                      {productsInCart.length} items): ${total}.00
                     </span>
                   </div>
                   <div className="col-12 d-flex align-items-center px-0">
@@ -138,7 +124,4 @@ class Cart extends Component {
 
 const mapState = ({ cart }) => ({ cart })
 
-export default connect(
-  mapState,
-  { updateCartItem }
-)(Cart)
+export default connect(mapState)(Cart)

@@ -21,24 +21,25 @@ class AdminEditProduct extends Component {
 
   onSubmit = evt => {
     evt.preventDefault()
-    const id = this.props.product.currentProduct._id
+    const { currentProduct } = this.props.product
+
     let { imageUrl, title, manualsPerPack, price } = this.state
 
     if (!imageUrl) {
-      imageUrl = this.props.product.currentProduct.imageUrl
+      imageUrl = currentProduct.imageUrl
     }
     if (!title) {
-      title = this.props.product.currentProduct.title
+      title = currentProduct.title
     }
     if (!manualsPerPack) {
-      manualsPerPack = this.props.product.currentProduct.manualsPerPack
+      manualsPerPack = currentProduct.manualsPerPack
     }
     if (!price) {
-      price = this.props.product.currentProduct.price
+      price = currentProduct.price
     }
 
     const newProductInfo = {
-      id,
+      id: currentProduct._id,
       imageUrl,
       title,
       manualsPerPack,

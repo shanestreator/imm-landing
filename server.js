@@ -43,6 +43,11 @@ if (process.env.NODE_ENV === 'production') {
   })
 }
 
+app.use((err, req, res, next) => {
+  // console.log('ERROR: ', err.res)
+  return res.status(400).send(err.res)
+})
+
 const port = process.env.PORT || 5000
 
 app.listen(port, () => console.log(`Server running on port ${port}...`))

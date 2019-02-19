@@ -1,18 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { filterStoreOption } from '../../Validation/Store'
-import uuidv1 from 'uuid/v1'
-
-import titleToName from '../../Utils/titleToName'
-import nameToTitle from '../../Utils/nameToTitle'
 
 import { addItemToCart } from '../../Redux/Actions/cartActions'
 import { getAllProducts } from '../../Redux/Actions/productActions'
-import { packInfo } from '../../Utils/Utils'
 
 // Components
-// import StoreCartItem from '../../Components/Common/Store/StoreCartItem'
 import StoreProductItem from '../../Components/Common/Store/StoreProductItem'
+import Loading from '../../Components/Common/Loading/Loading'
 
 // CSS
 import './Store.css'
@@ -41,18 +35,27 @@ class Store extends Component {
           </div>
 
           <div className="container px-5 pt-3">
-            <div className="card-deck mb-3 text-center">
+            <div className="card-deck d-flex justify-content-center mb-3 text-center">
               <div className="row d-flex justify-content-center">
                 {allProducts.length ? (
                   allProducts.map(product => {
+                    const alreadyInCart = !!this.props.cart.productsInCart.find(
+                      p => p._id === product._id
+                    )
+                    console.log('alreadyInCart: ', alreadyInCart)
                     return (
                       <StoreProductItem
                         key={product._id}
                         id={product._id}
                         prodInfo={product}
+                        alreadyInCart={alreadyInCart}
                       />
                     )
                   })
+                ) : allProducts.length === 0 ? (
+                  <div className="">
+                    <Loading />
+                  </div>
                 ) : (
                   <h1>No Products</h1>
                 )}
@@ -65,8 +68,9 @@ class Store extends Component {
   }
 }
 
-const mapState = ({ product }) => ({
-  product
+const mapState = ({ product, cart }) => ({
+  product,
+  cart
 })
 
 export default connect(

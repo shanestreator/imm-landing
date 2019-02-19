@@ -3,10 +3,13 @@
   "version": "1.0.0",
   "description": "imm-backend",
   "main": "App.js",
+  "events": {
+    "restart": "fuser -k 5000/tcp ; fuser -k 3050/tcp"
+  },
   "scripts": {
-    "server": "nodemon server.js",
+    "server": "nodemon server.js ",
     "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run client\" \"npm run server\" "
   },
   "author": "Shane Streator",
   "license": "ISC",
@@ -21,7 +24,7 @@
     "jsonwebtoken": "^8.4.0",
     "mongodb": "^3.1.13",
     "mongoose": "^5.4.10",
-    "nodemon": "^1.18.9",
+    "nodemon": "^1.18.10",
     "passport": "^0.4.0",
     "paypal-rest-sdk": "^1.8.1",
     "stripe": "^6.23.1",

@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
-// import { packInfo, priceRight } from '../../Utils/Utils'
 import { connect } from 'react-redux'
 import commaNumber from 'comma-number'
-import uuidv1 from 'uuid/v1'
 
 import { getAllProducts } from '../../Redux/Actions/productActions'
 
@@ -15,23 +13,22 @@ class CartItem extends Component {
   state = {
     quantity: this.props.product.quantity
   }
-
   onConfirmDelete = () => {
-    const result = window.confirm(
-      'Are you sure you want to remove this item from the cart?'
-    )
-    if (result) {
-      const { _id, uniqueId } = this.props.product
-      const itemIdInfo = { _id, uniqueId }
+    // console.log('this.props.product: ', this.props.product)
+    // const result = window.confirm(
+    //   'Are you sure you want to remove this item from the cart?'
+    // )
+    // if (result) {
 
-      this.props.removeItemFromCart(itemIdInfo)
-    }
+    // }
+    const { _id } = this.props.product
+    this.props.removeItemFromCart(_id)
   }
 
   onChange = evt => {
-    const { uniqueId } = this.props.product
+    const { _id } = this.props.product
     const { value: quantity } = evt.target
-    const updateQuantity = { uniqueId, quantity }
+    const updateQuantity = { _id, quantity }
 
     console.log('onChange: ', updateQuantity)
     this.props.updateCartItem(updateQuantity)
@@ -50,11 +47,11 @@ class CartItem extends Component {
               <h5 className="my-0">
                 {title}
                 <p style={{ fontSize: '9px' }} className="text-muted mb-0">
-                  Pack of {manualsPerPack} manuals
+                  Pack of {commaNumber(manualsPerPack)} manuals
                 </p>
                 <div className="row mt-2">
                   <div className="col-12">
-                    <span className="text-muted">${commaNumber(total)}</span>
+                    <span className="text-muted">${commaNumber(total)}.00</span>
                   </div>
                   <div className="col-12" style={{ fontSize: '8.5px' }}>
                     <span className="text-muted">
@@ -86,16 +83,16 @@ class CartItem extends Component {
                     defaultValue={quantity}
                     id="quantity"
                   >
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
+                    <option value={1}>1</option>
+                    <option value={2}>2</option>
+                    <option value={3}>3</option>
+                    <option value={4}>4</option>
+                    <option value={5}>5</option>
+                    <option value={6}>6</option>
+                    <option value={7}>7</option>
+                    <option value={8}>8</option>
+                    <option value={9}>9</option>
+                    <option value={10}>10</option>
                   </select>
                 </div>
               </div>

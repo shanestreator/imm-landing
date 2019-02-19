@@ -1,23 +1,47 @@
 const router = require('express')()
 
 const Order = require('../../models/Order')
+const Product = require('../../models/Product')
 
 const { validateProducts } = require('../validation/validateOrder')
+
+const stripe = require('../../config/stripe')
+
+const postStripeCharge = res => (stripeErr, stripeRes) => {
+  if (stripeErr) {
+    // return res.status(500).send({ error: stripeErr })
+    throw stripeErr
+  } else {
+    console.log('SUCCESS: ', stripeRes)
+    return res.status(200).send({ success: stripeRes })
+  }
+}
 
 // Add new order to database
 // POST api/order/stripe
 router.post('/stripe', async (req, res, next) => {
+  let order = {}
   try {
     // console.log('ORDER.REQ.BODY: ', req.body)
-    const { email, productsInCart } = req.body
+    const { email, productsInCart, source, currency } = req.body
 
-    const allProducts = await Product.find({})
-
-    if (!validateProducts(productsInCart, allProducts)) {
-      console.log('!!!!! --- SOMETHING WENT WRONG --- !!!!!')
-      return res.status(400).json({ message: 'Something went wrong' })
+    const productsInCartIds = productsInCart.map(p => p._id)
+    const orderedProducts = await Product.find({
+      _id: { $in: productsInCartIds }
+    })
+    if (productsInCart.length !== orderedProducts.length) {
+      throw '##!!##!!##!!##!!## ERROR ##!!##!!##!!##!!##'
     }
 
+    let cartTotal = 0
+    for (let i = 0; i < orderedProducts.length; i++) {
+      const quantity = productsInCart[i].quantity
+      const { price, manualsPerPack } = orderedProducts[i]
+
+      cartTotal += quantity * price * manualsPerPack
+    }
+
+    console.log('>>>-----> CART_TOTAL <-----<<<: ', cartTotal)
     const billing = {
       name: req.body.billingAndShipping.billing_name,
       country: req.body.billingAndShipping.billing_address_country,
@@ -37,6 +61,7 @@ router.post('/stripe', async (req, res, next) => {
       city: req.body.billingAndShipping.shipping_address_city,
       state: req.body.billingAndShipping.shipping_address_state
     }
+
     const orderInfo = {
       type: 'stripe',
       email,
@@ -45,15 +70,22 @@ router.post('/stripe', async (req, res, next) => {
       products: productsInCart,
       created_At: Date()
     }
-    // console.log('>>>>>ORDER_INFO<<<<<: ', orderInfo)
+    console.log('>>>>>-----> ORDER_INFO <-----<<<<<: ', orderInfo)
+    order = await Order.create(orderInfo)
 
-    const order = await Order.create(orderInfo)
+    const description = 'Impact Motivation Manual - Champion Productions LLC'
+    const fromUSDToCent = amount => amount * 100
+    const payment = {
+      description,
+      source,
+      currency,
+      amount: fromUSDToCent(cartTotal)
+    }
 
-    res.status(200).json({
-      message: 'Success'
-    })
+    stripe.charges.create(payment, postStripeCharge(res))
   } catch (error) {
-    next(error)
+    await Order.findOneAndDelete({ _id: order._id })
+    return res.status(500).send({ error: stripeErr })
   }
 })
 

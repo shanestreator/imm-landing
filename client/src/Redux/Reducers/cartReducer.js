@@ -20,27 +20,31 @@ const initialState = {
 export default function(state = initialState, action) {
   switch (action.type) {
     case SET_CART: {
-      return { ...state, productsInCart: action.payload }
+      return state
     }
     case ADD_ITEM_TO_CART: {
-      console.log('ADD_ITEM: ', action.payload)
-      return {
-        ...state,
-        productsInCart: [...state.productsInCart, action.payload],
-        currentProduct: action.payload
+      const alreadyInCart = state.productsInCart.find(
+        p => p._id === action.payload._id
+      )
+      if (alreadyInCart) {
+        return state
+      } else {
+        return {
+          ...state,
+          productsInCart: [...state.productsInCart, action.payload],
+          currentProduct: action.payload
+        }
       }
     }
     case UPDATE_QUANTITY: {
       return {
         ...state,
         productsInCart: state.productsInCart.map(product => {
-          const { uniqueId, price, manualsPerPack } = product
+          const { _id, price, manualsPerPack } = product
           const newQuantity = action.payload.quantity
 
-          if (uniqueId === action.payload.uniqueId) {
-            product.total = commaNumber(
-              calcForItemTotal(price, newQuantity, manualsPerPack)
-            )
+          if (_id === action.payload._id) {
+            product.total = calcForItemTotal(price, newQuantity, manualsPerPack)
 
             product.quantity = newQuantity
 
@@ -57,9 +61,8 @@ export default function(state = initialState, action) {
     case REMOVE_ITEM_FROM_CART: {
       return {
         ...state,
-        productsInCart: state.productsInCart.filter(item => {
-          const { _id, uniqueId } = action.payload
-          return item.uniqueId !== uniqueId
+        productsInCart: state.productsInCart.filter(product => {
+          return product._id !== action.payload
         })
       }
     }

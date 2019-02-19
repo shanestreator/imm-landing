@@ -9,7 +9,7 @@ import { removeAllFromCart } from '../../../Redux/Actions/cartActions'
 
 import store from '../../../Redux/store'
 
-console.log('STORE: ', store.getState().cart.productsInCart)
+// console.log('STORE: ', store.getState().cart.productsInCart)
 
 const CURRENCY = 'USD'
 
@@ -27,27 +27,27 @@ const errorPayment = data => {
 
 const onToken = (amount, description) => async (token, billingAndShipping) => {
   try {
-    amount = amount
-      .slice(0, -3)
-      .split(',')
-      .join('')
     const productsInCart = store.getState().cart.productsInCart
     const { email, card, client_ip } = token
     const order = {
       email,
       client_ip,
       billingAndShipping,
-      productsInCart
-    }
-    const res = await axios.post('/api/order/stripe', order)
-    // console.log('RES: ', res)
-
-    const data = await axios.post(PAYMENT_SERVER_URL, {
+      productsInCart,
       description,
       source: token.id,
-      currency: CURRENCY,
-      amount: fromUSDToCent(amount)
-    })
+      currency: CURRENCY
+      // amount: fromUSDToCent(amount)
+    }
+    const data = await axios.post('/api/order/stripe', order)
+    // console.log('RES: ', res)
+
+    // const data = await axios.post(PAYMENT_SERVER_URL, {
+    //   description,
+    //   source: token.id,
+    //   currency: CURRENCY,
+    //   amount: fromUSDToCent(amount)
+    // })
     // console.log('TOKEN: ', token)
     // console.log('SHIP: ', billingAndShipping)
 
