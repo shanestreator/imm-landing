@@ -21,7 +21,7 @@ export const fetchProduct = product => {
 // Get one item from database
 export const getOneProduct = prodId => async dispatch => {
   try {
-    const { data: product } = await axios.get(`/api/product/one/${prodId}`)
+    const { data: product } = await axios.get(`/api/products/${prodId}`)
     // console.log('GET_ONE_PRODUCTS: ', product)
     dispatch(fetchProduct(product))
   } catch (error) {
@@ -42,7 +42,7 @@ export const fetchProducts = allProducts => {
 // Get all items from database
 export const getAllProducts = () => async dispatch => {
   try {
-    const { data: allProducts } = await axios.get('/api/product/all')
+    const { data: allProducts } = await axios.get('/api/products')
 
     dispatch(fetchProducts(allProducts))
   } catch (error) {
@@ -63,7 +63,7 @@ export const postProduct = newProduct => {
 // Add a new product to the database
 export const addProduct = itemData => async dispatch => {
   try {
-    const { data: newProduct } = await axios.post('/api/product', itemData)
+    const { data: newProduct } = await axios.post('/api/products', itemData)
 
     dispatch(postProduct(newProduct))
   } catch (error) {
@@ -85,7 +85,7 @@ export const putProduct = updatedProd => {
 export const updateProduct = newProductInfo => async dispatch => {
   try {
     const { data: updatedProd } = await axios.put(
-      '/api/product',
+      '/api/products',
       newProductInfo
     )
 

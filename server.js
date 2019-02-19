@@ -29,7 +29,7 @@ const payment = require('./routes/api/payment')
 const order = require('./routes/api/order')
 
 app.use('/admin', admin)
-app.use('/api/product', product)
+app.use('/api/products', product)
 app.use('/api/payment', payment)
 app.use('/api/order', order)
 

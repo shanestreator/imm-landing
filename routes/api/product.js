@@ -2,9 +2,22 @@ const router = require('express')()
 
 const Product = require('../../models/Product')
 
+// Get all products from database
+// GET /api/products/all
+router.get('/', async (req, res, next) => {
+  try {
+    const allProducts = await Product.find({})
+
+    res.status(200).json(allProducts)
+  } catch (error) {
+    console.log('ERROR: ', error)
+    next(error)
+  }
+})
+
 // Get one product from database
-// GET /api/product/one/:prodId
-router.get('/one/:prodId', async (req, res, next) => {
+// GET /api/products/one/:prodId
+router.get('/:prodId', async (req, res, next) => {
   try {
     const prodId = req.params.prodId
 
@@ -18,21 +31,8 @@ router.get('/one/:prodId', async (req, res, next) => {
   }
 })
 
-// Get all products from database
-// GET /api/product/all
-router.get('/all', async (req, res, next) => {
-  try {
-    const allProducts = await Product.find({})
-
-    res.status(200).json(allProducts)
-  } catch (error) {
-    console.log('ERROR: ', error)
-    next(error)
-  }
-})
-
 // Creating a new product (pack)
-// POST /api/product
+// POST /api/products
 router.post('/', async (req, res, next) => {
   try {
     const { imageUrl, title, manualsPerPack, price } = req.body
@@ -62,7 +62,7 @@ router.post('/', async (req, res, next) => {
 })
 
 // Creating a new product (pack)
-// PUT /api/product
+// PUT /api/products
 router.put('/', async (req, res, next) => {
   try {
     const { id, imageUrl, title, manualsPerPack, price } = req.body
