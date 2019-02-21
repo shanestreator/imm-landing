@@ -1,14 +1,11 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
-// CSS
-import './Home.css'
-
 export default class Home extends Component {
   render() {
     return (
       <div id="container" className="container p-5 bg-light">
-        <div className="embed-responsive embed-responsive-16by9 imm__video rounded shadow mt-5">
+        <div className="embed-responsive embed-responsive-16by9 home__video rounded mt-5">
           <iframe
             title="Impact Motivation Manual Video"
             className="embed-responsive-item"
@@ -269,7 +266,7 @@ export default class Home extends Component {
             type="button"
           >
             <button className="btn btn-secondary btn-lg">
-              <h4 className="mb-0 button-red">Click here to learn more!</h4>
+              <h4 className="mb-0">Click here to learn more!</h4>
             </button>
           </Link>
         </div>

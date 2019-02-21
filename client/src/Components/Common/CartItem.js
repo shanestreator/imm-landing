@@ -14,13 +14,6 @@ class CartItem extends Component {
     quantity: this.props.product.quantity
   }
   onConfirmDelete = () => {
-    // console.log('this.props.product: ', this.props.product)
-    // const result = window.confirm(
-    //   'Are you sure you want to remove this item from the cart?'
-    // )
-    // if (result) {
-
-    // }
     const { _id } = this.props.product
     this.props.removeItemFromCart(_id)
   }
@@ -30,7 +23,7 @@ class CartItem extends Component {
     const { value: quantity } = evt.target
     const updateQuantity = { _id, quantity }
 
-    console.log('onChange: ', updateQuantity)
+    // console.log('onChange: ', updateQuantity)
     this.props.updateCartItem(updateQuantity)
   }
 

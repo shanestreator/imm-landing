@@ -4,9 +4,6 @@ import { connect } from 'react-redux'
 
 import { loginUser, logoutUser } from '../../Redux/Actions/authActions'
 
-// CSS
-import './Navbar.css'
-
 class Navbar extends Component {
   onLogoutClick = () => {
     this.props.logoutUser(this.props.history)
@@ -16,7 +13,7 @@ class Navbar extends Component {
     // console.log('NavbarProps: ', this.props)
     const { user, isAuthenticated } = this.props.auth
     return (
-      <div className="main__navbar fixed-top px-0">
+      <div className="navbar_style fixed-top px-0">
         <nav className="navbar navbar-expand-md d-flex justify-content-center navbar-light bg-light">
           <div id="container" className="container">
             {isAuthenticated ? (

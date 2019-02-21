@@ -37,19 +37,8 @@ const onToken = (amount, description) => async (token, billingAndShipping) => {
       description,
       source: token.id,
       currency: CURRENCY
-      // amount: fromUSDToCent(amount)
     }
     const data = await axios.post('/api/order/stripe', order)
-    // console.log('RES: ', res)
-
-    // const data = await axios.post(PAYMENT_SERVER_URL, {
-    //   description,
-    //   source: token.id,
-    //   currency: CURRENCY,
-    //   amount: fromUSDToCent(amount)
-    // })
-    // console.log('TOKEN: ', token)
-    // console.log('SHIP: ', billingAndShipping)
 
     if (data.status === 200) {
       store.dispatch(removeAllFromCart())
@@ -71,6 +60,7 @@ const Checkout = ({ name, description, amount }) => (
     token={onToken(amount, description)}
     currency={CURRENCY}
     stripeKey={STRIPE_PUBLISHABLE}
+    image="https://stripe.com/img/documentation/checkout/marketplace.png"
   />
 )
 

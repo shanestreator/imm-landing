@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import UseStripeCheckout from '../../Components/Common/Checkout/UseStripeCheckout'
+import UsePayPalCheckout from '../../Components/Common/Checkout/UsePayPalCheckout'
 import commaNumber from 'comma-number'
 import { calcForCartTotal } from '../../Utils/Utils'
 
@@ -69,15 +70,22 @@ class Cart extends Component {
                     {/* ----------------- STRIPE CHECKOUT ----------------- */}
                     <UseStripeCheckout
                       name={'Stripe Checkout'}
-                      description={'Only the Book'}
                       amount={total}
                     />
                   </div>
                 </div>
                 <div className="col-12 d-flex align-items-center px-0">
-                  <button className="btn btn-secondary btn-sm mt-2">
-                    Paypal
-                  </button>
+                  {/* ----------------- PAYPAL CHECKOUT ----------------- */}
+                  {/* onClick = triggers post request to api/orders/paypal */}
+                  {/* post request sends productsInCart array in req.body */}
+                  {/* server sends data to paypal and redirects the user to paypal */}
+                  {/* paypal responds payment success/cancel to server */}
+                  {/* Success = open a thank you modal thanking user */}
+                  {/* Cancel = return user to cart (items still in cart) */}
+                  <UsePayPalCheckout
+                    name={'PayPal Checkout'}
+                    productsInCart={productsInCart}
+                  />
                 </div>
               </li>
             </ul>
@@ -103,14 +111,15 @@ class Cart extends Component {
                     {/* ----------------- STRIPE CHECKOUT ----------------- */}
                     <UseStripeCheckout
                       name={'The Road to learn React'}
-                      description={'Only the Book'}
                       amount={total}
                     />
                   </div>
                   <div className="col-12 d-flex align-items-center px-0">
-                    <button className="btn btn-secondary btn-sm mt-2">
-                      Paypal
-                    </button>
+                    {/* ----------------- PAYPAL CHECKOUT ----------------- */}
+                    <UsePayPalCheckout
+                      name={'PayPal Checkout'}
+                      productsInCart={productsInCart}
+                    />
                   </div>
                 </div>
               </div>

@@ -1,11 +1,9 @@
 const router = require('express')()
 
-const Order = require('../../models/Order')
-const Product = require('../../models/Product')
+const Order = require('../../../models/Order')
+const Product = require('../../../models/Product')
 
-const { validateProducts } = require('../validation/validateOrder')
-
-const stripe = require('../../config/stripe')
+const stripe = require('../../../config/stripe')
 
 const postStripeCharge = res => (stripeErr, stripeRes) => {
   if (stripeErr) {
@@ -19,8 +17,7 @@ const postStripeCharge = res => (stripeErr, stripeRes) => {
 
 // Add new order to database
 // POST api/order/stripe
-router.post('/stripe', async (req, res, next) => {
-  let order = {}
+router.post('/', async (req, res, next) => {
   try {
     // console.log('ORDER.REQ.BODY: ', req.body)
     const { email, productsInCart, source, currency } = req.body
@@ -62,17 +59,6 @@ router.post('/stripe', async (req, res, next) => {
       state: req.body.billingAndShipping.shipping_address_state
     }
 
-    const orderInfo = {
-      type: 'stripe',
-      email,
-      billing,
-      shipping,
-      products: productsInCart,
-      created_At: Date()
-    }
-    console.log('>>>>>-----> ORDER_INFO <-----<<<<<: ', orderInfo)
-    order = await Order.create(orderInfo)
-
     const description = 'Impact Motivation Manual - Champion Productions LLC'
     const fromUSDToCent = amount => amount * 100
     const payment = {
@@ -82,29 +68,38 @@ router.post('/stripe', async (req, res, next) => {
       amount: fromUSDToCent(cartTotal)
     }
 
-    stripe.charges.create(payment, postStripeCharge(res))
+    stripe.charges.create(payment, async (stripeErr, stripeRes) => {
+      if (stripeErr) {
+        // return res.status(500).send({ error: stripeErr })
+        throw stripeErr
+      } else {
+        const { id: orderId, created: order_created } = stripeRes
+        console.log(
+          '>>>-----> STRIPE_CHARGE <-----<<<: ',
+          orderId,
+          order_created
+        )
+
+        const orderInfo = {
+          orderId,
+          order_created,
+          created_At: stripeRes.created,
+          type: 'stripe',
+          email,
+          billing,
+          shipping,
+          products: productsInCart
+        }
+        const order = await Order.create(orderInfo)
+
+        console.log('>>>-----> STRIPE_ORDER <-----<<<: ', order)
+        res.status(200).send({ success: stripeRes })
+        return
+      }
+    })
   } catch (error) {
     await Order.findOneAndDelete({ _id: order._id })
     return res.status(500).send({ error: stripeErr })
-  }
-})
-
-// Add new order to database
-// POST api/order/paypal
-router.post('/paypal', (req, res, next) => {
-  try {
-    console.log('ORDER.REQ.BODY: ', req.body)
-    const { email } = req.body
-
-    const orderInfo = {
-      type: 'paypal',
-      email,
-      billing,
-      shipping,
-      created_At: Date()
-    }
-  } catch (error) {
-    next(error)
   }
 })
 

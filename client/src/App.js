@@ -25,7 +25,8 @@ import ScrollToTop from './Utils/ScrollToTop'
 import Footer from './Components/Footer/Footer'
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute'
 
-import './App.css'
+import 'normalize.css/normalize.css'
+import './App.scss'
 
 import store from './Redux/store'
 

@@ -13,7 +13,7 @@ export const calcForItemTotal = (price, quantity, manualsPerPack) => {
 
 // Output - string
 export const storeCardAddOneOrTwoZeros = price => {
-  price = price.toString()
+  price = String(price)
   if (price.indexOf('.') > -1) {
     return price + '0'
   } else {

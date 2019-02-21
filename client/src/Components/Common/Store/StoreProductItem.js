@@ -20,16 +20,21 @@ import StoreCartItem from './StoreCartItem'
 
 class StoreProductItem extends React.Component {
   state = {
-    quantity: 0,
-    alreadyInCart: false
+    quantity: '',
+    alreadyInCart: false,
+    modalToggle: false
   }
 
   componentWillMount() {
-    this.setState({ quantity: 0 })
+    this.setState({ quantity: '' })
+  }
+
+  componentDidMount() {
+    this.setState({ quantity: '' })
   }
 
   onContinueShopping = () => {
-    this.setState({ quantity: 0 })
+    this.setState({ quantity: '' })
 
     this.props.getAllCartItems()
   }
@@ -37,6 +42,14 @@ class StoreProductItem extends React.Component {
   onClickGoToCart = () => {
     this.props.history.push('/cart')
   }
+
+  // onModalToggle = () => {
+  //   if (this.state.quantity === 0) {
+  //     this.setState({ modalToggle: false })
+  //   } else {
+  //     this.setState({ modalToggle: true })
+  //   }
+  // }
 
   onChange = evt => {
     const { name, value } = evt.target
@@ -48,7 +61,8 @@ class StoreProductItem extends React.Component {
     evt.preventDefault()
     const { allProducts } = this.props.product
     const { quantity } = this.state
-    this.setState({ quantity: 0 })
+
+    this.setState({ quantity: '' })
     // Find database product that matches by id
     const itemData = allProducts.find(prod => prod._id === this.props.id)
 
@@ -109,7 +123,7 @@ class StoreProductItem extends React.Component {
                             name="quantity"
                             defaultValue={this.state.quantity}
                           >
-                            <option value={0}>Select</option>
+                            <option value="">Select</option>
                             <option value={1}>1</option>
                             <option value={2}>2</option>
                             <option value={3}>3</option>
