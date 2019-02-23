@@ -1,13 +1,22 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+
+import { sendCustomerEmail } from '../../Redux/Actions/contactActions'
 import TextFieldGroup from '../../Components/Common/TextFieldGroup'
 import TextAreaFieldGroup from '../../Components/Common/TextAreaFieldGroup'
 
-export default class ContactUs extends Component {
+class ContactUs extends Component {
   state = {
     name: '',
     email: '',
     description: '',
-    errors: ''
+    errors: {}
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.errors) {
+      this.setState({ errors: nextProps.errors })
+    }
   }
 
   onChange = evt => {
@@ -17,13 +26,32 @@ export default class ContactUs extends Component {
 
   onSubmit = evt => {
     evt.preventDefault()
+    const { name, email, description } = this.state
+
+    const emailData = {
+      name,
+      email,
+      description
+    }
+
+    console.log('emailData: ', emailData)
+
+    this.props.sendCustomerEmail(emailData)
+
+    this.setState({
+      name: '',
+      email: '',
+      description: '',
+      errors: {}
+    })
+    // GENERATE A MODAL TO POP UP AFTER SUCCESSFULLY SENDING AN EMAIL
   }
 
   render() {
-    console.log('THIS.STATE: ', this.state)
+    console.log('THIS.STATE: ', this.props)
     const { errors } = this.state
     return (
-      <div id="container" className="container vh-100 bg-light p-5">
+      <div id="container" className="container mvh-100 bg-light p-5">
         <div class="card shadow my-5">
           <div className="card-body p-5">
             <h3>Contact Us</h3>
@@ -47,7 +75,7 @@ export default class ContactUs extends Component {
                     onChange={this.onChange}
                     className="form-control bg-dark text-white"
                     placeholder="Name"
-                    error={errors}
+                    error={errors.name}
                   />
                 </div>
               </div>
@@ -66,7 +94,7 @@ export default class ContactUs extends Component {
                     onChange={this.onChange}
                     className="form-control bg-dark text-white"
                     placeholder="Email"
-                    error={errors}
+                    error={errors.email}
                   />
                 </div>
               </div>
@@ -84,6 +112,7 @@ export default class ContactUs extends Component {
                     name="description"
                     value={this.state.description}
                     onChange={this.onChange}
+                    error={errors.description}
                   />
                 </div>
               </div>
@@ -100,3 +129,10 @@ export default class ContactUs extends Component {
     )
   }
 }
+
+const mapState = ({ errors }) => ({ errors })
+
+export default connect(
+  mapState,
+  { sendCustomerEmail }
+)(ContactUs)

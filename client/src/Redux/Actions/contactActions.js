@@ -13,19 +13,12 @@ export const postEmail = () => ({
 export const sendCustomerEmail = (emailData, history) => async dispatch => {
   try {
     const { data } = await axios.post('/api/contact', emailData)
-    
-    dispatch(postEmail(data))
 
+    dispatch(postEmail(data))
   } catch (error) {
     dispatch({
       type: GET_ERRORS,
       payload: error.response.data
     })
   }
-  axios
-    .post('/api/contact', userData)
-    .then(res =>
-      
-    )
-
 }
