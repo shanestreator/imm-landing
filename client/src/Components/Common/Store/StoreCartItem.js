@@ -5,7 +5,7 @@ import commaNumber from 'comma-number'
 import { getOneProduct } from '../../../Redux/Actions/productActions'
 import {
   itemModalAddZeros,
-  storeCardAddOneOrTwoZeros
+  totalManualsForItemCalc
 } from '../../../Utils/Utils'
 
 class StoreCartItem extends Component {
@@ -18,6 +18,11 @@ class StoreCartItem extends Component {
       price,
       quantity
     } = this.props.cart.currentProduct
+
+    const totalManualsForItem = totalManualsForItemCalc({
+      manualsPerPack,
+      quantity
+    })
     // console.log('CURRENT_PRODUCT: ', this.props.cart.currentProduct)
     return (
       <React.Fragment>
@@ -29,14 +34,20 @@ class StoreCartItem extends Component {
 
                 <div className="row mt-2">
                   <div className="col-12">
-                    <span className="text-muted" style={{ fontSize: '16px' }}>
+                    <span className="text-muted" style={{ fontSize: '18px' }}>
                       ${commaNumber(total)}.00
                     </span>
                   </div>
-                  <div className="col-12" style={{ fontSize: '8.5px' }}>
+                  <div className="col-12" style={{ fontSize: '10px' }}>
                     <span className="text-muted">
                       (${itemModalAddZeros(price)} x{' '}
                       {commaNumber(manualsPerPack)} x {quantity})
+                    </span>
+                  </div>
+                  <div className="col-12 mt-3" style={{ fontSize: '14px' }}>
+                    Manuals:{' '}
+                    <span className="text-muted">
+                      {commaNumber(totalManualsForItem)}
                     </span>
                   </div>
                 </div>

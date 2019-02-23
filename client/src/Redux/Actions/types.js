@@ -16,6 +16,9 @@ export const UPDATE_CART_TOTAL = 'UPDATE_CART_TOTAL'
 export const REMOVE_ITEM_FROM_CART = 'REMOVE_ITEM_FROM_CART'
 export const REMOVE_ALL_FROM_CART = 'REMOVE_ALL_FROM_CART'
 
+// Contact
+export const SEND_EMAIL = 'SEND_EMAIL'
+
 // Error
 export const GET_ERRORS = 'GET_ERRORS'
 export const CLEAR_ERRORS = 'CLEAR_ERRORS'

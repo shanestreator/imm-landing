@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { NavLink, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
+import classNames from 'classnames'
 
 import { loginUser, logoutUser } from '../../Redux/Actions/authActions'
 
@@ -13,7 +14,7 @@ class Navbar extends Component {
     const { productsInCart } = this.props.cart
     const { user, isAuthenticated } = this.props.auth
     return (
-      <div className="navbar_style fixed-top px-0">
+      <div className="navbar__style fixed-top px-0">
         <nav className="navbar navbar-expand-md d-flex justify-content-center navbar-light bg-light">
           <div id="container" className="container">
             {isAuthenticated ? (
@@ -78,67 +79,88 @@ class Navbar extends Component {
                   <React.Fragment>
                     <li className="nav-item">
                       <NavLink
-                        className="nav-link nav-text"
+                        className="nav-link nav-text navbar__navlink-hover-style"
                         active={
                           window.location.pathname === '/' ? 'selected' : ''
                         }
-                        exact
-                        to="/"
                         activeStyle={{
                           fontWeight: 'bold'
                         }}
+                        exact
+                        to="/"
                       >
                         Home
                       </NavLink>
                     </li>
                     <li className="nav-item">
                       <NavLink
-                        className="nav-link nav-text"
+                        className="nav-link nav-text navbar__navlink-hover-style"
                         active={
                           window.location.pathname === '/about'
                             ? 'selected'
                             : ''
                         }
-                        exact
-                        to="/about"
                         activeStyle={{
                           fontWeight: 'bold'
                         }}
+                        exact
+                        to="/about"
                       >
                         About
                       </NavLink>
                     </li>
                     <li className="nav-item">
                       <NavLink
-                        className="nav-link nav-text"
+                        className="nav-link nav-text navbar__navlink-hover-style"
                         active={
                           window.location.pathname === '/store'
                             ? 'selected'
                             : ''
                         }
-                        exact
-                        to="/store"
                         activeStyle={{
                           fontWeight: 'bold'
                         }}
+                        exact
+                        to="/store"
                       >
                         Store
                       </NavLink>
                     </li>
                     <li className="nav-item">
                       <NavLink
-                        className="nav-link nav-text pr-0 mr-0"
+                        className="nav-link nav-text navbar__navlink-hover-style pr-0 mr-0"
                         active={
                           window.location.pathname === '/cart' ? 'selected' : ''
                         }
-                        exact
-                        to="/cart"
                         activeStyle={{
                           fontWeight: 'bold'
                         }}
+                        exact
+                        to="/cart"
                       >
                         Cart
-                        <span class="badge badge-pill badge-light border text-secondary ml-1">
+                        <span
+                          className={classNames({
+                            badge: true,
+                            'badge-pill': true,
+                            'badge-light': productsInCart.length < 1,
+                            'border-danger':
+                              productsInCart.length > 0 &&
+                              window.location.pathname !== '/cart',
+                            'text-danger':
+                              productsInCart.length > 0 &&
+                              window.location.pathname !== '/cart',
+                            border: true,
+                            'text-black-50':
+                              window.location.pathname !== '/cart' &&
+                              productsInCart.length < 1,
+                            'text-body':
+                              window.location.pathname === '/cart' &&
+                              productsInCart.length < 1,
+                            'border-dark': window.location.pathname === '/cart',
+                            'ml-1': true
+                          })}
+                        >
                           {productsInCart.length}
                         </span>
                       </NavLink>

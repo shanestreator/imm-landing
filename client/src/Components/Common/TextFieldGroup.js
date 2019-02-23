@@ -10,11 +10,12 @@ const TextFieldGroup = ({
   info,
   type,
   onChange,
-  disabled
+  disabled,
+  className
 }) => {
-  return (
+  return !className ? (
     <div className="form-group">
-      <label htmlFor={label}>{label}</label>
+      {label && <label htmlFor={label}>{label}</label>}
       <input
         type={type}
         className={classnames('form-control', {
@@ -29,6 +30,22 @@ const TextFieldGroup = ({
       {info && <small className="form-text text-muted">{info}</small>}
       {error && <div className="invalid-feedback">{error}</div>}
     </div>
+  ) : (
+    <React.Fragment>
+      <input
+        type={type}
+        className={classnames(className, {
+          'is-invalid': error
+        })}
+        placeholder={placeholder}
+        name={name}
+        value={value}
+        onChange={onChange}
+        disabled={disabled}
+      />
+      {info && <small className="form-text text-muted">{info}</small>}
+      {error && <div className="invalid-feedback">{error}</div>}
+    </React.Fragment>
   )
 }
 

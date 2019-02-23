@@ -41,7 +41,6 @@ class CartItem extends Component {
             <div className="col-7 d-flex align-items-center">
               <h5 className="my-0">
                 {title}
-
                 <div className="row mt-2">
                   <div className="col-12" style={{ fontSize: '14px' }}>
                     Item Total:
@@ -57,7 +56,7 @@ class CartItem extends Component {
                       {commaNumber(manualsPerPack)} x {quantity})
                     </span>
                   </div>
-                  <div className="col-12 mt-2" style={{ fontSize: '12px' }}>
+                  <div className="col-12 mt-2" style={{ fontSize: '14px' }}>
                     Manuals:{' '}
                     <span className="text-muted">
                       {commaNumber(totalManualsForItem)}

@@ -32,7 +32,7 @@ class FooterMenu extends Component {
                     <Link
                       style={{ color: 'black' }}
                       className="text-dark"
-                      to="/contact-us"
+                      to="/contact"
                     >
                       Contact Us
                     </Link>

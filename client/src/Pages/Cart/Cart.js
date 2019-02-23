@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import UseStripeCheckout from '../../Components/Common/Checkout/UseStripeCheckout'
-import UsePayPalCheckout from '../../Components/Common/Checkout/UsePayPalCheckout'
+// import UsePayPalCheckout from '../../Components/Common/Checkout/UsePayPalCheckout'
 import commaNumber from 'comma-number'
 import {
   calcForCartTotal,
@@ -70,7 +70,9 @@ class Cart extends Component {
                       style={{ fontSize: '14px' }}
                     >
                       <strong style={{ fontSize: '16px' }}>Subtotal</strong> (
-                      {productsInCart.length} items): ${total}.00
+                      {productsInCart.length}{' '}
+                      {productsInCart.length === 1 ? 'item' : 'items'}): $
+                      {total}.00
                     </span>
                   </div>
                   <div className="col-12 d-flex justify-content-end align-items-center mt-2">

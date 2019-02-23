@@ -80,7 +80,7 @@ class StoreProductItem extends React.Component {
     return (
       <React.Fragment>
         <div className="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 p-2 mt-5">
-          <div className="card shadow h-100 store__card-hover mb-4">
+          <div className="card h-100 store__card-hover mb-4">
             <img src={imageUrl} className="card-img-top" alt="..." />
 
             <div className="card-body">
