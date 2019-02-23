@@ -1,32 +1,32 @@
 import React from 'react'
 import axios from 'axios'
 
-import STRIPE_PUBLISHABLE from '../../../Config/stripe'
-import PAYMENT_SERVER_URL from '../../../Config/server'
+// import STRIPE_PUBLISHABLE from '../../../Config/stripe'
+// import PAYMENT_SERVER_URL from '../../../Config/server'
 
-import { removeAllFromCart } from '../../../Redux/Actions/cartActions'
+// import { removeAllFromCart } from '../../../Redux/Actions/cartActions'
 
-import store from '../../../Redux/store'
+// import store from '../../../Redux/store'
 
-// console.log('STORE: ', store.getState().cart.productsInCart)
+// // console.log('STORE: ', store.getState().cart.productsInCart)
 
-const CURRENCY = 'USD'
+// const CURRENCY = 'USD'
 
-const successPayment = data => {
-  alert(
-    'Payment Successful. You should recieve an email with your order details.'
-  )
-}
+// const successPayment = data => {
+//   alert(
+//     'Payment Successful. You should recieve an email with your order details.'
+//   )
+// }
 
-const errorPayment = data => {
-  alert('Payment Error.')
-}
+// const errorPayment = data => {
+//   alert('Payment Error.')
+// }
 
 const fetchPayPalCheckout = async (name, productsInCart) => {
   try {
     // console.log('NAME: ', name)
     // console.log('PRODUCTS_IN_CART: ', productsInCart)
-    const orderInfo = { name, productsInCart }
+    // const orderInfo = { name, productsInCart }
     const paypalRequest = await axios.post('/api/order/paypal', {
       productsInCart
     })

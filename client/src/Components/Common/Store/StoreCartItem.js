@@ -23,19 +23,27 @@ class StoreCartItem extends Component {
       <React.Fragment>
         <div className="group-item container">
           <div className="row">
-            <div className="col-6 d-flex text-left pl-0 align-items-center">
+            <div className="col-8 d-flex text-left pl-0 align-items-center">
               <h5 className="my-0">
                 {title}
-                <p
-                  style={{ fontSize: '12px' }}
-                  className="text-muted pt-1 mb-0"
-                >
-                  Pack of {commaNumber(manualsPerPack)} manuals
-                </p>
+
+                <div className="row mt-2">
+                  <div className="col-12">
+                    <span className="text-muted" style={{ fontSize: '16px' }}>
+                      ${commaNumber(total)}.00
+                    </span>
+                  </div>
+                  <div className="col-12" style={{ fontSize: '8.5px' }}>
+                    <span className="text-muted">
+                      (${itemModalAddZeros(price)} x{' '}
+                      {commaNumber(manualsPerPack)} x {quantity})
+                    </span>
+                  </div>
+                </div>
               </h5>
             </div>
-
-            <div className="col-3 d-flex justify-content-end align-items-center">
+            {/*
+            <div className="d-none d-md-block col-3 d-flex justify-content-end align-items-center">
               <div className="row">
                 <div className="col-12">
                   <span className="text-muted">
@@ -50,8 +58,8 @@ class StoreCartItem extends Component {
                 </div>
               </div>
             </div>
-
-            <div className="col-3 d-flex justify-content-end align-items-center">
+            */}
+            <div className="col-4 d-flex justify-content-end align-items-center">
               <span
                 style={{ fontSize: '16px' }}
                 className="mb-0"

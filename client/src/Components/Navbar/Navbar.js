@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import { loginUser, logoutUser } from '../../Redux/Actions/authActions'
@@ -10,28 +10,28 @@ class Navbar extends Component {
   }
 
   render() {
-    // console.log('NavbarProps: ', this.props)
+    const { productsInCart } = this.props.cart
     const { user, isAuthenticated } = this.props.auth
     return (
       <div className="navbar_style fixed-top px-0">
         <nav className="navbar navbar-expand-md d-flex justify-content-center navbar-light bg-light">
           <div id="container" className="container">
             {isAuthenticated ? (
-              <Link className="navbar-brand" to="/admin/products">
+              <NavLink className="navbar-brand" to="/admin/products">
                 <img
                   style={{ width: '200px', height: '50px' }}
                   src="/images/imm-logo.png"
                   alt=""
                 />
-              </Link>
+              </NavLink>
             ) : (
-              <Link className="navbar-brand" to="/">
+              <NavLink className="navbar-brand" to="/">
                 <img
                   style={{ width: '200px', height: '50px' }}
                   src="/images/imm-logo.png"
                   alt=""
                 />
-              </Link>
+              </NavLink>
             )}
             <button
               className="navbar-toggler"
@@ -77,30 +77,71 @@ class Navbar extends Component {
                 ) : (
                   <React.Fragment>
                     <li className="nav-item">
-                      <Link className="nav-link nav-text active" to="/">
+                      <NavLink
+                        className="nav-link nav-text"
+                        active={
+                          window.location.pathname === '/' ? 'selected' : ''
+                        }
+                        exact
+                        to="/"
+                        activeStyle={{
+                          fontWeight: 'bold'
+                        }}
+                      >
                         Home
-                      </Link>
+                      </NavLink>
                     </li>
                     <li className="nav-item">
-                      <Link className="nav-link nav-text" to="/about">
+                      <NavLink
+                        className="nav-link nav-text"
+                        active={
+                          window.location.pathname === '/about'
+                            ? 'selected'
+                            : ''
+                        }
+                        exact
+                        to="/about"
+                        activeStyle={{
+                          fontWeight: 'bold'
+                        }}
+                      >
                         About
-                      </Link>
+                      </NavLink>
                     </li>
                     <li className="nav-item">
-                      <Link className="nav-link nav-text" to="/store">
+                      <NavLink
+                        className="nav-link nav-text"
+                        active={
+                          window.location.pathname === '/store'
+                            ? 'selected'
+                            : ''
+                        }
+                        exact
+                        to="/store"
+                        activeStyle={{
+                          fontWeight: 'bold'
+                        }}
+                      >
                         Store
-                      </Link>
+                      </NavLink>
                     </li>
                     <li className="nav-item">
-                      <Link className="nav-link nav-text pr-0 mr-0" to="/cart">
-                        <img
-                          className="mb-1 mr-1"
-                          style={{ width: '20px', height: '17px' }}
-                          src="/images/shopping-cart.png"
-                          alt=""
-                        />
+                      <NavLink
+                        className="nav-link nav-text pr-0 mr-0"
+                        active={
+                          window.location.pathname === '/cart' ? 'selected' : ''
+                        }
+                        exact
+                        to="/cart"
+                        activeStyle={{
+                          fontWeight: 'bold'
+                        }}
+                      >
                         Cart
-                      </Link>
+                        <span class="badge badge-pill badge-light border text-secondary ml-1">
+                          {productsInCart.length}
+                        </span>
+                      </NavLink>
                     </li>
                   </React.Fragment>
                 )}
@@ -115,7 +156,9 @@ class Navbar extends Component {
 
 const mapState = ({ cart, auth }) => ({ cart, auth })
 
-export default connect(
-  mapState,
-  { loginUser, logoutUser }
-)(Navbar)
+export default withRouter(
+  connect(
+    mapState,
+    { loginUser, logoutUser }
+  )(Navbar)
+)

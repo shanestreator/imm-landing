@@ -1,14 +1,23 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import commaNumber from 'comma-number'
 
-import { updateProduct } from '../../../Redux/Actions/productActions'
+import {
+  updateProduct,
+  getOneProduct
+} from '../../../Redux/Actions/productActions'
+
+import { itemModalAddZeros } from '../../../Utils/Utils'
 
 // Components
 import AdminEditProductModal from './AdminEditProductModal'
 
 class AdminProductItem extends React.Component {
-  state = {}
+  state = {
+    imageUrl: '',
+    title: '',
+    manualsPerPack: '',
+    price: ''
+  }
 
   onConfirmDelete = () => {
     const result = window.confirm('Confirm delete, cannot be undone.')
@@ -18,15 +27,7 @@ class AdminProductItem extends React.Component {
   }
 
   render() {
-    const {
-      id,
-      title,
-      name,
-      imgUrl,
-      priceEach,
-      numManuals,
-      getOneProduct
-    } = this.props
+    const { id, title, name, imgUrl, priceEach, getOneProduct } = this.props
 
     return (
       <React.Fragment>
@@ -36,16 +37,15 @@ class AdminProductItem extends React.Component {
 
             <div className="card-body">
               <h1 className="card-title pricing-card-title">
-                ${priceEach} <small className="text-muted">/ ea</small>
+                ${itemModalAddZeros(priceEach)}{' '}
+                <small className="text-muted">/ ea</small>
               </h1>
               <div>
                 <ul className="list-unstyled text-muted mt-3 mb-4">
                   <li className="font-italic">
                     <h3 className="mb-0">{title}</h3>
                   </li>
-                  <li style={{ fontSize: '12px' }}>
-                    <small>(Pack of {commaNumber(numManuals)} manuals)</small>
-                  </li>
+
                   <li>
                     <div className="col d-flex justify-content-center align-items-center px-0 mt-5">
                       <div className="row">
@@ -120,5 +120,5 @@ class AdminProductItem extends React.Component {
 
 export default connect(
   null,
-  { updateProduct }
+  { updateProduct, getOneProduct }
 )(AdminProductItem)

@@ -8,9 +8,6 @@ import { getAllProducts } from '../../Redux/Actions/productActions'
 import StoreProductItem from '../../Components/Common/Store/StoreProductItem'
 import Loading from '../../Components/Common/Loading/Loading'
 
-// CSS
-import './Store.css'
-
 class Store extends Component {
   componentDidMount() {
     this.props.getAllProducts()
@@ -22,16 +19,18 @@ class Store extends Component {
     return (
       <div
         id="container"
-        className="container py-5 pb-3 bg-light d-flex justify-content-center"
+        className="container text-center py-5 pb-3 bg-light d-flex justify-content-center"
       >
-        <div className="row">
+        <div className="row d-flex justify-content-center">
           <div className="pricing-header px-5 text-center">
             <h1 className="display-4">Pricing</h1>
+            {/*
             <p className="lead">
               Quickly build an effective pricing table for your potential
               customers with this Bootstrap example. It’s built with default
               Bootstrap components and utilities with little customization.
             </p>
+            */}
           </div>
 
           <div className="container px-5 pt-3">

@@ -22,5 +22,22 @@ export const storeCardAddOneOrTwoZeros = price => {
 }
 
 export const itemModalAddZeros = price => {
-  return `${price}.00`
+  if (String(price).indexOf('.') > -1) {
+    return `${price}0`
+  } else {
+    return `${price}.00`
+  }
+}
+
+export const totalManualsForItemCalc = product => {
+  const total = product.manualsPerPack * +product.quantity
+
+  return total
+}
+
+export const totalManualsInCartCalc = productsInCart => {
+  return productsInCart.reduce((total, cur) => {
+    total += cur.manualsPerPack * +cur.quantity
+    return total
+  }, 0)
 }

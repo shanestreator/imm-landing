@@ -56,7 +56,7 @@ class App extends Component {
       <Provider store={store}>
         <BrowserRouter>
           <ScrollToTop>
-            <div id="wrapper" className="container">
+            <div>
               <Navbar />
               <Spacer />
               <Switch>

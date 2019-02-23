@@ -1,7 +1,3 @@
-// import axios from 'axios'
-
-import { getAllProducts } from './productActions'
-
 import {
   SET_CART,
   ADD_ITEM_TO_CART,

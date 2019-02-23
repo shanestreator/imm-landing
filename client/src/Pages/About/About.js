@@ -3,17 +3,14 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import { Carousel } from 'react-responsive-carousel'
 import Media from 'react-media'
 
-// CSS
-import './About.css'
-
 export default class About extends Component {
   render() {
     return (
-      <div id="container" className="container p-5 bg-light">
+      <div id="container" className="container py-5 px-md-5 bg-light">
         <div className="conainter">
-          <div className="card red-card-shadow my-4">
+          <div className="card about__dark-red-shadow my-4">
             <div className="card-body text-center">
-              <h3 className="card-title">
+              <h3 className="card-title about__dark-red about__dark-red">
                 How does this manual help create mindset change?
               </h3>
               <p className="card-text">
@@ -39,9 +36,9 @@ export default class About extends Component {
             </div>
           </div>
 
-          <div className="card red-card-shadow my-5">
+          <div className="card about__dark-red-shadow my-5">
             <div className="card-body text-center ">
-              <h3 className="card-title">
+              <h3 className="card-title about__dark-red">
                 Weak minded follower...to Disciplined champion fighter
               </h3>
 
@@ -127,9 +124,9 @@ export default class About extends Component {
             </div>
           </div>
 
-          <div className="card red-card-shadow my-5">
+          <div className="card about__dark-red-shadow my-5">
             <div className="card-body text-center ">
-              <h3 className="card-title">
+              <h3 className="card-title about__dark-red">
                 Construction laborer...to Business owner
               </h3>
 
@@ -217,9 +214,9 @@ export default class About extends Component {
             </div>
           </div>
 
-          <div className="card red-card-shadow my-5">
+          <div className="card about__dark-red-shadow my-5">
             <div className="card-body text-center ">
-              <h3 className="card-title">
+              <h3 className="card-title about__dark-red">
                 Unhappy marriage/divorce...to Amazing, lasting relationship
               </h3>
 
@@ -317,7 +314,7 @@ export default class About extends Component {
             </div>
           </div>
 
-          <div className="card red-card-shadow my-4">
+          <div className="card about__dark-red-shadow my-4">
             <div className="card-body text-center">
               <p className="card-text">
                 I embraced, concentrated on and implemented the principles of

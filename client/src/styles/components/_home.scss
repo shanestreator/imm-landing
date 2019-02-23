@@ -1,38 +1,42 @@
 .home__video {
-  box-shadow: 0 0.5rem 1rem $dark-red;
+  box-shadow: 0 0.5rem 1rem $dark-red-shadow;
 }
 
-#action-words-table td {
+.home__action-words-table td {
   vertical-align: middle;
   font-size: 15px;
 }
 
-#checkmark-image {
-  box-shadow: 0 0.5rem 1rem rgba(190, 20, 27, 0.15) !important;
-}
-
-.h2-font-spacing {
+.home__h2-font-spacing {
   letter-spacing: 3px;
   font-size: 40px;
 }
 
-@media (min-width: 960px) {
-  #container {
-    width: 930px;
+.home__dark-red {
+  color: $dark-red-text;
+}
+
+.home__ul {
+  li {
+    margin: 0;
+    padding: 20px 0 20px 50px;
+    list-style: none;
+    background-image: url('/images/checkmark-30px.png');
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 35px;
   }
 }
 
-@media (max-width: 769px) {
-  .h2-font-spacing {
+@media (max-width: 767px) {
+  .home__list-table-single-col {
+    margin-top: -22.5px;
+  }
+
+  .home__h2-font-spacing {
     display: flex;
     justify-content: center;
     letter-spacing: 1px;
     font-size: 30px;
-  }
-}
-
-@media (max-width: 614px) {
-  img .card-img {
-    /* height: 700px; */
   }
 }

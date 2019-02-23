@@ -10,10 +10,7 @@ import {
 
 import { getAllProducts } from '../../../Redux/Actions/productActions'
 
-import {
-  calcForItemTotal,
-  storeCardAddOneOrTwoZeros
-} from '../../../Utils/Utils'
+import { calcForItemTotal, itemModalAddZeros } from '../../../Utils/Utils'
 
 // Components
 import StoreCartItem from './StoreCartItem'
@@ -83,12 +80,12 @@ class StoreProductItem extends React.Component {
     return (
       <React.Fragment>
         <div className="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 p-2 mt-5">
-          <div className="card h-100 card-red-hover mb-4">
+          <div className="card shadow h-100 store__card-hover mb-4">
             <img src={imageUrl} className="card-img-top" alt="..." />
 
             <div className="card-body">
               <h1 className="card-title pricing-card-title">
-                ${storeCardAddOneOrTwoZeros(price)}{' '}
+                ${itemModalAddZeros(price)}{' '}
                 <small className="text-muted">/ ea</small>
               </h1>
               <form onSubmit={this.onSubmit}>
@@ -96,11 +93,7 @@ class StoreProductItem extends React.Component {
                   <li className="font-italic">
                     <h3 className="mb-0">{title}</h3>
                   </li>
-                  <li style={{ fontSize: '12px' }}>
-                    <small>
-                      (Pack of {commaNumber(manualsPerPack)} manuals)
-                    </small>
-                  </li>
+
                   <li>
                     <div className="col d-flex justify-content-center align-items-center px-0 mt-5">
                       <div className="row">
@@ -118,7 +111,7 @@ class StoreProductItem extends React.Component {
                         <div className="col-sm-12 col-md-8 d-flex justify-content-center align-items-center px-0">
                           <select
                             disabled={this.props.alreadyInCart}
-                            className="form-control-sm"
+                            className="form-control-sm store__curser-pointer"
                             onChange={this.onChange}
                             name="quantity"
                             defaultValue={this.state.quantity}

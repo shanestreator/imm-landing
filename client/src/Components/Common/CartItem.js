@@ -4,6 +4,8 @@ import commaNumber from 'comma-number'
 
 import { getAllProducts } from '../../Redux/Actions/productActions'
 
+import { itemModalAddZeros } from '../../Utils/Utils'
+
 import {
   removeItemFromCart,
   updateCartItem
@@ -31,7 +33,7 @@ class CartItem extends Component {
     // console.log('CART.PROPS: ', this.props)
     // const { onChange } = this.props
     const { title, manualsPerPack, quantity, price, total } = this.props.product
-
+    const { totalManualsForItem } = this.props
     return (
       <React.Fragment>
         <li className="list-group-item container">
@@ -39,23 +41,33 @@ class CartItem extends Component {
             <div className="col-7 d-flex align-items-center">
               <h5 className="my-0">
                 {title}
-                <p style={{ fontSize: '9px' }} className="text-muted mb-0">
-                  Pack of {commaNumber(manualsPerPack)} manuals
-                </p>
+
                 <div className="row mt-2">
-                  <div className="col-12">
-                    <span className="text-muted">${commaNumber(total)}.00</span>
+                  <div className="col-12" style={{ fontSize: '14px' }}>
+                    Item Total:
                   </div>
-                  <div className="col-12" style={{ fontSize: '8.5px' }}>
+                  <div className="col-12 mb-1">
+                    <span className="text-muted" style={{ fontSize: '18px' }}>
+                      ${commaNumber(total)}.00
+                    </span>
+                  </div>
+                  <div className="col-12" style={{ fontSize: '10px' }}>
                     <span className="text-muted">
-                      (${price} x {manualsPerPack} x {quantity})
+                      (${itemModalAddZeros(price)} x{' '}
+                      {commaNumber(manualsPerPack)} x {quantity})
+                    </span>
+                  </div>
+                  <div className="col-12 mt-2" style={{ fontSize: '12px' }}>
+                    Manuals:{' '}
+                    <span className="text-muted">
+                      {commaNumber(totalManualsForItem)}
                     </span>
                   </div>
                 </div>
               </h5>
             </div>
 
-            <div className="col-3 d-flex justify-content-center align-items-center">
+            <div className="col-2 d-flex justify-content-center align-items-center">
               <div className="row">
                 <div className="col-sm-12 col-md-6 d-flex align-items-center justify-content-center justify-content-md-end px-0">
                   <div className="mr-md-2 mb-sm-1">
@@ -91,7 +103,7 @@ class CartItem extends Component {
               </div>
             </div>
 
-            <div className="col-2 d-flex justify-content-end align-items-center">
+            <div className="col-3 d-flex justify-content-end align-items-center">
               <button
                 onClick={this.onConfirmDelete}
                 className="btn btn-sm text-dark p-0"

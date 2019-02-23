@@ -12,7 +12,7 @@ import titleToName from '../../Utils/titleToName'
 
 // Components
 import AdminProductItem from '../../Components/Common/Admin/AdminProductItem'
-import AdminProductForm from '../../Components/Common/Admin/AdminProductForm'
+import AdminTextFieldGroup from '../../Components/Common/Admin/AdminTextFieldGroup'
 
 class AdminProducts extends Component {
   state = {
@@ -54,22 +54,56 @@ class AdminProducts extends Component {
   render() {
     // console.log('ADMIN_PRODUCTS_PROPS: ', this.props)
     // console.log('ADMIN_PRODUCTS_STATE: ', this.state)
-    const { allProducts } = this.props.product
-    // console.log('ALL_PRODUCTS: ', allProducts)
+    const { allProducts, currentProduct: product } = this.props.product
+    // console.log('CURRENT_PRODUCT: ', product)
     return (
       <div id="container" className="container py-5 pb-3 bg-light">
         <div className="row d-flex justify-content-center">
           <div className="pricing-header px-5 text-center w-100">
             <h1 className="">Add Product</h1>
 
-            <AdminProductForm
-              title={this.state.title}
-              imageUrl={this.state.imageUrl}
-              manualsPerPack={this.state.manualsPerPack}
-              price={this.state.price}
-              onChange={this.onChange}
-              onSubmit={this.onSubmit}
-            />
+            <div>
+              <AdminTextFieldGroup
+                onChange={this.onChange}
+                label="Title"
+                value={this.state.title}
+                name="title"
+                type="text"
+                className="form-control"
+                icon="fas fa-text-height"
+                placeholder="Name"
+              />
+              <AdminTextFieldGroup
+                onChange={this.onChange}
+                label="ImageUrl"
+                value={this.state.imageUrl}
+                name="imageUrl"
+                type="text"
+                className="form-control"
+                icon="fas fa-camera"
+                placeholder="Image Url"
+              />
+              <AdminTextFieldGroup
+                onChange={this.onChange}
+                label="manualsPerPack"
+                value={this.state.manualsPerPack}
+                name="manualsPerPack"
+                type="text"
+                className="form-control"
+                icon="fas fa-hashtag"
+                placeholder="Pack of # manuals"
+              />
+              <AdminTextFieldGroup
+                onChange={this.onChange}
+                label="Price"
+                value={this.state.price}
+                name="price"
+                type="text"
+                className="form-control"
+                icon="fas fa-dollar-sign"
+                placeholder="Price Each"
+              />
+            </div>
 
             <div className="d-flex justify-content-end mt-2">
               <button

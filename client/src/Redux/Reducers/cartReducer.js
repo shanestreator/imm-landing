@@ -1,5 +1,3 @@
-import commaNumber from 'comma-number'
-
 import { calcForItemTotal } from '../../Utils/Utils'
 
 import {

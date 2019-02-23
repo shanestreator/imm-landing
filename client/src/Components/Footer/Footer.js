@@ -1,41 +1,24 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import FooterMenu from './FooterMenu'
 
-import './Footer.module.css'
-
-export default function Footer() {
-  return (
-    <footer id="container" className="text-center container bg-light">
-      <div className="py-5" />
-      <div>TODO: CAROUSEL OF TESTIMONIALS</div>
-      <div className="row">
-        <div className="col">
-          <Link style={{ textDecoration: 'none' }} className="text-dark" to="/">
-            Home
-          </Link>
+class Footer extends React.Component {
+  render() {
+    return (
+      <footer id="container" className="container bg-light">
+        <div className="py-5" />
+        <div className="text-center mb-5">TODO: CAROUSEL OF TESTIMONIALS</div>
+        <FooterMenu />
+        <div className="py-2" />
+        <div className="text-center mt-5">
+          Copyright &copy; {new Date().getFullYear()} Champion Productions
         </div>
-        <div className="col">
-          <Link
-            style={{ textDecoration: 'none' }}
-            className="text-dark"
-            to="/about"
-          >
-            About
-          </Link>
-        </div>
-        <div className="col">
-          <Link
-            style={{ textDecoration: 'none' }}
-            className="text-dark"
-            to="/contact-us"
-          >
-            Contact Us
-          </Link>
-        </div>
-      </div>
-      <div className="py-2" />
-      Copyright &copy; {new Date().getFullYear()} Champion Productions, LLC
-      <div className="py-2" />
-    </footer>
-  )
+        <div className="py-2" />
+      </footer>
+    )
+  }
 }
+
+const mapState = ({ auth }) => ({ auth })
+
+export default connect(mapState)(Footer)
