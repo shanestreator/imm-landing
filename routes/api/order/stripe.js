@@ -59,13 +59,14 @@ router.post('/', async (req, res, next) => {
       state: req.body.billingAndShipping.shipping_address_state
     }
 
-    const description = 'Impact Motivation Manual - Champion Productions LLC'
+    const description = 'Impact Motivation Manual - Champion Productions'
     const fromUSDToCent = amount => amount * 100
     const payment = {
       description,
       source,
       currency,
-      amount: fromUSDToCent(cartTotal)
+      amount: fromUSDToCent(cartTotal),
+      receipt_email: email
     }
 
     stripe.charges.create(payment, async (stripeErr, stripeRes) => {

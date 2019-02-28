@@ -50,30 +50,67 @@ class Navbar extends Component {
               <ul className="navbar-nav ml-auto mt-2 mt-lg-0">
                 {isAuthenticated ? (
                   <React.Fragment>
-                    <li className="nav-item d-flex">
-                      <i
-                        className="fas fa-user align-self-center"
-                        style={{
-                          fontSize: '14px',
-                          opacity: '.75',
-                          paddingBottom: '2px'
+                    <li className="nav-item">
+                      <NavLink
+                        className="nav-link nav-text navbar__navlink-hover-style"
+                        active={
+                          window.location.pathname === 'admin/dashboard'
+                            ? 'selected'
+                            : ''
+                        }
+                        activeStyle={{
+                          fontWeight: 'bold'
                         }}
-                      />
-                      <p
-                        className="pl-1 mr-4 mb-0"
-                        style={{ fontSize: '16px', opacity: '.75' }}
+                        exact
+                        to="/admin/dashboard"
                       >
-                        {user.name}
-                      </p>
+                        Dashboard
+                      </NavLink>
                     </li>
                     <li className="nav-item">
-                      <button
-                        onClick={this.onLogoutClick}
-                        className="nav-link nav-text btn btn-secondary text-white btn-sm py-0 mr-0"
+                      <NavLink
+                        className="nav-link nav-text navbar__navlink-hover-style"
+                        active={
+                          window.location.pathname === 'admin/products'
+                            ? 'selected'
+                            : ''
+                        }
+                        activeStyle={{
+                          fontWeight: 'bold'
+                        }}
+                        exact
+                        to="/admin/products"
                       >
-                        Logout
-                      </button>
+                        Products
+                      </NavLink>
                     </li>
+                    <li className="nav-item d-flex align-items-end">
+                      <div className="dropdown py-2">
+                        <button
+                          class="bg-light text-muted border-0 px-0 pt-0 pb-1 ml-md-2 dropdown-toggle"
+                          type="button"
+                          id="dropdownMenu2"
+                          data-toggle="dropdown"
+                          aria-haspopup="true"
+                          aria-expanded="false"
+                          style={{ cursor: 'pointer' }}
+                        >
+                          {user.name}
+                        </button>
+                        <div
+                          class="dropdown-menu dropdown-menu-right"
+                          aria-labelledby="dropdownMenu2"
+                        >
+                          <button
+                            onClick={this.onLogoutClick}
+                            className="dropdown-item"
+                          >
+                            Logout
+                          </button>
+                        </div>
+                      </div>
+                    </li>
+                    <li className="nav-item d-flex align-items-center" />
                   </React.Fragment>
                 ) : (
                   <React.Fragment>

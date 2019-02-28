@@ -1,6 +1,9 @@
 // Auth
 export const SET_CURRENT_USER = 'SET_CURRENT_USER'
 
+// Admin
+export const GET_ALL_QUESTIONS = 'GET_ALL_QUESTIONS'
+
 // Product
 export const GET_ONE_PRODUCT = 'GET_ONE_PRODUCT'
 export const GET_ALL_PRODUCTS = 'GET_ALL_PRODUCTS'
@@ -17,7 +20,7 @@ export const REMOVE_ITEM_FROM_CART = 'REMOVE_ITEM_FROM_CART'
 export const REMOVE_ALL_FROM_CART = 'REMOVE_ALL_FROM_CART'
 
 // Contact
-export const SEND_EMAIL = 'SEND_EMAIL'
+export const SENT_EMAIL = 'SENT_EMAIL'
 
 // Error
 export const GET_ERRORS = 'GET_ERRORS'

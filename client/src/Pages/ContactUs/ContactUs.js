@@ -10,12 +10,13 @@ class ContactUs extends Component {
     name: '',
     email: '',
     description: '',
-    errors: {}
+    errors: {},
+    contact: {}
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.errors) {
-      this.setState({ errors: nextProps.errors })
+      this.setState({ errors: nextProps.errors, contact: nextProps.contact })
     }
   }
 
@@ -44,26 +45,30 @@ class ContactUs extends Component {
       description: '',
       errors: {}
     })
-    // GENERATE A MODAL TO POP UP AFTER SUCCESSFULLY SENDING AN EMAIL
+
+    // GENERATE A MODAL TO POP UP AFTER SUCCESSFULLY SENDING AN EMAIL?
   }
 
   render() {
-    console.log('THIS.STATE: ', this.props)
-    const { errors } = this.state
+    // console.log('ERRORS: ', Object.keys(this.props.errors).length)
+    // console.log('THIS_STATE: ', this.state)
+    const { errors, contact } = this.state
     return (
-      <div id="container" className="container mvh-100 bg-light p-5">
+      <div
+        id="container"
+        className="container home__container-shadow mvh-100 bg-light py-3 py-md-5 px-md-5"
+      >
+        <h1 className="display-4 text-center">Contact Us</h1>
         <div class="card shadow my-5">
-          <div className="card-body p-5">
-            <h3>Contact Us</h3>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Error
-              quos illo, dicta id voluptates enim.
-            </p>
+          <div className="card-body p-md-5">
+            <h3 className="text-center font-weight-normal mb-4">
+              Regarding pricing, quantities, available languages, etc.
+            </h3>
             <form onSubmit={this.onSubmit}>
               <div class="form-group">
                 <div class="input-group input-group-lg">
                   <div class="input-group-prepend">
-                    <span class="input-group-text bg-danger text-white">
+                    <span class="input-group-text bg-secondary text-white">
                       <i class="fas fa-user" />
                     </span>
                   </div>
@@ -73,7 +78,7 @@ class ContactUs extends Component {
                     name="name"
                     value={this.state.name}
                     onChange={this.onChange}
-                    className="form-control bg-dark text-white"
+                    className="form-control bg-light"
                     placeholder="Name"
                     error={errors.name}
                   />
@@ -83,7 +88,7 @@ class ContactUs extends Component {
               <div class="form-group">
                 <div class="input-group input-group-lg">
                   <div class="input-group-prepend">
-                    <span class="input-group-text bg-danger text-white">
+                    <span class="input-group-text bg-secondary text-white">
                       <i class="fas fa-envelope" />
                     </span>
                   </div>
@@ -92,7 +97,7 @@ class ContactUs extends Component {
                     name="email"
                     value={this.state.email}
                     onChange={this.onChange}
-                    className="form-control bg-dark text-white"
+                    className="form-control bg-light"
                     placeholder="Email"
                     error={errors.email}
                   />
@@ -102,12 +107,12 @@ class ContactUs extends Component {
               <div class="form-group">
                 <div class="input-group input-group-lg">
                   <div class="input-group-prepend">
-                    <span class="input-group-text bg-danger text-white">
+                    <span class="input-group-text bg-secondary text-white">
                       <i class="fas fa-pencil-alt" />
                     </span>
                   </div>
                   <TextAreaFieldGroup
-                    className="form-control bg-dark text-white"
+                    className="form-control bg-light"
                     placeholder="How can we help you?"
                     name="description"
                     value={this.state.description}
@@ -120,8 +125,15 @@ class ContactUs extends Component {
               <input
                 type="submit"
                 value="Submit"
-                class="btn btn-danger btn-block btn-lg"
+                class="btn btn-secondary btn-block btn-lg"
               />
+              {contact.success && (
+                <div className="d-flex justify-content-center mt-4">
+                  <small className="text-success text-center">
+                    <i class="fas fa-check" /> {contact.message}
+                  </small>
+                </div>
+              )}
             </form>
           </div>
         </div>
@@ -130,7 +142,7 @@ class ContactUs extends Component {
   }
 }
 
-const mapState = ({ errors }) => ({ errors })
+const mapState = ({ contact, errors }) => ({ contact, errors })
 
 export default connect(
   mapState,

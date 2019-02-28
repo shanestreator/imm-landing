@@ -3,8 +3,12 @@ const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const volleyball = require('volleyball')
 const path = require('path')
+const cors = require('cors')
+const passport = require('passport')
 
 const app = express()
+
+app.use(cors())
 
 // Logging Middleware
 app.use(volleyball)
@@ -29,6 +33,12 @@ const product = require('./routes/api/product')
 const payment = require('./routes/api/payment')
 const stripe = require('./routes/api/order/stripe')
 const paypal = require('./routes/api/order/paypal')
+
+// Passport middleware
+app.use(passport.initialize())
+
+// Passport Config
+require('./config/passport')(passport)
 
 app.use('/admin', admin)
 app.use('/api/contact', contact)

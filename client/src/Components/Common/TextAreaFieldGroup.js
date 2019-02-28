@@ -13,6 +13,7 @@ const TextAreaFieldGroup = ({
   return (
     <React.Fragment>
       <textarea
+        style={{ height: '100px' }}
         className={classnames(className || 'form-control form-control-lg', {
           'is-invalid': error
         })}

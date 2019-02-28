@@ -16,6 +16,7 @@ import Cart from './Pages/Cart/Cart'
 import ContactUs from './Pages/ContactUs/ContactUs'
 // Hidden /admin/login
 import AdminLogin from './Pages/AdminLogin/AdminLogin'
+import AdminDashboard from './Pages/AdminDashboard/AdminDashboard'
 import AdminProducts from './Pages/AdminProducts/AdminProducts'
 
 // Components
@@ -68,6 +69,11 @@ class App extends Component {
                 <Route exact path="/admin/login" component={AdminLogin} />
               </Switch>
               <Switch>
+                <PrivateRoute
+                  exact
+                  path="/admin/dashboard"
+                  component={AdminDashboard}
+                />
                 <PrivateRoute
                   exact
                   path="/admin/products"

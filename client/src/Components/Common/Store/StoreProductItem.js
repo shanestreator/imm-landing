@@ -79,19 +79,23 @@ class StoreProductItem extends React.Component {
 
     return (
       <React.Fragment>
-        <div className="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 p-2 mt-5">
+        <div className="col-6 col-md-6 col-lg-4 col-xl-4 p-2 mt-5">
           <div className="card h-100 store__card-hover mb-4">
             <img src={imageUrl} className="card-img-top" alt="..." />
 
-            <div className="card-body">
-              <h1 className="card-title pricing-card-title">
+            <div className="card-body px-2 px-md-4">
+              <h1 className="card-title about__media-smaller-text-price pricing-card-title">
                 ${itemModalAddZeros(price)}{' '}
-                <small className="text-muted">/ ea</small>
+                <small className="text-muted">
+                  /<span className="about__media-smaller-text-20px"> ea</span>
+                </small>
               </h1>
               <form onSubmit={this.onSubmit}>
                 <ul className="list-unstyled text-muted mt-3 mb-4">
                   <li className="font-italic">
-                    <h3 className="mb-0">{title}</h3>
+                    <h3 className="mb-0 about__media-smaller-text-20px">
+                      {title}
+                    </h3>
                   </li>
 
                   <li>
@@ -134,10 +138,10 @@ class StoreProductItem extends React.Component {
                   </li>
                 </ul>
 
-                <div className="p-4">
+                <div className="p-1 p-md-4">
                   <button
                     type="submit"
-                    className="btn btn-primary"
+                    className="btn btn-primary about__media-smaller-text-button"
                     disabled={!this.state.quantity}
                     data-toggle="modal"
                     data-target={`#${name}Modal`}

@@ -1,14 +1,13 @@
-import { SEND_EMAIL } from '../Actions/types'
+import { SENT_EMAIL } from '../Actions/types'
 
 const initialState = {
-  name: '',
-  email: '',
-  description: ''
+  success: false,
+  message: ''
 }
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case SEND_EMAIL: {
+    case SENT_EMAIL: {
       return action.payload
     }
     default: {

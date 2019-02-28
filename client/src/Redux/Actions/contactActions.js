@@ -1,19 +1,19 @@
 import axios from 'axios'
 
 // Types
-import { GET_ERRORS, SEND_EMAIL } from './types'
+import { GET_ERRORS, SENT_EMAIL } from './types'
 
 // Action
-export const postEmail = () => ({
-  type: SEND_EMAIL,
-  payload: {}
+export const postEmail = data => ({
+  type: SENT_EMAIL,
+  payload: data
 })
 
 // User sends email to IMM
 export const sendCustomerEmail = (emailData, history) => async dispatch => {
   try {
     const { data } = await axios.post('/api/contact', emailData)
-
+    console.log('DATA: ', data)
     dispatch(postEmail(data))
   } catch (error) {
     dispatch({

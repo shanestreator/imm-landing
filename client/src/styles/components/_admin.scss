@@ -1,0 +1,11 @@
+@media (max-width: 480px) {
+  .admin__input-width {
+    width: 100%;
+  }
+}
+
+@media (min-width: 767px) {
+  .admin__input-width {
+    width: 50%;
+  }
+}

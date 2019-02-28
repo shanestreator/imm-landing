@@ -9,13 +9,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   .root {
-    background: rgba(190, 20, 27, 0.7);
+    background: rgba(0, 0, 0, 0.3);
   }
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.app__shadow {
+  box-shadow: 0 0 0.5rem 0.5rem rgba(0, 0, 0, 0.15);
 }
 
 @media (max-width: 767px) {

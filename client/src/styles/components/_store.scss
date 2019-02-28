@@ -5,3 +5,21 @@
 .store__card-hover:hover {
   box-shadow: 0 0.5rem 1rem $dark-red-shadow;
 }
+
+.store__container-shadow {
+  box-shadow: 0 0 0.5rem 0.5rem rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 480px) {
+  .about__media-smaller-text-price {
+    font-size: 30px;
+  }
+
+  .about__media-smaller-text-20px {
+    font-size: 20px;
+  }
+
+  .about__media-smaller-text-button {
+    font-size: 12px;
+  }
+}

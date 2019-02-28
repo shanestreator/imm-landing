@@ -44,15 +44,16 @@ class AdminLogin extends Component {
     // console.log('THIS.PROPS: ', this.props)
     const { errors } = this.state
     return (
-      <div id="container" className="container bg-light p-5 vh-100">
-        <div className="row justify-content-center py-5 bg-dark text-white">
-          <div className="card bg-dark text-white border">
-            <div className="card-header px-5 py-4 border border-left-0 border-right-0 border-top-0">
-              <h1 className="text-center">Login</h1>
-            </div>
-            <div className="card-body m-5 px-5">
-              <form noValidate>
-                <div className="row">
+      <div
+        id="container"
+        className="container about__container-shadow bg-light p-5 vh-100"
+      >
+        <div className="container-md px-md-4">
+          <h1 className="display-4 text-center">Login</h1>
+          <div className="container admin__input-width">
+            <form noValidate>
+              <div className="row d-flex">
+                <div className="col-12 py-2 admin__input-width">
                   <TextFieldGroup
                     onChange={this.onChange}
                     label="Email"
@@ -65,30 +66,30 @@ class AdminLogin extends Component {
                     error={errors.email}
                   />
                 </div>
-                <div className="row">
+                <div className="col-12 py-2 admin__input-width">
                   <TextFieldGroup
                     onChange={this.onChange}
                     label="Password"
                     autoComplete="password"
                     value={this.state.password}
                     name="password"
-                    type="text"
+                    type="password"
                     className="form-control"
                     placeholder="Password"
                     error={errors.password}
                   />
                 </div>
-                <div className="row justify-content-end pt-4">
+                <div className="col-12 d-flex justify-content-end pt-4">
                   <button
                     onClick={this.onSubmit}
-                    className="btn btn-dark border"
+                    className="btn btn-secondary"
                     type="Submit"
                   >
                     Login
                   </button>
                 </div>
-              </form>
-            </div>
+              </div>
+            </form>
           </div>
         </div>
       </div>
