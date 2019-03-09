@@ -50,7 +50,6 @@ class AdminEditProduct extends Component {
   }
 
   render() {
-    console.log('ADMIN_EDIT_STATE: ', this.state)
     const product = this.props.product.currentProduct
 
     return (

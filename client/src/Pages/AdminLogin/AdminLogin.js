@@ -46,7 +46,7 @@ class AdminLogin extends Component {
     return (
       <div
         id="container"
-        className="container about__container-shadow bg-light p-5 vh-100"
+        className="container about__container-shadow bg-light p-5 min-vh-100"
       >
         <div className="container-md px-md-4">
           <h1 className="display-4 text-center">Login</h1>

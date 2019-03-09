@@ -26,6 +26,7 @@ router.post('/', async (req, res, next) => {
     const orderedProducts = await Product.find({
       _id: { $in: productsInCartIds }
     })
+
     if (productsInCart.length !== orderedProducts.length) {
       throw '##!!##!!##!!##!!## ERROR ##!!##!!##!!##!!##'
     }
@@ -38,7 +39,17 @@ router.post('/', async (req, res, next) => {
       cartTotal += quantity * price * manualsPerPack
     }
 
+    // Check if customer's billing address in Illinois
+    // Add 10% tax if this is true
+    if (req.body.billingAndShipping.billing_address_state === 'IL') {
+      cartTotal = cartTotal + Math.round(cartTotal / 10)
+    }
+
     console.log('>>>-----> CART_TOTAL <-----<<<: ', cartTotal)
+    console.log(
+      '>>>-----> STATE <-----<<<: ',
+      req.body.billingAndShipping.billing_address_state
+    )
     const billing = {
       name: req.body.billingAndShipping.billing_name,
       country: req.body.billingAndShipping.billing_address_country,

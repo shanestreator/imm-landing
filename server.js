@@ -29,8 +29,8 @@ mongoose
 // Use Routes
 const admin = require('./routes/admin')
 const contact = require('./routes/api/contact')
+const checkout = require('./routes/api/checkout')
 const product = require('./routes/api/product')
-const payment = require('./routes/api/payment')
 const stripe = require('./routes/api/order/stripe')
 const paypal = require('./routes/api/order/paypal')
 
@@ -42,8 +42,8 @@ require('./config/passport')(passport)
 
 app.use('/admin', admin)
 app.use('/api/contact', contact)
+app.use('/api/checkout', checkout)
 app.use('/api/products', product)
-app.use('/api/payment', payment)
 app.use('/api/order/stripe', stripe)
 app.use('/api/order/paypal', paypal)
 

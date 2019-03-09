@@ -35,7 +35,7 @@ class ContactUs extends Component {
       description
     }
 
-    console.log('emailData: ', emailData)
+    // console.log('emailData: ', emailData)
 
     this.props.sendCustomerEmail(emailData)
 
@@ -56,7 +56,7 @@ class ContactUs extends Component {
     return (
       <div
         id="container"
-        className="container home__container-shadow mvh-100 bg-light py-3 py-md-5 px-md-5"
+        className="container home__container-shadow min-vh-100 bg-light py-3 py-md-5 px-md-5"
       >
         <h1 className="display-4 text-center">Contact Us</h1>
         <div class="card shadow my-5">

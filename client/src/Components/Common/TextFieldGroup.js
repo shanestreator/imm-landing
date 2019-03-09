@@ -32,6 +32,11 @@ const TextFieldGroup = ({
     </div>
   ) : (
     <React.Fragment>
+      {label && (
+        <label htmlFor={label} className="mt-2 mb-0">
+          {label}
+        </label>
+      )}
       <input
         type={type}
         className={classnames(className, {

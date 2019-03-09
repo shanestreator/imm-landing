@@ -24,18 +24,10 @@
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 
     <title>Impact Motivation Manual</title>
-    <!-- Load PayPal's checkout.js Library. -->
-    <script
-      src="https://www.paypalobjects.com/api/checkout.js"
-      data-version-4
-      log-level="warn"
-    ></script>
 
-    <!-- Load the client component. -->
-    <script src="https://js.braintreegateway.com/web/3.42.0/js/client.min.js"></script>
-
-    <!-- Load the PayPal Checkout component. -->
-    <script src="https://js.braintreegateway.com/web/3.42.0/js/paypal-checkout.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <script src="https://www.paypal.com/sdk/js?client-id=AbOnf4RmtcLWbIxu3BdfTilVSGI9-lGl2Z3dwc91fMvy0RulFBeSTV2sXSsZCDa3Alny5PmHIkIqQ4c8"></script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -62,6 +54,14 @@
 
     <script>
       $('#year').text(new Date().getFullYear())
+    </script>
+    <script>
+      // setInterval(() => {
+      //   if ($('#jsx-iframe-e24a8f1d1a')) {
+      //     console.log($('#jsx-iframe-e24a8f1d1a').windowContent)
+      //     clearInterval()
+      //   }
+      // }, 250)
     </script>
   </body>
 </html>

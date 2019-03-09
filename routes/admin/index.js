@@ -8,6 +8,11 @@ const validateLoginInput = require('../validation/login')
 
 const Admin = require('../../models/Admin')
 
+const order = require('./order')
+
+router.use('/orders', order)
+// router.use('/questions', question)
+
 // @route   POST admin/register
 // @desc    Sign up a new admin user (uncomment and use postman)
 // @access  Public

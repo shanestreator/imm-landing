@@ -38,7 +38,7 @@ class CartItem extends Component {
       <React.Fragment>
         <li className="list-group-item container">
           <div className="row">
-            <div className="col-7 d-flex align-items-center">
+            <div className="col-9 d-flex align-items-center">
               <h5 className="my-0">
                 {title}
                 <div className="row mt-2">
@@ -53,53 +53,11 @@ class CartItem extends Component {
                   <div className="col-12" style={{ fontSize: '10px' }}>
                     <span className="text-muted">
                       (${itemModalAddZeros(price)} x{' '}
-                      {commaNumber(manualsPerPack)} x {quantity})
-                    </span>
-                  </div>
-                  <div className="col-12 mt-2" style={{ fontSize: '14px' }}>
-                    Manuals:{' '}
-                    <span className="text-muted">
-                      {commaNumber(totalManualsForItem)}
+                      {commaNumber(manualsPerPack)} manuals)
                     </span>
                   </div>
                 </div>
               </h5>
-            </div>
-
-            <div className="col-2 d-flex justify-content-center align-items-center">
-              <div className="row">
-                <div className="col-sm-12 col-md-6 d-flex align-items-center justify-content-center justify-content-md-end px-0">
-                  <div className="mr-md-2 mb-sm-1">
-                    <h6
-                      className="mb-0"
-                      htmlFor="quantity"
-                      style={{ fontSize: '12px' }}
-                    >
-                      Qty:
-                    </h6>
-                  </div>
-                </div>
-                <div className="col-sm-12 col-md-6 d-flex justify-content-center align-items-center px-0">
-                  <select
-                    className="form-control-sm"
-                    onChange={this.onChange}
-                    name="quantity"
-                    defaultValue={quantity}
-                    id="quantity"
-                  >
-                    <option value={1}>1</option>
-                    <option value={2}>2</option>
-                    <option value={3}>3</option>
-                    <option value={4}>4</option>
-                    <option value={5}>5</option>
-                    <option value={6}>6</option>
-                    <option value={7}>7</option>
-                    <option value={8}>8</option>
-                    <option value={9}>9</option>
-                    <option value={10}>10</option>
-                  </select>
-                </div>
-              </div>
             </div>
 
             <div className="col-3 d-flex justify-content-end align-items-center">

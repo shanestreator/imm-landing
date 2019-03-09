@@ -63,10 +63,10 @@ class StoreProductItem extends React.Component {
     // Find database product that matches by id
     const itemData = allProducts.find(prod => prod._id === this.props.id)
 
-    itemData.quantity = quantity
+    itemData.quantity = 1
     itemData.total = calcForItemTotal(
       itemData.price,
-      quantity,
+      1,
       itemData.manualsPerPack
     )
 
@@ -75,7 +75,6 @@ class StoreProductItem extends React.Component {
 
   render() {
     const { title, name, imageUrl, price, manualsPerPack } = this.props.prodInfo
-    console.log('THIS.STATE: ', title, this.state.quantity)
 
     return (
       <React.Fragment>
@@ -83,66 +82,39 @@ class StoreProductItem extends React.Component {
           <div className="card h-100 store__card-hover mb-4">
             <img src={imageUrl} className="card-img-top" alt="..." />
 
-            <div className="card-body px-2 px-md-4">
-              <h1 className="card-title about__media-smaller-text-price pricing-card-title">
-                ${itemModalAddZeros(price)}{' '}
-                <small className="text-muted">
-                  /<span className="about__media-smaller-text-20px"> ea</span>
-                </small>
+            <div className="card-body px-2 px-md-1">
+              <h1 className="card-title pricing-card-title">
+                <h3 className="mb-0 about__media-title">{title}</h3>
               </h1>
+
               <form onSubmit={this.onSubmit}>
-                <ul className="list-unstyled text-muted mt-3 mb-4">
-                  <li className="font-italic">
-                    <h3 className="mb-0 about__media-smaller-text-20px">
-                      {title}
-                    </h3>
+                <ul className="list-unstyled mt-3 mb-4">
+                  <li
+                    className="about__media-price-total"
+                    style={{ color: '#be141b', opacity: '.75' }}
+                  >
+                    ${commaNumber(itemModalAddZeros(price * manualsPerPack))}
                   </li>
 
                   <li>
-                    <div className="col d-flex justify-content-center align-items-center px-0 mt-5">
-                      <div className="row">
-                        <div className="col-sm-12 col-md-4 d-flex align-items-center justify-content-center justify-content-md-end pl-0 pr-1">
-                          <div className="mb-sm-1">
-                            <h6
-                              className="mb-0"
-                              htmlFor="quantity"
-                              style={{ fontSize: '16px' }}
-                            >
-                              Qty:
-                            </h6>
-                          </div>
-                        </div>
-                        <div className="col-sm-12 col-md-8 d-flex justify-content-center align-items-center px-0">
-                          <select
-                            disabled={this.props.alreadyInCart}
-                            className="form-control-sm store__curser-pointer"
-                            onChange={this.onChange}
-                            name="quantity"
-                            defaultValue={this.state.quantity}
-                          >
-                            <option value="">Select</option>
-                            <option value={1}>1</option>
-                            <option value={2}>2</option>
-                            <option value={3}>3</option>
-                            <option value={4}>4</option>
-                            <option value={5}>5</option>
-                            <option value={6}>6</option>
-                            <option value={7}>7</option>
-                            <option value={8}>8</option>
-                            <option value={9}>9</option>
-                            <option value={10}>10</option>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
+                    <p className="card-title about__media-price-each pricing-card-title font-italic">
+                      (${itemModalAddZeros(price)}
+                      <small className="text-muted">
+                        /
+                        <span className="about__media-smaller-text-20px">
+                          ea
+                        </span>
+                      </small>
+                      )
+                    </p>
                   </li>
                 </ul>
 
                 <div className="p-1 p-md-4">
                   <button
                     type="submit"
-                    className="btn btn-primary about__media-smaller-text-button"
-                    disabled={!this.state.quantity}
+                    className="btn store__add-button about__media-smaller-text-button"
+                    disabled={this.props.alreadyInCart}
                     data-toggle="modal"
                     data-target={`#${name}Modal`}
                   >
@@ -205,7 +177,7 @@ class StoreProductItem extends React.Component {
                     </button>
                     <button
                       type="button"
-                      className="btn btn-primary"
+                      className="btn store__add-button"
                       data-dismiss="modal"
                       onClick={this.onClickGoToCart}
                     >
@@ -251,7 +223,7 @@ class StoreProductItem extends React.Component {
                     </button>
                     <button
                       type="button"
-                      className="btn btn-primary"
+                      className="btn store__add-button"
                       data-dismiss="modal"
                       onClick={this.onClickGoToCart}
                     >

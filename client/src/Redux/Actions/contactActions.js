@@ -13,7 +13,7 @@ export const postEmail = data => ({
 export const sendCustomerEmail = (emailData, history) => async dispatch => {
   try {
     const { data } = await axios.post('/api/contact', emailData)
-    console.log('DATA: ', data)
+    // console.log('DATA: ', data)
     dispatch(postEmail(data))
   } catch (error) {
     dispatch({

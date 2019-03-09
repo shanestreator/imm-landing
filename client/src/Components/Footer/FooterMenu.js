@@ -47,7 +47,7 @@ class FooterMenu extends Component {
           <img
             className="image-fluid"
             style={{ width: '140px', height: '70px' }}
-            src="/images/stripe-secure.png"
+            src="/images/secure-checkout.png"
             alt="stripe"
           />
         </div>

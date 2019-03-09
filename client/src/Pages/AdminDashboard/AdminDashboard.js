@@ -1,9 +1,16 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
+import { getAllOrders } from '../../Redux/Actions/Admin/orderActions'
+
 class AdminDashboard extends Component {
+  componentDidMount() {
+    this.props.getAllOrders()
+  }
+
   render() {
-    const { user, isAuthenticated } = this.props.auth
+    // const { orders, questions } = this.props.admin
+
     return (
       <div
         id="container"
@@ -27,6 +34,9 @@ class AdminDashboard extends Component {
   }
 }
 
-const mapState = ({ auth }) => ({ auth })
+const mapState = ({ admin }) => ({ admin })
 
-export default connect(mapState)(AdminDashboard)
+export default connect(
+  mapState,
+  { getAllOrders }
+)(AdminDashboard)

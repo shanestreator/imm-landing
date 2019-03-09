@@ -50,8 +50,9 @@ const onToken = (amount, description) => async (token, billingAndShipping) => {
   }
 }
 
-const Checkout = ({ name, description, amount }) => (
+const Checkout = ({ name, description, amount, disabled }) => (
   <StripeCheckout
+    disabled={disabled}
     shippingAddress
     billingAddress
     name={name}

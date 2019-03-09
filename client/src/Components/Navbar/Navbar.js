@@ -3,6 +3,10 @@ import { NavLink, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import classNames from 'classnames'
 
+import { Badge, Icon } from 'antd'
+
+import 'antd/dist/antd.css'
+
 import { loginUser, logoutUser } from '../../Redux/Actions/authActions'
 
 class Navbar extends Component {
@@ -129,23 +133,7 @@ class Navbar extends Component {
                         Home
                       </NavLink>
                     </li>
-                    <li className="nav-item">
-                      <NavLink
-                        className="nav-link nav-text navbar__navlink-hover-style"
-                        active={
-                          window.location.pathname === '/about'
-                            ? 'selected'
-                            : ''
-                        }
-                        activeStyle={{
-                          fontWeight: 'bold'
-                        }}
-                        exact
-                        to="/about"
-                      >
-                        About
-                      </NavLink>
-                    </li>
+
                     <li className="nav-item">
                       <NavLink
                         className="nav-link nav-text navbar__navlink-hover-style"
@@ -163,9 +151,11 @@ class Navbar extends Component {
                         Store
                       </NavLink>
                     </li>
+
                     <li className="nav-item">
                       <NavLink
-                        className="nav-link nav-text navbar__navlink-hover-style pr-0 mr-0"
+                        style={{ paddingTop: '5px' }}
+                        className="nav-link nav-text navbar__navlink-hover-style"
                         active={
                           window.location.pathname === '/cart' ? 'selected' : ''
                         }
@@ -175,31 +165,12 @@ class Navbar extends Component {
                         exact
                         to="/cart"
                       >
-                        Cart
-                        <span
-                          className={classNames({
-                            badge: true,
-                            'badge-pill': true,
-                            'badge-light': productsInCart.length < 1,
-                            'border-danger':
-                              productsInCart.length > 0 &&
-                              window.location.pathname !== '/cart',
-                            'text-danger':
-                              productsInCart.length > 0 &&
-                              window.location.pathname !== '/cart',
-                            border: true,
-                            'text-black-50':
-                              window.location.pathname !== '/cart' &&
-                              productsInCart.length < 1,
-                            'text-body':
-                              window.location.pathname === '/cart' &&
-                              productsInCart.length < 1,
-                            'border-dark': window.location.pathname === '/cart',
-                            'ml-1': true
-                          })}
-                        >
-                          {productsInCart.length}
-                        </span>
+                        <Badge count={productsInCart.length}>
+                          <Icon
+                            style={{ fontSize: '20px' }}
+                            type="shopping-cart"
+                          />
+                        </Badge>
                       </NavLink>
                     </li>
                   </React.Fragment>

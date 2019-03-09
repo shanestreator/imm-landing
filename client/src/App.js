@@ -10,10 +10,11 @@ import setAuthToken from './Utils/setAuthToken'
 
 // Pages
 import Home from './Pages/Home/Home'
-import About from './Pages/About/About'
 import Store from './Pages/Store/Store'
 import Cart from './Pages/Cart/Cart'
+import Checkout from './Pages/Checkout/Checkout'
 import ContactUs from './Pages/ContactUs/ContactUs'
+import NotFound from './Pages/404/404'
 // Hidden /admin/login
 import AdminLogin from './Pages/AdminLogin/AdminLogin'
 import AdminDashboard from './Pages/AdminDashboard/AdminDashboard'
@@ -62,24 +63,27 @@ class App extends Component {
               <Spacer />
               <Switch>
                 <Route exact path="/" component={Home} />
-                <Route exact path="/about" component={About} />
                 <Route exact path="/store" component={Store} />
                 <Route exact path="/cart" component={Cart} />
                 <Route exact path="/contact" component={ContactUs} />
+                <Route exact path="/checkout" component={Checkout} />
                 <Route exact path="/admin/login" component={AdminLogin} />
-              </Switch>
-              <Switch>
+
                 <PrivateRoute
                   exact
                   path="/admin/dashboard"
                   component={AdminDashboard}
                 />
+
                 <PrivateRoute
                   exact
                   path="/admin/products"
                   component={AdminProducts}
                 />
+
+                <Route path="*" component={NotFound} />
               </Switch>
+
               <Footer />
             </div>
           </ScrollToTop>

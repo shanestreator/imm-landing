@@ -10,16 +10,42 @@
   box-shadow: 0 0 0.5rem 0.5rem rgba(0, 0, 0, 0.15);
 }
 
+.store__add-button {
+  color: #f8f9fa;
+  background-color: #be141b;
+}
+
+.store__add-button:hover {
+  color: #f8f9fa;
+  background-color: #961216;
+  border: 1px solid #be141b;
+}
+
+.about__media-title {
+  font-size: 30px;
+}
+
+.about__media-price-total {
+  font-size: 27.5px;
+}
+
+.about__media-price-each {
+  font-size: 12px;
+}
+
 @media (max-width: 480px) {
-  .about__media-smaller-text-price {
+  .about__media-title {
     font-size: 30px;
   }
 
-  .about__media-smaller-text-20px {
-    font-size: 20px;
+  .about__media-price-total {
+    font-size: 25px;
   }
 
-  .about__media-smaller-text-button {
+  .about__media-price-each {
     font-size: 12px;
   }
+}
+
+@media (min-width: 480px) {
 }

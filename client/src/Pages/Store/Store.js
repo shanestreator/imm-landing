@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import { addItemToCart } from '../../Redux/Actions/cartActions'
@@ -22,16 +23,21 @@ class Store extends Component {
         className="container store__container-shadow text-center py-5 pb-3 bg-light d-flex justify-content-center"
       >
         <div className="container-md px-md-4">
-          <div className="row d-flex justify-content-center">
-            <div className="pricing-header px-5 text-center">
-              <h1 className="display-4 mb-0">Pricing</h1>
-              {/*
-            <p className="lead">
-              Quickly build an effective pricing table for your potential
-              customers with this Bootstrap example. It’s built with default
-              Bootstrap components and utilities with little customization.
-            </p>
-            */}
+          <div className="row d-flex justify-content-center align-items-center">
+            <div className="row w-100 mt-5">
+              <div className="col-3" />
+
+              <div className="col-6 d-flex justify-content-center align-items-center">
+                <h1 className="display-4 m-0">Pricing</h1>
+              </div>
+              <div className="col-3 d-flex justify-content-center align-items-end">
+                <img
+                  src="/images/free-shipping-car.png"
+                  className="img-fluid px-md-4 px-lg-5"
+                  alt="free shipping"
+                  // style={{ width: 'auto', height: '200px' }}
+                />
+              </div>
             </div>
 
             <div className="container px-2 px-md-5 pt-3">
@@ -42,7 +48,7 @@ class Store extends Component {
                       const alreadyInCart = !!this.props.cart.productsInCart.find(
                         p => p._id === product._id
                       )
-                      console.log('alreadyInCart: ', alreadyInCart)
+                      // console.log('alreadyInCart: ', alreadyInCart)
                       return (
                         <StoreProductItem
                           key={product._id}
@@ -62,7 +68,22 @@ class Store extends Component {
                 </div>
               </div>
             </div>
+
+            <div className="pricing-header px-5 mt-5 text-center">
+              <h3>
+                For custom size orders{' '}
+                <Link
+                  className="base__hover-link-underline"
+                  to="/contact"
+                  style={{ color: '#be141b' }}
+                >
+                  Click Here
+                </Link>{' '}
+                to contact us
+              </h3>
+            </div>
           </div>
+          <div className="py-5" />
         </div>
       </div>
     )

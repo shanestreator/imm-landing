@@ -29,54 +29,11 @@ class StoreCartItem extends Component {
         <div className="group-item container">
           <div className="row">
             <div className="col-8 d-flex text-left pl-0 align-items-center">
-              <h5 className="my-0">
-                {title}
-
-                <div className="row mt-2">
-                  <div className="col-12">
-                    <span className="text-muted" style={{ fontSize: '18px' }}>
-                      ${commaNumber(total)}.00
-                    </span>
-                  </div>
-                  <div className="col-12" style={{ fontSize: '10px' }}>
-                    <span className="text-muted">
-                      (${itemModalAddZeros(price)} x{' '}
-                      {commaNumber(manualsPerPack)} x {quantity})
-                    </span>
-                  </div>
-                  <div className="col-12 mt-3" style={{ fontSize: '14px' }}>
-                    Manuals:{' '}
-                    <span className="text-muted">
-                      {commaNumber(totalManualsForItem)}
-                    </span>
-                  </div>
-                </div>
-              </h5>
+              <h5 className="my-0">{title}</h5>
             </div>
-            {/*
-            <div className="d-none d-md-block col-3 d-flex justify-content-end align-items-center">
-              <div className="row">
-                <div className="col-12">
-                  <span className="text-muted">
-                    ${commaNumber(itemModalAddZeros(total))}
-                  </span>
-                </div>
-                <div className="col-12" style={{ fontSize: '12px' }}>
-                  <span className="text-muted">
-                    (${storeCardAddOneOrTwoZeros(price)} x{' '}
-                    {commaNumber(manualsPerPack)} x {quantity})
-                  </span>
-                </div>
-              </div>
-            </div>
-            */}
             <div className="col-4 d-flex justify-content-end align-items-center">
-              <span
-                style={{ fontSize: '16px' }}
-                className="mb-0"
-                htmlFor="quantity"
-              >
-                Qty: {quantity}
+              <span className="text-muted" style={{ fontSize: '18px' }}>
+                ${commaNumber(total)}.00
               </span>
             </div>
           </div>
