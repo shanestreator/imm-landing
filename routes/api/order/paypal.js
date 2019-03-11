@@ -10,7 +10,6 @@ const checkoutNodeJssdk = require('@paypal/checkout-server-sdk')
 
 const payPalClient = require('./util/payPalClient')
 
-// const PAYPAL_SECRET_KEY = require('../../../config/paypal')
 // paypal.configure(PAYPAL_SECRET_KEY)
 
 // Add new order to database

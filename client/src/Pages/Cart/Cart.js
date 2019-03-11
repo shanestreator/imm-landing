@@ -41,7 +41,7 @@ class Cart extends Component {
                     const totalManualsForItem = totalManualsForItemCalc(product)
                     return (
                       <CartItem
-                        key={product.uniqueId}
+                        key={product._id}
                         id={product._id}
                         product={product}
                         totalManualsForItem={totalManualsForItem}

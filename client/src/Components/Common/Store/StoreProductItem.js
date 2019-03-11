@@ -40,14 +40,6 @@ class StoreProductItem extends React.Component {
     this.props.history.push('/cart')
   }
 
-  // onModalToggle = () => {
-  //   if (this.state.quantity === 0) {
-  //     this.setState({ modalToggle: false })
-  //   } else {
-  //     this.setState({ modalToggle: true })
-  //   }
-  // }
-
   onChange = evt => {
     const { name, value } = evt.target
 
@@ -57,7 +49,6 @@ class StoreProductItem extends React.Component {
   onSubmit = evt => {
     evt.preventDefault()
     const { allProducts } = this.props.product
-    const { quantity } = this.state
 
     this.setState({ quantity: '' })
     // Find database product that matches by id
@@ -83,9 +74,9 @@ class StoreProductItem extends React.Component {
             <img src={imageUrl} className="card-img-top" alt="..." />
 
             <div className="card-body px-2 px-md-1">
-              <h1 className="card-title pricing-card-title">
+              <div className="card-title pricing-card-title mt-2 mb-3">
                 <h3 className="mb-0 about__media-title">{title}</h3>
-              </h1>
+              </div>
 
               <form onSubmit={this.onSubmit}>
                 <ul className="list-unstyled mt-3 mb-4">
@@ -123,8 +114,16 @@ class StoreProductItem extends React.Component {
                 </div>
 
                 {this.props.alreadyInCart && (
-                  <Link to="/cart" style={{ fontSize: '12px', color: 'red' }}>
-                    Item in cart
+                  <Link
+                    to="/cart"
+                    style={{
+                      fontSize: '12px',
+                      fontWeight: 'bold',
+                      color: 'red'
+                    }}
+                    className="store__curser-pointer"
+                  >
+                    Item in cart <i className="fas fa-angle-right" />
                   </Link>
                 )}
               </form>

@@ -91,7 +91,7 @@ class Navbar extends Component {
                     <li className="nav-item d-flex align-items-end">
                       <div className="dropdown py-2">
                         <button
-                          class="bg-light text-muted border-0 px-0 pt-0 pb-1 ml-md-2 dropdown-toggle"
+                          className="bg-light text-muted border-0 px-0 pt-0 pb-1 ml-md-2 dropdown-toggle"
                           type="button"
                           id="dropdownMenu2"
                           data-toggle="dropdown"
@@ -102,7 +102,7 @@ class Navbar extends Component {
                           {user.name}
                         </button>
                         <div
-                          class="dropdown-menu dropdown-menu-right"
+                          className="dropdown-menu dropdown-menu-right"
                           aria-labelledby="dropdownMenu2"
                         >
                           <button

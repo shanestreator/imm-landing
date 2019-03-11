@@ -53,14 +53,16 @@ export default class FooterTestimonials extends Component {
       <div className="container px-md-5">
         <div
           id="carouselExampleFade"
-          class="carousel slide carousel-fade"
+          className="carousel slide carousel-fade"
           data-ride="carousel"
         >
-          <div class="carousel-inner">
+          <div className="carousel-inner">
             {testimonials.map((testimonial, i) => {
               const { name, job, location, description } = testimonial
               return (
-                <div class={i === 0 ? 'carousel-item active' : 'carousel-item'}>
+                <div
+                  className={i === 0 ? 'carousel-item active' : 'carousel-item'}
+                >
                   <p
                     style={{ fontSize: '20px' }}
                     className="d-block w-100 text-muted  font-italic"
@@ -76,22 +78,22 @@ export default class FooterTestimonials extends Component {
             })}
           </div>
           <a
-            class="carousel-control-prev"
+            className="carousel-control-prev"
             href="#carouselExampleFade"
             role="button"
             data-slide="prev"
           >
-            <span class="carousel-control-prev-icon" aria-hidden="true" />
-            <span class="sr-only">Previous</span>
+            <span className="carousel-control-prev-icon" aria-hidden="true" />
+            <span className="sr-only">Previous</span>
           </a>
           <a
-            class="carousel-control-next"
+            className="carousel-control-next"
             href="#carouselExampleFade"
             role="button"
             data-slide="next"
           >
-            <span class="carousel-control-next-icon" aria-hidden="true" />
-            <span class="sr-only">Next</span>
+            <span className="carousel-control-next-icon" aria-hidden="true" />
+            <span className="sr-only">Next</span>
           </a>
         </div>
       </div>

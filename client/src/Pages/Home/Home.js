@@ -86,12 +86,12 @@ export default class Home extends Component {
             <div className="row d-flex px-4 mt-2">
               {/* INTEGRITY, HONESTY, MENTAL TOUGHNESS, PERSISTENCE, DISCIPLINE, COURAGE */}
               {/* TENACITY, DETERMINATION, RELENTLESS DRIVE, LEADERSHIP, ACCOUNTABILITY, INDOMITABLE SPIRIT */}
-              <ul class="list-inline d-flex align-items-center">
+              <ul className="list-inline d-flex align-items-center">
                 <div className="row px-2">
                   <div className="col-sm-12 col-md-6 pl-0 pr-0">
                     <div className="row d-flex justify-content-start">
                       <div className="col-sm-12 col-md-12 col-lg-4 ">
-                        <li class="list-inline-item">
+                        <li className="list-inline-item">
                           <table className="table table-borderless home__action-words-table pl-0 mb-0">
                             <tbody className="container">
                               <tr>
@@ -145,7 +145,7 @@ export default class Home extends Component {
                       </div>
                       <div className="col" />
                       <div className="col-sm-12 col-md-12 col-lg-7">
-                        <li class="list-inline-item">
+                        <li className="list-inline-item">
                           <table className="table table-borderless home__action-words-table pl-0">
                             <tbody className="container">
                               <tr>
@@ -203,7 +203,7 @@ export default class Home extends Component {
                   <div className="col-sm-12 col-md-6 pl-md-3 pr-md-0 home__list-table-single-col">
                     <div className="row">
                       <div className="col-sm-12 col-md-12 col-lg-4">
-                        <li class="list-inline-item">
+                        <li className="list-inline-item">
                           <table className="table table-borderless home__action-words-table pl-0 mb-0">
                             <tbody className="container">
                               <tr>
@@ -257,7 +257,7 @@ export default class Home extends Component {
                       </div>
                       <div className="col" />
                       <div className="col-sm-12 col-md-12 col-lg-7">
-                        <li class="list-inline-item">
+                        <li className="list-inline-item">
                           <table className="table table-borderless home__action-words-table pl-0">
                             <tbody className="container">
                               <tr>
@@ -929,6 +929,12 @@ export default class Home extends Component {
                         >
                           <div>
                             <img
+                              src="https://images.unsplash.com/photo-1518600570419-81324064e9ae?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
+                              alt="..."
+                            />
+                          </div>
+                          <div>
+                            <img
                               src="https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1287&q=80"
                               alt="..."
                               className="img-fluid h-100"
@@ -958,6 +964,12 @@ export default class Home extends Component {
                           showThumbs={false}
                           centerSlidePercentage={34}
                         >
+                          <div>
+                            <img
+                              src="https://images.unsplash.com/photo-1518600570419-81324064e9ae?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
+                              alt="..."
+                            />
+                          </div>
                           <div>
                             <img
                               src="https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1287&q=80"

@@ -54,17 +54,17 @@ class ContactUs extends Component {
         className="container home__container-shadow min-vh-100 bg-light py-3 py-md-5 px-md-5"
       >
         <h1 className="display-4 text-center">Contact Us</h1>
-        <div class="card shadow my-5">
+        <div className="card shadow my-5">
           <div className="card-body p-md-5">
             <h3 className="text-center font-weight-normal mb-4">
               Regarding pricing, quantities, available languages, etc.
             </h3>
             <form onSubmit={this.onSubmit}>
-              <div class="form-group">
-                <div class="input-group input-group-lg">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text bg-secondary text-white">
-                      <i class="fas fa-user" />
+              <div className="form-group">
+                <div className="input-group input-group-lg">
+                  <div className="input-group-prepend">
+                    <span className="input-group-text bg-secondary text-white">
+                      <i className="fas fa-user" />
                     </span>
                   </div>
 
@@ -80,11 +80,11 @@ class ContactUs extends Component {
                 </div>
               </div>
 
-              <div class="form-group">
-                <div class="input-group input-group-lg">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text bg-secondary text-white">
-                      <i class="fas fa-envelope" />
+              <div className="form-group">
+                <div className="input-group input-group-lg">
+                  <div className="input-group-prepend">
+                    <span className="input-group-text bg-secondary text-white">
+                      <i className="fas fa-envelope" />
                     </span>
                   </div>
                   <TextFieldGroup
@@ -99,11 +99,11 @@ class ContactUs extends Component {
                 </div>
               </div>
 
-              <div class="form-group">
-                <div class="input-group input-group-lg">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text bg-secondary text-white">
-                      <i class="fas fa-pencil-alt" />
+              <div className="form-group">
+                <div className="input-group input-group-lg">
+                  <div className="input-group-prepend">
+                    <span className="input-group-text bg-secondary text-white">
+                      <i className="fas fa-pencil-alt" />
                     </span>
                   </div>
                   <TextAreaFieldGroup
@@ -120,12 +120,12 @@ class ContactUs extends Component {
               <input
                 type="submit"
                 value="Submit"
-                class="btn btn-secondary btn-block btn-lg"
+                className="btn btn-secondary btn-block btn-lg"
               />
               {contact.success && (
                 <div className="d-flex justify-content-center mt-4">
                   <small className="text-success text-center">
-                    <i class="fas fa-check" /> {contact.message}
+                    <i className="fas fa-check" /> {contact.message}
                   </small>
                 </div>
               )}
