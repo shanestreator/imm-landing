@@ -2,4 +2,3 @@
 package-lock.json
 /config
 /client/src/config
-/routes/api/order/util
