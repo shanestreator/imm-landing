@@ -1,11 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-
 import { addItemToCart } from '../../Redux/Actions/cartActions'
 import { getAllProducts } from '../../Redux/Actions/productActions'
-
-// Components
 import StoreProductItem from '../../Components/Common/Store/StoreProductItem'
 import Loading from '../../Components/Common/Loading/Loading'
 
@@ -35,7 +32,6 @@ class Store extends Component {
                   src="/images/free-shipping-car.png"
                   className="img-fluid px-md-4 px-lg-5"
                   alt="free shipping"
-                  // style={{ width: 'auto', height: '200px' }}
                 />
               </div>
             </div>
@@ -48,7 +44,6 @@ class Store extends Component {
                       const alreadyInCart = !!this.props.cart.productsInCart.find(
                         p => p._id === product._id
                       )
-                      // console.log('alreadyInCart: ', alreadyInCart)
                       return (
                         <StoreProductItem
                           key={product._id}

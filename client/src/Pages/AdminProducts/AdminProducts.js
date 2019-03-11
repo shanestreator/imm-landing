@@ -1,16 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-
 import {
   addProduct,
   getAllProducts,
   getOneProduct,
   deleteProduct
 } from '../../Redux/Actions/productActions'
-
 import titleToName from '../../Utils/titleToName'
-
-// Components
 import AdminProductItem from '../../Components/Common/Admin/AdminProductItem'
 import AdminTextFieldGroup from '../../Components/Common/Admin/AdminTextFieldGroup'
 import Loading from '../../Components/Common/Loading/Loading'
@@ -53,10 +49,8 @@ class AdminProducts extends Component {
   }
 
   render() {
-    // console.log('ADMIN_PRODUCTS_PROPS: ', this.props)
-    // console.log('ADMIN_PRODUCTS_STATE: ', this.state)
-    const { allProducts, currentProduct: product } = this.props.product
-    // console.log('CURRENT_PRODUCT: ', product)
+    const { allProducts } = this.props.product
+
     return (
       <div
         id="container"

@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-
 import { sendCustomerEmail } from '../../Redux/Actions/contactActions'
 import TextFieldGroup from '../../Components/Common/TextFieldGroup'
 import TextAreaFieldGroup from '../../Components/Common/TextAreaFieldGroup'
@@ -35,8 +34,6 @@ class ContactUs extends Component {
       description
     }
 
-    // console.log('emailData: ', emailData)
-
     this.props.sendCustomerEmail(emailData)
 
     this.setState({
@@ -50,8 +47,6 @@ class ContactUs extends Component {
   }
 
   render() {
-    // console.log('ERRORS: ', Object.keys(this.props.errors).length)
-    // console.log('THIS_STATE: ', this.state)
     const { errors, contact } = this.state
     return (
       <div

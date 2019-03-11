@@ -25,15 +25,12 @@ class CartItem extends Component {
     const { value: quantity } = evt.target
     const updateQuantity = { _id, quantity }
 
-    // console.log('onChange: ', updateQuantity)
     this.props.updateCartItem(updateQuantity)
   }
 
   render() {
-    // console.log('CART.PROPS: ', this.props)
-    // const { onChange } = this.props
-    const { title, manualsPerPack, quantity, price, total } = this.props.product
-    const { totalManualsForItem } = this.props
+    const { title, manualsPerPack, price, total } = this.props.product
+
     return (
       <React.Fragment>
         <li className="list-group-item container">

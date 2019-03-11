@@ -12,7 +12,6 @@ const validateSingleProductTotal = (
   let itemTotal = String(+dbPrice * +dbManualsPerPack * +cliQuantity) + '.00'
   itemTotal = itemTotal.split(',').join('')
 
-  // console.log('COMPARE: ', itemTotal === cliTotal)
   if (itemTotal === cliTotal) {
     return true
   } else {

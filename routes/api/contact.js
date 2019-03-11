@@ -1,10 +1,7 @@
 const router = require('express')()
 const nodemailer = require('nodemailer')
-
 const { GMAIL_INFO } = require('../../config/keys_dev')
-const contact_auto_response = require('../../templates/contact_auto_response')
 const validateContactInput = require('../validation/validateContact')
-
 const Contact = require('../../models/Contact')
 
 // Add customer email question to database
@@ -44,12 +41,12 @@ Question: ${description}` // plain text body
     let senderInfo = await transporter.sendMail(mailOptionsToSender)
     let selfInfo = await transporter.sendMail(mailOptionsToSelf)
 
-    console.log('>>>-----> Message sent: %s', senderInfo.messageId)
+    // console.log('>>>-----> Message sent: %s', senderInfo.messageId)
     // Preview only available when sending through an Ethereal account
-    console.log(
-      '>>>-----> Preview URL: %s',
-      nodemailer.getTestMessageUrl(senderInfo)
-    )
+    // console.log(
+    //   '>>>-----> Preview URL: %s',
+    //   nodemailer.getTestMessageUrl(senderInfo)
+    // )
 
     // const emailData = {
     //   name,
@@ -57,8 +54,6 @@ Question: ${description}` // plain text body
     //   description,
     //   date: Date()
     // }
-
-    // console.log('>>>-----> EMAIL_DATA: ', emailData)
 
     // Contact.create(emailData)
     res.status(200).json({

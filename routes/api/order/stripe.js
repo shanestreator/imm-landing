@@ -5,21 +5,19 @@ const Product = require('../../../models/Product')
 
 const stripe = require('../../../config/stripe')
 
-const postStripeCharge = res => (stripeErr, stripeRes) => {
-  if (stripeErr) {
-    // return res.status(500).send({ error: stripeErr })
-    throw stripeErr
-  } else {
-    console.log('SUCCESS: ', stripeRes)
-    return res.status(200).send({ success: stripeRes })
-  }
-}
+// const postStripeCharge = res => (stripeErr, stripeRes) => {
+//   if (stripeErr) {
+//     // return res.status(500).send({ error: stripeErr })
+//     throw stripeErr
+//   } else {
+//     return res.status(200).send({ success: stripeRes })
+//   }
+// }
 
 // Add new order to database
 // POST api/order/stripe
 router.post('/', async (req, res, next) => {
   try {
-    // console.log('ORDER.REQ.BODY: ', req.body)
     const { email, productsInCart, source, currency } = req.body
 
     const productsInCartIds = productsInCart.map(p => p._id)
@@ -45,11 +43,11 @@ router.post('/', async (req, res, next) => {
       cartTotal = cartTotal + Math.round(cartTotal / 10)
     }
 
-    console.log('>>>-----> CART_TOTAL <-----<<<: ', cartTotal)
-    console.log(
-      '>>>-----> STATE <-----<<<: ',
-      req.body.billingAndShipping.billing_address_state
-    )
+    // console.log('>>>-----> CART_TOTAL <-----<<<: ', cartTotal)
+    // console.log(
+    //   '>>>-----> STATE <-----<<<: ',
+    //   req.body.billingAndShipping.billing_address_state
+    // )
     const billing = {
       name: req.body.billingAndShipping.billing_name,
       country: req.body.billingAndShipping.billing_address_country,
@@ -86,11 +84,11 @@ router.post('/', async (req, res, next) => {
         throw stripeErr
       } else {
         const { id: orderId, created: order_created } = stripeRes
-        console.log(
-          '>>>-----> STRIPE_CHARGE <-----<<<: ',
-          orderId,
-          order_created
-        )
+        // console.log(
+        //   '>>>-----> STRIPE_CHARGE <-----<<<: ',
+        //   orderId,
+        //   order_created
+        // )
 
         const orderInfo = {
           orderId,
@@ -104,7 +102,7 @@ router.post('/', async (req, res, next) => {
         }
         const order = await Order.create(orderInfo)
 
-        console.log('>>>-----> STRIPE_ORDER <-----<<<: ', order)
+        // console.log('>>>-----> STRIPE_ORDER <-----<<<: ', order)
         res.status(200).send({ success: stripeRes })
         return
       }

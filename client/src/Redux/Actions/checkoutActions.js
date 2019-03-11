@@ -36,7 +36,6 @@ export const sendShippingAddress = shipTo => async dispatch => {
     // if shippingId exists update shipTo details
     if (shippingId) {
       const { data } = await axios.put(`/api/checkout/${shippingId}`, shipTo)
-      // console.log('DATA: ', data)
 
       dispatch(postShippingAddress({ id: data.shippingId, shipTo }))
 

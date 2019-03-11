@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-
 import { loginUser } from '../../Redux/Actions/authActions'
-
-// Components
 import TextFieldGroup from '../../Components/Common/TextFieldGroup'
 
 class AdminLogin extends Component {
@@ -41,7 +38,6 @@ class AdminLogin extends Component {
   }
 
   render() {
-    // console.log('THIS.PROPS: ', this.props)
     const { errors } = this.state
     return (
       <div

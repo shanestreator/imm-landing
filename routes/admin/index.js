@@ -18,7 +18,7 @@ router.use('/orders', order)
 // @access  Public
 // router.post('/register', async (req, res, next) => {
 //   try {
-//     console.log('REGISTER_REQ_BODY: ', req.body)
+
 //     const { name, email, password } = req.body
 
 //     const emailInUse = await Admin.findOne({ email })

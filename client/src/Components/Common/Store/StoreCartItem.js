@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-// import { packInfo, priceRight } from '../../../Utils/Utils'
 import { connect } from 'react-redux'
 import commaNumber from 'comma-number'
 import { getOneProduct } from '../../../Redux/Actions/productActions'
@@ -10,12 +9,11 @@ import {
 
 class StoreCartItem extends Component {
   render() {
-    // console.log('THIS_PROPS: ', this.props)
     const {
       title,
       manualsPerPack,
       total,
-      price,
+
       quantity
     } = this.props.cart.currentProduct
 
@@ -23,7 +21,7 @@ class StoreCartItem extends Component {
       manualsPerPack,
       quantity
     })
-    // console.log('CURRENT_PRODUCT: ', this.props.cart.currentProduct)
+
     return (
       <React.Fragment>
         <div className="group-item container">

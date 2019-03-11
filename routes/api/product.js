@@ -26,7 +26,6 @@ router.get(
       const prodId = req.params.prodId
 
       const product = await Product.findOne({ _id: prodId })
-      console.log('ONE_PRODUCT: ', product)
 
       res.status(200).json(product)
     } catch (error) {
@@ -110,7 +109,6 @@ router.delete(
   async (req, res, next) => {
     try {
       const prodId = req.params.prodId
-      console.log('DELETED_PRODUCT: ', prodId)
 
       const product = await Product.findByIdAndRemove(prodId)
 

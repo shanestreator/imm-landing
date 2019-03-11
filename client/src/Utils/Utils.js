@@ -1,7 +1,6 @@
 // Input - productsInCart: array
 // Output - number
 export const calcForCartTotal = productsInCart => {
-  // console.log('products in cart', productsInCart)
   return productsInCart.reduce((total, product) => (total += product.total), 0)
 }
 

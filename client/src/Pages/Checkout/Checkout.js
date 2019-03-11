@@ -10,14 +10,85 @@ import classNames from 'classnames'
 import FinalOrderSummaryTable from '../../Components/Common/Cart/FinalOrderSummaryTable'
 import commaNumber from 'comma-number'
 import UseStripeCheckout from '../../Components/Common/Checkout/UseStripeCheckout'
-import {
-  calcForCartTotal,
-  totalManualsForItemCalc,
-  totalManualsInCartCalc
-} from '../../Utils/Utils'
+import { calcForCartTotal, totalManualsInCartCalc } from '../../Utils/Utils'
 import { removeAllFromCart } from '../../Redux/Actions/cartActions'
 import store from '../../Redux/store'
 import axios from 'axios'
+
+const states = [
+  { value: 'AL', text: 'Alabama' },
+  { value: 'AK', text: 'Alaska' },
+  { value: 'AZ', text: 'Arizona' },
+  { value: 'AR', text: 'Arkansas' },
+  { value: 'CA', text: 'California' },
+  { value: 'CO', text: 'Colorado' },
+  { value: 'CT', text: 'Connecticut' },
+  { value: 'DE', text: 'Delaware' },
+  { value: 'DC', text: 'District Of Columbia' },
+  { value: 'FL', text: 'Florida' },
+  { value: 'GA', text: 'Georgia' },
+  { value: 'HI', text: 'Hawaii' },
+  { value: 'ID', text: 'Idaho' },
+  { value: 'IL', text: 'Illinois' },
+  { value: 'IN', text: 'Indiana' },
+  { value: 'IA', text: 'Iowa' },
+  { value: 'KS', text: 'Kansas' },
+  { value: 'KY', text: 'Kentucky' },
+  { value: 'LA', text: 'Louisiana' },
+  { value: 'ME', text: 'Maine' },
+  { value: 'MD', text: 'Maryland' },
+  { value: 'MA', text: 'Massachusetts' },
+  { value: 'MI', text: 'Michigan' },
+  { value: 'MN', text: 'Minnesota' },
+  { value: 'MS', text: 'Mississippi' },
+  { value: 'MO', text: 'Missouri' },
+  { value: 'MT', text: 'Montana' },
+  { value: 'NE', text: 'Nebraska' },
+  { value: 'NV', text: 'Nevada' },
+  { value: 'NH', text: 'New Hampshire' },
+  { value: 'NJ', text: 'New Jersey' },
+  { value: 'NM', text: 'New Mexico' },
+  { value: 'NY', text: 'New York' },
+  { value: 'NC', text: 'North Carolina' },
+  { value: 'ND', text: 'North Dakota' },
+  { value: 'OH', text: 'Ohio' },
+  { value: 'OK', text: 'Oklahoma' },
+  { value: 'OR', text: 'Oregon' },
+  { value: 'PA', text: 'Pennsylvania' },
+  { value: 'RI', text: 'Rhode Island' },
+  { value: 'SC', text: 'South Carolina' },
+  { value: 'SD', text: 'South Dakota' },
+  { value: 'TN', text: 'Tennessee' },
+  { value: 'TX', text: 'Texas' },
+  { value: 'UT', text: 'Utah' },
+  { value: 'VT', text: 'Vermont' },
+  { value: 'VA', text: 'Virginia' },
+  { value: 'WA', text: 'Washington' },
+  { value: 'WV', text: 'West Virginia' },
+  { value: 'WI', text: 'Wisconsin' },
+  { value: 'WY', text: 'Wyoming' }
+]
+
+const elementCatcher = () => {
+  const intervals = []
+
+  return {
+    cleanup: () => intervals.forEach(i => clearInterval(i.interval)),
+    set: (selector, interval = 50, cb) => {
+      intervals.push({
+        id: selector,
+        interval: setInterval(() => {
+          const el = window.$(selector)[0]
+          if (el) {
+            const intervalToClear = intervals.find(i => i.id === selector)
+            clearInterval(intervalToClear.interval)
+            cb(el)
+          }
+        }, interval)
+      })
+    }
+  }
+}
 
 class Checkout extends Component {
   state = {
@@ -32,19 +103,15 @@ class Checkout extends Component {
     email: '',
     emailConfirm: '',
     errors: {},
-    toggleButton: true
+    disableCheckoutButtons: true
   }
 
   componentWillReceiveProps(nextProps) {
-    // console.log('NEXT_PROPS: ', nextProps)
-    // console.log('STATE: ', this.state)
-
-    // paypal-button paypal-button-number-0
-    // paypal-button paypal-button-number-1
-    // paypal-button paypal-button-number-2
-
     if (Object.keys(nextProps.errors).length > 0) {
-      return this.setState({ errors: nextProps.errors, toggleButton: true })
+      return this.setState({
+        errors: nextProps.errors,
+        disableCheckoutButtons: true
+      })
     }
 
     nextProps.checkout.shipTo.errors = {}
@@ -52,25 +119,30 @@ class Checkout extends Component {
     if (nextProps.checkout.shipTo !== this.state) {
       this.setState(nextProps.checkout.shipTo)
       if (this.state.emailConfirm !== '') {
-        this.setState({ toggleButton: false })
+        this.setState({ disableCheckoutButtons: false })
       }
     }
   }
 
+  componentWillUnmount() {
+    this.elementCatcher.cleanup()
+  }
+
   componentDidMount() {
-    if (document.getElementsByClassName('div.paypal-button')[0]) {
-      document.getElementsByClassName('div.paypal-button')[0].tabIndex = -1
-    }
+    this.elementCatcher = elementCatcher()
+
+    this.elementCatcher.set('iframe[title="paypal_buttons"]', 100, el => {
+      el.tabIndex = -1
+    })
 
     const shippingId = localStorage.getItem('shippingId')
     this.props.getShipTo(shippingId)
-    // console.log('SHIP_TO_MOUNT: ', this.props.checkout.shipTo)
+
     // ---------------------------------------------------------------
 
     const { productsInCart } = this.props.cart
-    const total =
-      calcForCartTotal(productsInCart) +
-      Math.round(calcForCartTotal(productsInCart) / 10)
+    const cartTotalNum = calcForCartTotal(productsInCart)
+    const total = cartTotalNum + Math.round(cartTotalNum / 10)
     if (productsInCart.length > 0) {
       window.paypal
         .Buttons({
@@ -87,20 +159,16 @@ class Checkout extends Component {
             })
           },
           onApprove: function(data, actions) {
-            // console.log('PAYPAL_DATA: ', data)
-            // console.log('PAYPAL_ACTIONS: ', actions)
             // Capture the funds from the transaction
             return actions.order.capture().then(async function(details) {
               // Show a success message to your buyer
               alert('Transaction completed by ' + details.payer.name.given_name)
               store.dispatch(this.props.removeAllFromCart())
               // Call your server to save the transaction
-              // console.log('data.orderID: ', data.orderID)
               const res = await axios.post('/api/order/paypal', {
                 orderID: data.orderID,
                 total
               })
-              // console.log('FETCH_RES: ', res)
             })
           }
         })
@@ -128,11 +196,8 @@ class Checkout extends Component {
       email: this.state.email,
       emailConfirm: this.state.emailConfirm
     }
-    // console.log('shippingData: ', shippingData)
-    // this.setState({ errors: {} })
-    this.props.sendShippingAddress(shipTo)
 
-    // this.setState({ toggleButton: false })
+    this.props.sendShippingAddress(shipTo)
   }
 
   render() {
@@ -140,9 +205,9 @@ class Checkout extends Component {
     const { productsInCart } = this.props.cart
     const { shipToIsEmpty } = this.props.checkout
 
-    const total = commaNumber(calcForCartTotal(productsInCart))
+    const cartTotalNum = calcForCartTotal(productsInCart)
+    const total = commaNumber(cartTotalNum)
     const totalManuals = totalManualsInCartCalc(productsInCart)
-    // console.log('SHIP_TO_RENDER: ', this.props.checkout)
 
     return (
       <div
@@ -243,7 +308,7 @@ class Checkout extends Component {
                       </div>
 
                       <div className="col-md-4 mt-2">
-                        <label className="mb-0" for="state">
+                        <label className="mb-0" htmlFor="state">
                           State
                         </label>
                         <select
@@ -261,57 +326,11 @@ class Checkout extends Component {
                           onChange={this.onChange}
                         >
                           <option value="">*Choose...</option>
-                          <option value="AL">Alabama</option>
-                          <option value="AK">Alaska</option>
-                          <option value="AZ">Arizona</option>
-                          <option value="AR">Arkansas</option>
-                          <option value="CA">California</option>
-                          <option value="CO">Colorado</option>
-                          <option value="CT">Connecticut</option>
-                          <option value="DE">Delaware</option>
-                          <option value="DC">District Of Columbia</option>
-                          <option value="FL">Florida</option>
-                          <option value="GA">Georgia</option>
-                          <option value="HI">Hawaii</option>
-                          <option value="ID">Idaho</option>
-                          <option value="IL">Illinois</option>
-                          <option value="IN">Indiana</option>
-                          <option value="IA">Iowa</option>
-                          <option value="KS">Kansas</option>
-                          <option value="KY">Kentucky</option>
-                          <option value="LA">Louisiana</option>
-                          <option value="ME">Maine</option>
-                          <option value="MD">Maryland</option>
-                          <option value="MA">Massachusetts</option>
-                          <option value="MI">Michigan</option>
-                          <option value="MN">Minnesota</option>
-                          <option value="MS">Mississippi</option>
-                          <option value="MO">Missouri</option>
-                          <option value="MT">Montana</option>
-                          <option value="NE">Nebraska</option>
-                          <option value="NV">Nevada</option>
-                          <option value="NH">New Hampshire</option>
-                          <option value="NJ">New Jersey</option>
-                          <option value="NM">New Mexico</option>
-                          <option value="NY">New York</option>
-                          <option value="NC">North Carolina</option>
-                          <option value="ND">North Dakota</option>
-                          <option value="OH">Ohio</option>
-                          <option value="OK">Oklahoma</option>
-                          <option value="OR">Oregon</option>
-                          <option value="PA">Pennsylvania</option>
-                          <option value="RI">Rhode Island</option>
-                          <option value="SC">South Carolina</option>
-                          <option value="SD">South Dakota</option>
-                          <option value="TN">Tennessee</option>
-                          <option value="TX">Texas</option>
-                          <option value="UT">Utah</option>
-                          <option value="VT">Vermont</option>
-                          <option value="VA">Virginia</option>
-                          <option value="WA">Washington</option>
-                          <option value="WV">West Virginia</option>
-                          <option value="WI">Wisconsin</option>
-                          <option value="WY">Wyoming</option>
+                          {states.map(s => (
+                            <option key={s.text} value={s.value}>
+                              {s.text}
+                            </option>
+                          ))}
                         </select>
                         {errors.shippingState && (
                           <div className="invalid-feedback">
@@ -321,7 +340,7 @@ class Checkout extends Component {
                       </div>
 
                       <div className="col-md-3 mt-2">
-                        <label className="mb-0" for="zip">
+                        <label className="mb-0" htmlFor="zip">
                           Zip
                         </label>
                         <input
@@ -346,7 +365,7 @@ class Checkout extends Component {
 
                     <div className="row mt-3">
                       <div className="col-12 col-md-6 mt-2">
-                        <label className="mb-0" for="phone">
+                        <label className="mb-0" htmlFor="phone">
                           Phone <small>(only used if shipping issue)</small>
                         </label>
                         <input
@@ -432,7 +451,7 @@ class Checkout extends Component {
                       <h4>Pay With</h4>
 
                       {/* ----------------- STRIPE CHECKOUT ----------------- */}
-                      {calcForCartTotal(productsInCart) > 0 && (
+                      {cartTotalNum && (
                         <div className="col-12  px-0 mt-5">
                           <div className="row ">
                             <div className="col-12 d-flex justify-content-center align-items-center">
@@ -445,13 +464,10 @@ class Checkout extends Component {
                             </div>
                             <div className="col-12 d-flex justify-content-center align-items-center">
                               <UseStripeCheckout
-                                disabled={this.state.toggleButton}
+                                disabled={this.state.disableCheckoutButtons}
                                 name={'Stripe Checkout'}
                                 amount={commaNumber(
-                                  calcForCartTotal(productsInCart) +
-                                    Math.round(
-                                      calcForCartTotal(productsInCart) / 10
-                                    )
+                                  cartTotalNum + Math.round(cartTotalNum / 10)
                                 )}
                               />
                             </div>
@@ -459,19 +475,16 @@ class Checkout extends Component {
                         </div>
                       )}
 
-                      {calcForCartTotal(productsInCart) > 0 && (
+                      {cartTotalNum && (
                         <div className="col-12 d-flex align-items-center justify-content-center px-0 mt-3">
                           <p className="mb-0">or</p>
                         </div>
                       )}
 
                       {/* ----------------- PAYPAL CHECKOUT ----------------- */}
-                      {calcForCartTotal(productsInCart) > 0 && (
+                      {cartTotalNum && (
                         <div className="col-12 d-flex align-items-center justify-content-center px-0 mt-3">
-                          <div
-                            tabIndex={!this.state.toggleButton ? -1 : 0}
-                            id="paypal-button-container"
-                          />
+                          <div id="paypal-button-container" />
                         </div>
                       )}
                     </div>

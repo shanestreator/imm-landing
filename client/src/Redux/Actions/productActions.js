@@ -22,7 +22,6 @@ export const fetchProduct = product => {
 export const getOneProduct = prodId => async dispatch => {
   try {
     const { data: product } = await axios.get(`/api/products/${prodId}`)
-    console.log('GET_ONE_PRODUCTS: ', product)
     dispatch(fetchProduct(product))
   } catch (error) {
     console.error(error)
@@ -108,9 +107,8 @@ export const destroyProduct = prodId => {
 // Remove a product from the database
 export const deleteProduct = prodId => async dispatch => {
   try {
-    console.log('ID: ', prodId)
     const res = await axios.delete(`/api/product/${prodId}`)
-    console.log('DELETE_RES: ', res)
+
     dispatch(destroyProduct(prodId))
   } catch (error) {
     console.error(error)

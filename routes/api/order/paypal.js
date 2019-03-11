@@ -11,14 +11,12 @@ const checkoutNodeJssdk = require('@paypal/checkout-server-sdk')
 const payPalClient = require('./util/payPalClient')
 
 // const PAYPAL_SECRET_KEY = require('../../../config/paypal')
-// console.log('PAYPAL_SECRET: ', PAYPAL_SECRET_KEY)
 // paypal.configure(PAYPAL_SECRET_KEY)
 
 // Add new order to database
 // POST api/order/paypal
 router.post('/', async (req, res, next) => {
   try {
-    console.log('>>>-----> REQ.BODY: ', req.body)
     // 2a. Get the order ID from the request body
     const orderID = req.body.orderID
 
@@ -26,12 +24,7 @@ router.post('/', async (req, res, next) => {
     let request = new checkoutNodeJssdk.orders.OrdersGetRequest(orderID)
 
     let order = await payPalClient.client().execute(request)
-    console.log('>>>-----> ORDER1: ', order.result.purchase_units)
-    console.log(
-      '>>>-----> ORDER2: ',
-      order.result.purchase_units[0].payments.captures
-    )
-    console.log('>>>-----> ORDER3: ', order.result.purchase_units[0].amount)
+
     // 5. Validate the transaction details are as expected
     if (
       parseFloat(order.result.purchase_units[0].amount.value) !== req.body.total

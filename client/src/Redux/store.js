@@ -24,7 +24,6 @@ const store = createStore(
 
 store.subscribe(
   throttle(() => {
-    // console.log('getState()...: ', store.getState())
     saveState({
       cart: store.getState().cart
     })
