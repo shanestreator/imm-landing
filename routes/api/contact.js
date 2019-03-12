@@ -1,6 +1,6 @@
 const router = require('express')()
 const nodemailer = require('nodemailer')
-const { GMAIL_INFO } = require('../../config/keys_dev')
+const keys = require('../../config/keys')
 const validateContactInput = require('../validation/validateContact')
 const Contact = require('../../models/Contact')
 
@@ -16,14 +16,14 @@ router.post('/', async (req, res, next) => {
     let transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: GMAIL_INFO.user, // generated ethereal user
-        pass: GMAIL_INFO.pass // generated ethereal password
+        user: keys.GMAIL_USER, // generated ethereal user
+        pass: keys.GMAIL_PASS // generated ethereal password
       }
     })
 
     let mailOptionsToSelf = {
       from: email,
-      to: GMAIL_INFO.user, // list of receivers
+      to: keys.GMAIL_USER, // list of receivers
       subject: 'Question/Inquery...', // Subject line
       text: `From: ${name} (${email})
 
