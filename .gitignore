@@ -1,4 +1,3 @@
 /node_modules
 package-lock.json
-/config
-/client/src/config
+/config/keys_dev.js
