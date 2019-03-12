@@ -1,7 +1,6 @@
 import React from 'react'
 import axios from 'axios'
 import StripeCheckout from 'react-stripe-checkout'
-import STRIPE_PUBLISHABLE from '../../../Config/stripe'
 import { removeAllFromCart } from '../../../Redux/Actions/cartActions'
 import store from '../../../Redux/store'
 
@@ -10,7 +9,6 @@ const CURRENCY = 'USD'
 const fromUSDToCent = amount => amount * 100
 
 const successPayment = data => {
-  localStorage.removeItem('shippingId')
   alert('Thank you! You should recieve an email with an order receipt.')
 }
 
@@ -37,6 +35,7 @@ const onToken = (amount, description, history) => async (
     const data = await axios.post('/api/order/stripe', order)
 
     if (data.status === 200) {
+      localStorage.removeItem('shippingId')
       store.dispatch(removeAllFromCart())
       successPayment(data)
       history.push('/')
@@ -52,7 +51,8 @@ const UseStripeCheckout = ({
   description,
   amount,
   disabled,
-  history
+  history,
+  STRIPE_PUBLISHABLE
 }) => (
   <StripeCheckout
     disabled={disabled}
