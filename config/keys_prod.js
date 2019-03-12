@@ -1,7 +1,7 @@
 // Production
 module.exports = {
   mongoURI: process.env.mongoURI,
-  secretOrKey: process.env.SECRET_OR_KEY,
+  secretOrKey: process.env.secretOrKey,
   FRONTEND_URLS: 'https://www.yourdomain.com',
   // Gmail
   GMAIL_USER: process.env.GMAIL_USER,
