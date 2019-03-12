@@ -60,10 +60,13 @@ class ContactUs extends Component {
               Regarding pricing, quantities, available languages, etc.
             </h3>
             <form onSubmit={this.onSubmit}>
-              <div className="form-group">
+              <div className="form-group mt-5">
                 <div className="input-group input-group-lg">
                   <div className="input-group-prepend">
-                    <span className="input-group-text bg-secondary text-white">
+                    <span
+                      style={{ backgroundColor: '#be141b', opacity: '.9' }}
+                      className="input-group-text text-light"
+                    >
                       <i className="fas fa-user" />
                     </span>
                   </div>
@@ -83,7 +86,10 @@ class ContactUs extends Component {
               <div className="form-group">
                 <div className="input-group input-group-lg">
                   <div className="input-group-prepend">
-                    <span className="input-group-text bg-secondary text-white">
+                    <span
+                      style={{ backgroundColor: '#be141b', opacity: '.9' }}
+                      className="input-group-text text-light"
+                    >
                       <i className="fas fa-envelope" />
                     </span>
                   </div>
@@ -102,7 +108,10 @@ class ContactUs extends Component {
               <div className="form-group">
                 <div className="input-group input-group-lg">
                   <div className="input-group-prepend">
-                    <span className="input-group-text bg-secondary text-white">
+                    <span
+                      style={{ backgroundColor: '#be141b', opacity: '.9' }}
+                      className="input-group-text text-light"
+                    >
                       <i className="fas fa-pencil-alt" />
                     </span>
                   </div>
@@ -119,8 +128,9 @@ class ContactUs extends Component {
 
               <input
                 type="submit"
-                value="Submit"
-                className="btn btn-secondary btn-block btn-lg"
+                value="Send"
+                style={{ fontWeight: 'bold', opacity: '.9' }}
+                className="btn btn-block btn-lg store__add-button mt-5"
               />
               {contact.success && (
                 <div className="d-flex justify-content-center mt-4">
