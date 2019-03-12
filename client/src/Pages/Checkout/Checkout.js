@@ -14,7 +14,6 @@ import UseStripeCheckout from '../../Components/Common/Checkout/UseStripeCheckou
 import { calcForCartTotal, totalManualsInCartCalc } from '../../Utils/Utils'
 import { removeAllFromCart } from '../../Redux/Actions/cartActions'
 import axios from 'axios'
-import STRIPE_PUBLISHABLE from '../../Config/stripe'
 
 const states = [
   { value: 'AL', text: 'Alabama' },
@@ -497,7 +496,9 @@ class Checkout extends Component {
                                 amount={commaNumber(
                                   cartTotalNum + Math.round(cartTotalNum / 10)
                                 )}
-                                STRIPE_PUBLISHABLE={STRIPE_PUBLISHABLE}
+                                clearShipToInfoAfterPurchase={
+                                  this.props.clearShipTo
+                                }
                               />
                             </div>
                           </div>

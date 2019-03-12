@@ -1,17 +1,12 @@
 const router = require('express')()
-// const axios = require('axios')
 
 const Order = require('../../../models/Order')
 const Product = require('../../../models/Product')
 const ShipTo = require('../../../models/ShipTo')
 
-// const paypal = require('paypal-rest-sdk')
-
 const checkoutNodeJssdk = require('@paypal/checkout-server-sdk')
 
 const payPalClient = require('./util/payPalClient')
-
-// paypal.configure(PAYPAL_SECRET_KEY)
 
 // Add new order to database
 // POST api/order/paypal

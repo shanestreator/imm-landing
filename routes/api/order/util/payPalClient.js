@@ -1,4 +1,4 @@
-const PAYPAL_KEY = require('../../../../config/paypal')
+const keys = require('../../../../config/keys')
 /***
  *
  * PayPal Node JS SDK dependency
@@ -22,8 +22,8 @@ function client() {
  *
  */
 function environment() {
-  let clientId = PAYPAL_KEY.cliendId
-  let clientSecret = PAYPAL_KEY.secret
+  let clientId = keys.PAYPAL_CLIENT_ID
+  let clientSecret = keys.PAYPAL_SECRET
 
   return new checkoutNodeJssdk.core.SandboxEnvironment(clientId, clientSecret)
 }

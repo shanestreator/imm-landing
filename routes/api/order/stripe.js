@@ -1,10 +1,13 @@
 const router = require('express')()
+const configureStripe = require('stripe')
 
 const Order = require('../../../models/Order')
 const Product = require('../../../models/Product')
 const ShipTo = require('../../../models/ShipTo')
 
-const stripe = require('../../../config/stripe')
+const keys = require('../../../config/keys')
+
+const stripe = configureStripe(keys.STRIPE_SECRET_KEY)
 
 // Add new order to database
 // POST api/order/stripe
@@ -67,7 +70,8 @@ router.post('/', async (req, res, next) => {
 
     stripe.charges.create(payment, async (stripeErr, stripeRes) => {
       if (stripeErr) {
-        return res.status(500).send('Stripe Error: ', stripeErr)
+        console.log('>>>-----> STRIPE_ERR: ', stripeErr)
+        return res.status(400).send('Stripe Error: ', stripeErr)
       } else {
         const { id: orderId, created: order_created } = stripeRes
 
@@ -87,7 +91,7 @@ router.post('/', async (req, res, next) => {
       }
     })
   } catch (error) {
-    return res.status(500).send({ error: stripeErr })
+    return res.status(400).send(error)
   }
 })
 

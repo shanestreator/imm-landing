@@ -16,10 +16,12 @@ const errorPayment = data => {
   alert('Payment Error.')
 }
 
-const onToken = (amount, description, history) => async (
-  token,
-  billingAndShipping
-) => {
+const onToken = (
+  amount,
+  description,
+  history,
+  clearShipToInfoAfterPurchase
+) => async (token, billingAndShipping) => {
   try {
     const productsInCart = store.getState().cart.productsInCart
     const { email, client_ip } = token
@@ -36,6 +38,7 @@ const onToken = (amount, description, history) => async (
 
     if (data.status === 200) {
       localStorage.removeItem('shippingId')
+      clearShipToInfoAfterPurchase()
       store.dispatch(removeAllFromCart())
       successPayment(data)
       history.push('/')
@@ -52,7 +55,7 @@ const UseStripeCheckout = ({
   amount,
   disabled,
   history,
-  STRIPE_PUBLISHABLE
+  clearShipToInfoAfterPurchase
 }) => (
   <StripeCheckout
     disabled={disabled}
@@ -61,9 +64,9 @@ const UseStripeCheckout = ({
     name={name}
     description={description}
     amount={fromUSDToCent(amount)}
-    token={onToken(amount, description, history)}
+    token={onToken(amount, description, history, clearShipToInfoAfterPurchase)}
     currency={CURRENCY}
-    stripeKey={STRIPE_PUBLISHABLE}
+    stripeKey={'pk_test_N5G46PWAuwD9vbalsOsx3ivw'}
     image="https://stripe.com/img/documentation/checkout/marketplace.png"
   />
 )
