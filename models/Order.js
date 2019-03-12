@@ -17,8 +17,7 @@ const OrderSchema = new Schema({
     required: true
   },
   billing: {
-    type: Object,
-    required: true
+    type: Object
   },
   shipping: {
     type: Object,

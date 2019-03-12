@@ -1,7 +1,8 @@
 import {
   SET_SHIP_TO,
   GET_SHIP_TO,
-  SET_SHIP_TO_IS_EMPTY
+  SET_SHIP_TO_IS_EMPTY,
+  CLEAR_SHIP_TO
 } from '../Actions/types'
 
 const initialState = {
@@ -34,6 +35,9 @@ export default function(state = initialState, action) {
     }
     case SET_SHIP_TO_IS_EMPTY: {
       return { ...state, shipToIsEmpty: action.payload }
+    }
+    case CLEAR_SHIP_TO: {
+      return initialState
     }
     default: {
       return state

@@ -23,9 +23,9 @@ class FooterMenu extends Component {
                     <Link
                       style={{ color: 'black' }}
                       className="text-dark"
-                      to="/about"
+                      to="/"
                     >
-                      About
+                      Home
                     </Link>
                   </div>
                   <div className="col-12 py-1 pr-0">

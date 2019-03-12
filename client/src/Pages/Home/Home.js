@@ -37,13 +37,13 @@ export default class Home extends Component {
           <hr className="mt-5 border" />
 
           <div className="text-center mt-5 pt-3">
-            <h3 className="home__dark-red">
+            <h3 className="home__dark-red mb-0">
               <strong className="home__dark-red">
                 Regardless of the business, sport, educational, operational or
                 personal life goal you're pursuing, you can
               </strong>
             </h3>
-            <h2 className="home__h2-font-spacing home__dark-red">
+            <h2 className="home__h2-font-spacing home__dark-red my-2">
               <strong>MAXIMIZE PERFORMANCE</strong>
             </h2>
             <h3 className="home__dark-red">
@@ -328,8 +328,7 @@ export default class Home extends Component {
                   Those who embrace the qualities and attributes this manual
                   promotes can dynamically optimize virtually any area of life.
                   They can learn to overcome hindering, negative thoughts and
-                  develop or strengthen powerful, positive characteristics such
-                  as:
+                  develop or strengthen powerful, positive characteristics.
                 </p>
               </div>
             </div>

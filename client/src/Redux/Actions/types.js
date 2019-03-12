@@ -30,6 +30,7 @@ export const REMOVE_ALL_FROM_CART = 'REMOVE_ALL_FROM_CART'
 export const SET_SHIP_TO = 'SET_SHIP_TO'
 export const GET_SHIP_TO = 'GET_SHIP_TO'
 export const SET_SHIP_TO_IS_EMPTY = 'SET_SHIP_TO_IS_EMPTY'
+export const CLEAR_SHIP_TO = 'CLEAR_SHIP_TO'
 
 // Contact
 export const SENT_EMAIL = 'SENT_EMAIL'

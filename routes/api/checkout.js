@@ -8,9 +8,11 @@ const ShipTo = require('../../models/ShipTo')
 // GET /api/checkout/:shippingId
 router.get('/:shippingId', async (req, res, next) => {
   try {
-    const shipToFound = await ShipTo.findOne({ _id: req.params.shippingId })
+    if (!req.params.shippingId) return res.sendStatus(404)
 
-    if (!shipToFound) throw error
+    const shipToFound = await ShipTo.findOne({ _id: req.params.shippingId })
+    console.log('>>>-----> SHIP_TO: ', shipToFound)
+    if (!shipToFound) return res.sendStatus(404)
 
     const shipTo = {
       firstName: shipToFound.firstName,
@@ -31,7 +33,6 @@ router.get('/:shippingId', async (req, res, next) => {
       shipTo: shipTo
     })
   } catch (error) {
-    console.log('ERROR: ', error)
     next(error)
   }
 })

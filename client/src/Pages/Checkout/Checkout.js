@@ -4,7 +4,8 @@ import { connect } from 'react-redux'
 import TextFieldGroup from '../../Components/Common/TextFieldGroup'
 import {
   sendShippingAddress,
-  getShipTo
+  getShipTo,
+  clearShipTo
 } from '../../Redux/Actions/checkoutActions'
 import classNames from 'classnames'
 import FinalOrderSummaryTable from '../../Components/Common/Cart/FinalOrderSummaryTable'
@@ -12,7 +13,6 @@ import commaNumber from 'comma-number'
 import UseStripeCheckout from '../../Components/Common/Checkout/UseStripeCheckout'
 import { calcForCartTotal, totalManualsInCartCalc } from '../../Utils/Utils'
 import { removeAllFromCart } from '../../Redux/Actions/cartActions'
-import store from '../../Redux/store'
 import axios from 'axios'
 
 const states = [
@@ -103,7 +103,8 @@ class Checkout extends Component {
     email: '',
     emailConfirm: '',
     errors: {},
-    disableCheckoutButtons: true
+    disableCheckoutButtons: true,
+    disableSubmitButtons: true
   }
 
   componentWillReceiveProps(nextProps) {
@@ -119,8 +120,14 @@ class Checkout extends Component {
     if (nextProps.checkout.shipTo !== this.state) {
       this.setState(nextProps.checkout.shipTo)
       if (this.state.emailConfirm !== '') {
-        this.setState({ disableCheckoutButtons: false })
+        this.setState({
+          disableCheckoutButtons: false
+        })
       }
+    }
+
+    if (nextProps.checkout.shipTo !== this.state) {
+      this.setState({ disableSubmitButtons: true })
     }
   }
 
@@ -136,13 +143,19 @@ class Checkout extends Component {
     })
 
     const shippingId = localStorage.getItem('shippingId')
-    this.props.getShipTo(shippingId)
+    if (shippingId) {
+      this.props.getShipTo(shippingId)
+    }
 
     // ---------------------------------------------------------------
 
     const { productsInCart } = this.props.cart
     const cartTotalNum = calcForCartTotal(productsInCart)
     const total = cartTotalNum + Math.round(cartTotalNum / 10)
+    const removeAllCartItems = this.props.removeAllFromCart
+    const history = this.props.history
+    const clearShipToInfoAfterPurchase = this.props.clearShipTo
+
     if (productsInCart.length > 0) {
       window.paypal
         .Buttons({
@@ -161,14 +174,21 @@ class Checkout extends Component {
           onApprove: function(data, actions) {
             // Capture the funds from the transaction
             return actions.order.capture().then(async function(details) {
-              // Show a success message to your buyer
-              alert('Transaction completed by ' + details.payer.name.given_name)
-              store.dispatch(this.props.removeAllFromCart())
               // Call your server to save the transaction
               const res = await axios.post('/api/order/paypal', {
                 orderID: data.orderID,
-                total
+                total: total,
+                shippingId: localStorage.getItem('shippingId'),
+                productsInCart
               })
+              // Show a success message to your buyer
+              alert(
+                'Thank you! You should recieve an email with an order receipt.'
+              )
+              clearShipToInfoAfterPurchase()
+              removeAllCartItems()
+              localStorage.removeItem('shippingId')
+              history.push('/')
             })
           }
         })
@@ -197,7 +217,9 @@ class Checkout extends Component {
       emailConfirm: this.state.emailConfirm
     }
 
-    this.props.sendShippingAddress(shipTo)
+    if (shipTo !== this.props.checkout.shipTo) {
+      this.props.sendShippingAddress(shipTo)
+    }
   }
 
   render() {
@@ -417,7 +439,11 @@ class Checkout extends Component {
 
                     <div className="row mt-5">
                       <div className="col">
-                        <button type="submit" className="btn btn-secondary">
+                        <button
+                          disabled={!this.state.disableSubmitButtons}
+                          type="submit"
+                          className="btn btn-secondary"
+                        >
                           Submit
                         </button>
                       </div>
@@ -464,6 +490,7 @@ class Checkout extends Component {
                             </div>
                             <div className="col-12 d-flex justify-content-center align-items-center">
                               <UseStripeCheckout
+                                history={this.props.history}
                                 disabled={this.state.disableCheckoutButtons}
                                 name={'Stripe Checkout'}
                                 amount={commaNumber(
@@ -515,5 +542,5 @@ const mapState = ({ cart, checkout, errors }) => ({ cart, checkout, errors })
 
 export default connect(
   mapState,
-  { getShipTo, sendShippingAddress, removeAllFromCart }
+  { getShipTo, sendShippingAddress, removeAllFromCart, clearShipTo }
 )(Checkout)

@@ -10,16 +10,18 @@ const CURRENCY = 'USD'
 const fromUSDToCent = amount => amount * 100
 
 const successPayment = data => {
-  alert(
-    'Payment Successful. You should recieve an email with your order details.'
-  )
+  localStorage.removeItem('shippingId')
+  alert('Thank you! You should recieve an email with an order receipt.')
 }
 
 const errorPayment = data => {
   alert('Payment Error.')
 }
 
-const onToken = (amount, description) => async (token, billingAndShipping) => {
+const onToken = (amount, description, history) => async (
+  token,
+  billingAndShipping
+) => {
   try {
     const productsInCart = store.getState().cart.productsInCart
     const { email, client_ip } = token
@@ -37,6 +39,7 @@ const onToken = (amount, description) => async (token, billingAndShipping) => {
     if (data.status === 200) {
       store.dispatch(removeAllFromCart())
       successPayment(data)
+      history.push('/')
     }
   } catch (error) {
     console.log('ERROR: ', error)
@@ -44,7 +47,13 @@ const onToken = (amount, description) => async (token, billingAndShipping) => {
   }
 }
 
-const Checkout = ({ name, description, amount, disabled }) => (
+const UseStripeCheckout = ({
+  name,
+  description,
+  amount,
+  disabled,
+  history
+}) => (
   <StripeCheckout
     disabled={disabled}
     shippingAddress
@@ -52,11 +61,11 @@ const Checkout = ({ name, description, amount, disabled }) => (
     name={name}
     description={description}
     amount={fromUSDToCent(amount)}
-    token={onToken(amount, description)}
+    token={onToken(amount, description, history)}
     currency={CURRENCY}
     stripeKey={STRIPE_PUBLISHABLE}
     image="https://stripe.com/img/documentation/checkout/marketplace.png"
   />
 )
 
-export default Checkout
+export default UseStripeCheckout
