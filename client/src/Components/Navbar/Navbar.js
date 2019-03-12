@@ -120,7 +120,7 @@ class Navbar extends Component {
                   <React.Fragment>
                     <li className="nav-item">
                       <NavLink
-                        className="nav-link nav-text navbar__navlink-hover-style"
+                        className="nav-link nav-text navbar__navlink-hover-style text-center"
                         active={
                           window.location.pathname === '/' ? 'selected' : ''
                         }
@@ -136,7 +136,7 @@ class Navbar extends Component {
 
                     <li className="nav-item">
                       <NavLink
-                        className="nav-link nav-text navbar__navlink-hover-style"
+                        className="nav-link nav-text navbar__navlink-hover-style text-center"
                         active={
                           window.location.pathname === '/store'
                             ? 'selected'
@@ -155,7 +155,7 @@ class Navbar extends Component {
                     <li className="nav-item">
                       <NavLink
                         style={{ paddingTop: '5px' }}
-                        className="nav-link nav-text navbar__navlink-hover-style"
+                        className="nav-link nav-text navbar__navlink-hover-style text-center"
                         active={
                           window.location.pathname === '/cart' ? 'selected' : ''
                         }
