@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { NavLink, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import classNames from 'classnames'
+import Media from 'react-media'
 
 import { Badge, Icon } from 'antd'
 
@@ -23,19 +24,43 @@ class Navbar extends Component {
           <div id="container" className="container">
             {isAuthenticated ? (
               <NavLink className="navbar-brand" to="/admin/products">
-                <img
-                  style={{ width: '125px', height: '50px' }}
-                  src="/images/imm-logo.webp"
-                  alt=""
-                />
+                <Media query="(max-width: 480px)">
+                  {matches =>
+                    matches ? (
+                      <img
+                        style={{ width: '200px', height: '40px' }}
+                        src="/images/imm-logo.webp"
+                        alt=""
+                      />
+                    ) : (
+                      <img
+                        style={{ width: '250px', height: '50px' }}
+                        src="/images/imm-logo.webp"
+                        alt=""
+                      />
+                    )
+                  }
+                </Media>
               </NavLink>
             ) : (
               <NavLink className="navbar-brand" to="/">
-                <img
-                  style={{ width: '190px', height: '50px' }}
-                  src="/images/imm-logo.webp"
-                  alt=""
-                />
+                <Media query="(max-width: 480px)">
+                  {matches =>
+                    matches ? (
+                      <img
+                        style={{ width: '200px', height: '40px' }}
+                        src="/images/imm-logo.webp"
+                        alt=""
+                      />
+                    ) : (
+                      <img
+                        style={{ width: '250px', height: '50px' }}
+                        src="/images/imm-logo.webp"
+                        alt=""
+                      />
+                    )
+                  }
+                </Media>
               </NavLink>
             )}
             <button

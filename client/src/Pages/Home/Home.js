@@ -1013,22 +1013,23 @@ export default class Home extends Component {
                           centerSlidePercentage={100}
                         >
                           <div>
-                            <img src="/images/wed/wed-pic-1.webp" alt="..." />
-                          </div>
-                          <div>
-                            <img src="/images/wed/wed-pic-2.webp" alt="..." />
+                            <img src="/images/wed/wed-pic-4.webp" alt="..." />
                           </div>
                           <div>
                             <img src="/images/wed/wed-pic-3.webp" alt="..." />
                           </div>
                           <div>
-                            <img src="/images/wed/wed-pic-4.webp" alt="..." />
+                            <img src="/images/wed/wed-pic-6.webp" alt="..." />
+                          </div>
+                          <div>
+                            <img src="/images/wed/wed-pic-1.webp" alt="..." />
                           </div>
                           <div>
                             <img src="/images/wed/wed-pic-5.webp" alt="..." />
                           </div>
+
                           <div>
-                            <img src="/images/wed/wed-pic-6.webp" alt="..." />
+                            <img src="/images/wed/wed-pic-2.webp" alt="..." />
                           </div>
                         </Carousel>
                       ) : (
@@ -1048,22 +1049,23 @@ export default class Home extends Component {
                           centerSlidePercentage={34}
                         >
                           <div>
-                            <img src="/images/wed/wed-pic-1.webp" alt="..." />
-                          </div>
-                          <div>
-                            <img src="/images/wed/wed-pic-2.webp" alt="..." />
+                            <img src="/images/wed/wed-pic-4.webp" alt="..." />
                           </div>
                           <div>
                             <img src="/images/wed/wed-pic-3.webp" alt="..." />
                           </div>
                           <div>
-                            <img src="/images/wed/wed-pic-4.webp" alt="..." />
+                            <img src="/images/wed/wed-pic-6.webp" alt="..." />
+                          </div>
+                          <div>
+                            <img src="/images/wed/wed-pic-1.webp" alt="..." />
                           </div>
                           <div>
                             <img src="/images/wed/wed-pic-5.webp" alt="..." />
                           </div>
+
                           <div>
-                            <img src="/images/wed/wed-pic-6.webp" alt="..." />
+                            <img src="/images/wed/wed-pic-2.webp" alt="..." />
                           </div>
                         </Carousel>
                       )
