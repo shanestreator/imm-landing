@@ -5,8 +5,11 @@ const volleyball = require('volleyball')
 const path = require('path')
 const cors = require('cors')
 const passport = require('passport')
+const compression = require('compression')
 
 const app = express()
+
+app.use(compression())
 
 app.use(cors())
 

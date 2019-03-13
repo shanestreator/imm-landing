@@ -24,7 +24,7 @@ class Navbar extends Component {
             {isAuthenticated ? (
               <NavLink className="navbar-brand" to="/admin/products">
                 <img
-                  style={{ width: '200px', height: '50px' }}
+                  style={{ width: '275px', height: '50px' }}
                   src="/images/imm-logo.png"
                   alt=""
                 />
@@ -32,7 +32,7 @@ class Navbar extends Component {
             ) : (
               <NavLink className="navbar-brand" to="/">
                 <img
-                  style={{ width: '200px', height: '50px' }}
+                  style={{ width: '275px', height: '50px' }}
                   src="/images/imm-logo.png"
                   alt=""
                 />
