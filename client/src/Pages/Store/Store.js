@@ -29,7 +29,7 @@ class Store extends Component {
               </div>
               <div className="col-3 d-flex justify-content-center align-items-end">
                 <img
-                  src="/images/free-shipping-car.png"
+                  src="/images/free-shipping-car.webp"
                   className="img-fluid px-md-4 px-lg-5"
                   alt="free shipping"
                 />

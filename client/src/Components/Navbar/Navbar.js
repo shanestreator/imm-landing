@@ -25,7 +25,7 @@ class Navbar extends Component {
               <NavLink className="navbar-brand" to="/admin/products">
                 <img
                   style={{ width: '275px', height: '50px' }}
-                  src="/images/imm-logo.png"
+                  src="/images/imm-logo.webp"
                   alt=""
                 />
               </NavLink>
@@ -33,7 +33,7 @@ class Navbar extends Component {
               <NavLink className="navbar-brand" to="/">
                 <img
                   style={{ width: '275px', height: '50px' }}
-                  src="/images/imm-logo.png"
+                  src="/images/imm-logo.webp"
                   alt=""
                 />
               </NavLink>

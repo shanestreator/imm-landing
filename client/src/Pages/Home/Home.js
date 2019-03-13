@@ -28,7 +28,7 @@ export default class Home extends Component {
             <Link to="/store">
               <img
                 className="mt-5 img-fluid px-5 px-md-0"
-                src="/images/Paypal-Buy-Now-Button.png"
+                src="/images/Paypal-Buy-Now-Button.webp"
                 alt=""
               />
             </Link>
@@ -97,7 +97,7 @@ export default class Home extends Component {
                               <tr>
                                 <td className="text-right pl-0 pr-1">
                                   <img
-                                    src="/images/checkmark-30px.png"
+                                    src="/images/checkmark-30px.webp"
                                     alt="checkmark"
                                     style={{ width: '30px', height: '30px' }}
                                   />
@@ -112,7 +112,7 @@ export default class Home extends Component {
                               <tr>
                                 <td className="text-right pl-0 pr-1">
                                   <img
-                                    src="/images/checkmark-30px.png"
+                                    src="/images/checkmark-30px.webp"
                                     alt="checkmark"
                                     style={{ width: '30px', height: '30px' }}
                                   />
@@ -127,7 +127,7 @@ export default class Home extends Component {
                               <tr>
                                 <td className="text-right pl-0 pr-1">
                                   <img
-                                    src="/images/checkmark-30px.png"
+                                    src="/images/checkmark-30px.webp"
                                     alt="checkmark"
                                     style={{ width: '30px', height: '30px' }}
                                   />
@@ -151,7 +151,7 @@ export default class Home extends Component {
                               <tr>
                                 <td className="text-right pl-0 pr-1">
                                   <img
-                                    src="/images/checkmark-30px.png"
+                                    src="/images/checkmark-30px.webp"
                                     alt="checkmark"
                                     style={{ width: '30px', height: '30px' }}
                                   />
@@ -166,7 +166,7 @@ export default class Home extends Component {
                               <tr>
                                 <td className="text-right pl-0 pr-1">
                                   <img
-                                    src="/images/checkmark-30px.png"
+                                    src="/images/checkmark-30px.webp"
                                     alt="checkmark"
                                     style={{ width: '30px', height: '30px' }}
                                   />
@@ -181,7 +181,7 @@ export default class Home extends Component {
                               <tr>
                                 <td className="text-right pl-0 pr-1">
                                   <img
-                                    src="/images/checkmark-30px.png"
+                                    src="/images/checkmark-30px.webp"
                                     alt="checkmark"
                                     style={{ width: '30px', height: '30px' }}
                                   />
@@ -209,7 +209,7 @@ export default class Home extends Component {
                               <tr>
                                 <td className="text-right pl-0 pr-1">
                                   <img
-                                    src="/images/checkmark-30px.png"
+                                    src="/images/checkmark-30px.webp"
                                     alt="checkmark"
                                     style={{ width: '30px', height: '30px' }}
                                   />
@@ -224,7 +224,7 @@ export default class Home extends Component {
                               <tr>
                                 <td className="text-right pl-0 pr-1">
                                   <img
-                                    src="/images/checkmark-30px.png"
+                                    src="/images/checkmark-30px.webp"
                                     alt="checkmark"
                                     style={{ width: '30px', height: '30px' }}
                                   />
@@ -239,7 +239,7 @@ export default class Home extends Component {
                               <tr>
                                 <td className="text-right pl-0 pr-1">
                                   <img
-                                    src="/images/checkmark-30px.png"
+                                    src="/images/checkmark-30px.webp"
                                     alt="checkmark"
                                     style={{ width: '30px', height: '30px' }}
                                   />
@@ -263,7 +263,7 @@ export default class Home extends Component {
                               <tr>
                                 <td className="text-right pl-0 pr-1">
                                   <img
-                                    src="/images/checkmark-30px.png"
+                                    src="/images/checkmark-30px.webp"
                                     alt="checkmark"
                                     style={{ width: '30px', height: '30px' }}
                                   />
@@ -278,7 +278,7 @@ export default class Home extends Component {
                               <tr>
                                 <td className="text-right pl-0 pr-1">
                                   <img
-                                    src="/images/checkmark-30px.png"
+                                    src="/images/checkmark-30px.webp"
                                     alt="checkmark"
                                     style={{ width: '30px', height: '30px' }}
                                   />
@@ -293,7 +293,7 @@ export default class Home extends Component {
                               <tr>
                                 <td className="text-right pl-0 pr-1">
                                   <img
-                                    src="/images/checkmark-30px.png"
+                                    src="/images/checkmark-30px.webp"
                                     alt="checkmark"
                                     style={{ width: '30px', height: '30px' }}
                                   />
@@ -345,7 +345,7 @@ export default class Home extends Component {
                 <ul
                   className="home__ul"
                   // style={{
-                  //   listStyleImage: 'url(/images/checkmark-30px.png)'
+                  //   listStyleImage: 'url(/images/checkmark-30px.webp)'
                   // }}
                 >
                   <li className="">
@@ -380,7 +380,7 @@ export default class Home extends Component {
               <Link to="/store">
                 <img
                   className="my-5 img-fluid px-5 px-md-0"
-                  src="/images/Paypal-Buy-Now-Button.png"
+                  src="/images/Paypal-Buy-Now-Button.webp"
                   alt=""
                 />
               </Link>
@@ -768,7 +768,7 @@ export default class Home extends Component {
                 <img
                   style={{ width: 'auto', height: '75px', opacity: '.65' }}
                   className="img-fluid mt-4"
-                  src="/images/3-red-arrows-down.png"
+                  src="/images/3-red-arrows-down.webp"
                   alt="red arrows down"
                 />
               </div>
@@ -807,31 +807,31 @@ export default class Home extends Component {
                         >
                           <div>
                             <img
-                              src="/images/fight/fight-pic-1.png"
+                              src="/images/fight/fight-pic-1.webp"
                               alt="..."
                             />
                           </div>
                           <div>
                             <img
-                              src="/images/fight/fight-pic-2.png"
+                              src="/images/fight/fight-pic-2.webp"
                               alt="..."
                             />
                           </div>
                           <div>
                             <img
-                              src="/images/fight/fight-pic-3.png"
+                              src="/images/fight/fight-pic-3.webp"
                               alt="..."
                             />
                           </div>
                           <div>
                             <img
-                              src="/images/fight/fight-pic-4.png"
+                              src="/images/fight/fight-pic-4.webp"
                               alt="..."
                             />
                           </div>
                           <div>
                             <img
-                              src="/images/fight/fight-pic-5.png"
+                              src="/images/fight/fight-pic-5.webp"
                               alt="..."
                             />
                           </div>
@@ -854,34 +854,34 @@ export default class Home extends Component {
                         >
                           <div>
                             <img
-                              src="/images/fight/fight-pic-1.png"
+                              src="/images/fight/fight-pic-1.webp"
                               alt="..."
                             />
                           </div>
 
                           <div>
                             <img
-                              src="/images/fight/fight-pic-3.png"
+                              src="/images/fight/fight-pic-3.webp"
                               alt="..."
                             />
                           </div>
 
                           <div>
                             <img
-                              src="/images/fight/fight-pic-2.png"
+                              src="/images/fight/fight-pic-2.webp"
                               alt="..."
                             />
                           </div>
 
                           <div>
                             <img
-                              src="/images/fight/fight-pic-4.png"
+                              src="/images/fight/fight-pic-4.webp"
                               alt="..."
                             />
                           </div>
                           <div>
                             <img
-                              src="/images/fight/fight-pic-5.png"
+                              src="/images/fight/fight-pic-5.webp"
                               alt="..."
                             />
                           </div>
@@ -1023,22 +1023,22 @@ export default class Home extends Component {
                           centerSlidePercentage={100}
                         >
                           <div>
-                            <img src="/images/wed/wed-pic-1.png" alt="..." />
+                            <img src="/images/wed/wed-pic-1.webp" alt="..." />
                           </div>
                           <div>
-                            <img src="/images/wed/wed-pic-2.png" alt="..." />
+                            <img src="/images/wed/wed-pic-2.webp" alt="..." />
                           </div>
                           <div>
-                            <img src="/images/wed/wed-pic-3.png" alt="..." />
+                            <img src="/images/wed/wed-pic-3.webp" alt="..." />
                           </div>
                           <div>
-                            <img src="/images/wed/wed-pic-4.png" alt="..." />
+                            <img src="/images/wed/wed-pic-4.webp" alt="..." />
                           </div>
                           <div>
-                            <img src="/images/wed/wed-pic-5.png" alt="..." />
+                            <img src="/images/wed/wed-pic-5.webp" alt="..." />
                           </div>
                           <div>
-                            <img src="/images/wed/wed-pic-6.png" alt="..." />
+                            <img src="/images/wed/wed-pic-6.webp" alt="..." />
                           </div>
                         </Carousel>
                       ) : (
@@ -1058,22 +1058,22 @@ export default class Home extends Component {
                           centerSlidePercentage={34}
                         >
                           <div>
-                            <img src="/images/wed/wed-pic-1.png" alt="..." />
+                            <img src="/images/wed/wed-pic-1.webp" alt="..." />
                           </div>
                           <div>
-                            <img src="/images/wed/wed-pic-2.png" alt="..." />
+                            <img src="/images/wed/wed-pic-2.webp" alt="..." />
                           </div>
                           <div>
-                            <img src="/images/wed/wed-pic-3.png" alt="..." />
+                            <img src="/images/wed/wed-pic-3.webp" alt="..." />
                           </div>
                           <div>
-                            <img src="/images/wed/wed-pic-4.png" alt="..." />
+                            <img src="/images/wed/wed-pic-4.webp" alt="..." />
                           </div>
                           <div>
-                            <img src="/images/wed/wed-pic-5.png" alt="..." />
+                            <img src="/images/wed/wed-pic-5.webp" alt="..." />
                           </div>
                           <div>
-                            <img src="/images/wed/wed-pic-6.png" alt="..." />
+                            <img src="/images/wed/wed-pic-6.webp" alt="..." />
                           </div>
                         </Carousel>
                       )
@@ -1111,7 +1111,7 @@ export default class Home extends Component {
             <Link to="/store">
               <img
                 className="p-5 img-fluid"
-                src="/images/Paypal-Buy-Now-Button.png"
+                src="/images/Paypal-Buy-Now-Button.webp"
                 alt=""
               />
             </Link>

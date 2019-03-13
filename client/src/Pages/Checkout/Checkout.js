@@ -483,7 +483,7 @@ class Checkout extends Component {
                             <div className="col-12 d-flex justify-content-center align-items-center">
                               <img
                                 style={{ height: '55px', width: '140px' }}
-                                src="/images/stripe-logo-blue.png"
+                                src="/images/stripe-logo-blue.webp"
                                 alt="stripe logo"
                                 className="img-fluid"
                               />

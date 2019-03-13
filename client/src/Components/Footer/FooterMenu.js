@@ -11,7 +11,7 @@ class FooterMenu extends Component {
               <td className="text-center px-0">
                 <Link style={{ color: 'black' }} className="text-dark" to="/">
                   <img
-                    src="/images/thinking-man.png"
+                    src="/images/thinking-man.webp"
                     alt="Thinking Man"
                     style={{ width: '50px', height: '50px' }}
                   />
@@ -47,7 +47,7 @@ class FooterMenu extends Component {
           <img
             className="image-fluid"
             style={{ width: '140px', height: '70px' }}
-            src="/images/secure-checkout.png"
+            src="/images/secure-checkout.webp"
             alt="stripe"
           />
         </div>
