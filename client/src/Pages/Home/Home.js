@@ -928,22 +928,17 @@ export default class Home extends Component {
                         >
                           <div>
                             <img
-                              src="https://images.unsplash.com/photo-1518600570419-81324064e9ae?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
+                              src="/images/career/construction-helmets.webp"
                               alt="..."
                             />
                           </div>
                           <div>
-                            <img
-                              src="https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1287&q=80"
-                              alt="..."
-                              className="img-fluid h-100"
-                            />
+                            <img src="/images/career/hands-in.webp" alt="..." />
                           </div>
                           <div>
                             <img
-                              src="https://images.pexels.com/photos/1329061/pexels-photo-1329061.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                              src="/images/career/construction-site.webp"
                               alt="..."
-                              className="img-fluid h-100"
                             />
                           </div>
                         </Carousel>
@@ -965,22 +960,17 @@ export default class Home extends Component {
                         >
                           <div>
                             <img
-                              src="https://images.unsplash.com/photo-1518600570419-81324064e9ae?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
+                              src="/images/career/construction-helmets.webp"
                               alt="..."
                             />
                           </div>
                           <div>
-                            <img
-                              src="https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1287&q=80"
-                              alt="..."
-                              className="img-fluid h-100"
-                            />
+                            <img src="/images/career/hands-in.webp" alt="..." />
                           </div>
                           <div>
                             <img
-                              src="https://images.pexels.com/photos/1329061/pexels-photo-1329061.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                              src="/images/career/construction-site.webp"
                               alt="..."
-                              className="img-fluid h-100"
                             />
                           </div>
                         </Carousel>
