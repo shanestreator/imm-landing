@@ -5,7 +5,7 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import { Carousel } from 'react-responsive-carousel'
 import Media from 'react-media'
 
-import FooterTestimonials from '../../Components/Footer/FooterTestimonials'
+import ObserverWrapper from '@emarketeross/simple-react-intersection-observer'
 
 export default class Home extends Component {
   render() {
@@ -69,6 +69,8 @@ export default class Home extends Component {
             </div>
 
             <hr className="mt-5 border" />
+
+            <ObserverWrapper>
 
             <div className="card bg-light mt-4 mb-0" style={{ border: 'none' }}>
               <div className="card-body text-center px-0 pb-0">
@@ -1109,6 +1111,9 @@ export default class Home extends Component {
             </Link>
 
             <hr className="my-5 border" />
+
+            </ObserverWrapper>
+
           </div>
         </div>
       </div>

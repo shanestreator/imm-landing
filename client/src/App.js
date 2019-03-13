@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, lazy, Suspense } from 'react'
 import { Provider } from 'react-redux'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
@@ -7,18 +7,6 @@ import { setCurrentUser, logoutUser } from './Redux/Actions/authActions'
 // Authentication
 import jwt_decode from 'jwt-decode'
 import setAuthToken from './Utils/setAuthToken'
-
-// Pages
-import Home from './Pages/Home/Home'
-import Store from './Pages/Store/Store'
-import Cart from './Pages/Cart/Cart'
-import Checkout from './Pages/Checkout/Checkout'
-import ContactUs from './Pages/ContactUs/ContactUs'
-import NotFound from './Pages/404/404'
-// Hidden /admin/login
-import AdminLogin from './Pages/AdminLogin/AdminLogin'
-import AdminDashboard from './Pages/AdminDashboard/AdminDashboard'
-import AdminProducts from './Pages/AdminProducts/AdminProducts'
 
 // Components
 import Navbar from './Components/Navbar/Navbar'
@@ -31,6 +19,29 @@ import 'normalize.css/normalize.css'
 import './App.scss'
 
 import store from './Redux/store'
+
+// Pages
+import Home from './Pages/Home/Home'
+// import Store from './Pages/Store/Store'
+const Store = lazy(() => import('./Pages/Store/Store'))
+// import Cart from './Pages/Cart/Cart'
+const Cart = lazy(() => import('./Pages/Cart/Cart'))
+// import Checkout from './Pages/Checkout/Checkout'
+const Checkout = lazy(() => import('./Pages/Checkout/Checkout'))
+// import ContactUs from './Pages/ContactUs/ContactUs'
+const ContactUs = lazy(() => import('./Pages/ContactUs/ContactUs'))
+// import NotFound from './Pages/404/404'
+const NotFound = lazy(() => import('./Pages/404/404'))
+
+// Hidden /admin/login
+// import AdminLogin from './Pages/AdminLogin/AdminLogin'
+const AdminLogin = lazy(() => import('./Pages/AdminLogin/AdminLogin'))
+// import AdminDashboard from './Pages/AdminDashboard/AdminDashboard'
+const AdminDashboard = lazy(() =>
+  import('./Pages/AdminDashboard/AdminDashboard')
+)
+// import AdminProducts from './Pages/AdminProducts/AdminProducts'
+const AdminProducts = lazy(() => import('./Pages/AdminProducts/AdminProducts'))
 
 // Check for token
 if (localStorage.jwtToken) {
@@ -63,25 +74,35 @@ class App extends Component {
               <Spacer />
               <Switch>
                 <Route exact path="/" component={Home} />
-                <Route exact path="/store" component={Store} />
-                <Route exact path="/cart" component={Cart} />
-                <Route exact path="/contact" component={ContactUs} />
-                <Route exact path="/checkout" component={Checkout} />
-                <Route exact path="/admin/login" component={AdminLogin} />
 
-                <PrivateRoute
-                  exact
-                  path="/admin/dashboard"
-                  component={AdminDashboard}
-                />
+                <Suspense fallback={<h1>Loading...</h1>}>
+                  <Route exact path="/store" render={() => <Store />} />
 
-                <PrivateRoute
-                  exact
-                  path="/admin/products"
-                  component={AdminProducts}
-                />
+                  <Route exact path="/cart" render={() => <Cart />} />
 
-                <Route path="*" component={NotFound} />
+                  <Route exact path="/contact" render={() => <ContactUs />} />
+
+                  <Route exact path="/checkout" render={() => <Checkout />} />
+
+                  <Route
+                    exact
+                    path="/admin/login"
+                    render={() => <AdminLogin />}
+                  />
+
+                  <PrivateRoute
+                    exact
+                    path="/admin/dashboard"
+                    render={() => <AdminDashboard />}
+                  />
+
+                  <PrivateRoute
+                    exact
+                    path="/admin/products"
+                    render={() => <AdminProducts />}
+                  />
+                </Suspense>
+                <Route path="*" render={() => <NotFound />} />
               </Switch>
 
               <Footer />
