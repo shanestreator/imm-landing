@@ -9,6 +9,7 @@ import jwt_decode from 'jwt-decode'
 import setAuthToken from './Utils/setAuthToken'
 
 // Components
+import MainLoader from './Components/Common/MainLoader/MainLoader'
 import Navbar from './Components/Navbar/Navbar'
 import Spacer from './Components/Spacer/Spacer'
 import ScrollToTop from './Utils/ScrollToTop'
@@ -22,6 +23,7 @@ import store from './Redux/store'
 
 // Pages
 import Home from './Pages/Home/Home'
+import NotFound from './Pages/404/404'
 // import Store from './Pages/Store/Store'
 const Store = lazy(() => import('./Pages/Store/Store'))
 // import Cart from './Pages/Cart/Cart'
@@ -30,8 +32,7 @@ const Cart = lazy(() => import('./Pages/Cart/Cart'))
 const Checkout = lazy(() => import('./Pages/Checkout/Checkout'))
 // import ContactUs from './Pages/ContactUs/ContactUs'
 const ContactUs = lazy(() => import('./Pages/ContactUs/ContactUs'))
-// import NotFound from './Pages/404/404'
-const NotFound = lazy(() => import('./Pages/404/404'))
+// const NotFound = lazy(() => import('./Pages/404/404'))
 
 // Hidden /admin/login
 // import AdminLogin from './Pages/AdminLogin/AdminLogin'
@@ -71,11 +72,11 @@ class App extends Component {
           <ScrollToTop>
             <div>
               <Navbar />
-              <Spacer />
+
               <Switch>
                 <Route exact path="/" component={Home} />
 
-                <Suspense fallback={<h1>Loading...</h1>}>
+                <Suspense fallback={<MainLoader />}>
                   <Route exact path="/store" render={() => <Store />} />
 
                   <Route exact path="/cart" render={() => <Cart />} />
@@ -102,7 +103,7 @@ class App extends Component {
                     render={() => <AdminProducts />}
                   />
                 </Suspense>
-                <Route path="*" render={() => <NotFound />} />
+                <Route path="*" component={NotFound} />
               </Switch>
 
               <Footer />

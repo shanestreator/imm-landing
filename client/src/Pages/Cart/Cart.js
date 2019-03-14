@@ -26,6 +26,7 @@ class Cart extends Component {
         className="container cart__container-shadow min-vh-100 bg-light py-5"
       >
         <div className="container-md px-lg-4">
+          <div className="py-4" />
           <div className="row">
             <div className="col-sm-12 col-lg-8">
               <div className="container pl-0">

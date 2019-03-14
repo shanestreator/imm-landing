@@ -7,6 +7,7 @@ function NotFound() {
       id="container"
       className="container cart__container-shadow min-vh-100 bg-light py-5"
     >
+      <div className="py-4" />
       <div className="container-md px-lg-4">
         <h1 className="display-4 text-center">404 Page Not Found</h1>
         <h5 className="mt-5 text-center">

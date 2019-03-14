@@ -237,6 +237,7 @@ class Checkout extends Component {
         className="container cart__container-shadow min-vh-100 bg-light py-5"
       >
         <div className="container-md px-lg-4">
+          <div className="py-4" />
           {this.props.cart.productsInCart.length > 0 ? (
             <React.Fragment>
               <h1 className="display-4 text-center">Checkout</h1>

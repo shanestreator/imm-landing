@@ -3,6 +3,7 @@ import { NavLink, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import classNames from 'classnames'
 import Media from 'react-media'
+import throttle from 'lodash/throttle'
 
 import { Badge, Icon } from 'antd'
 
@@ -11,6 +12,33 @@ import 'antd/dist/antd.css'
 import { loginUser, logoutUser } from '../../Redux/Actions/authActions'
 
 class Navbar extends Component {
+  state = {
+    slide: 0, // How much should the Navbar slide up or down
+    lastScrollY: 0 // Keep track of current position in state
+  }
+
+  componentWillMount() {
+    // When this component mounts, begin listening for scroll changes
+    window.addEventListener('scroll', throttle(this.handleScroll, 100))
+  }
+
+  componentWillUnmount() {
+    // If this component is unmounted, stop listening
+    window.removeEventListener('scroll', throttle(this.handleScroll, 500))
+  }
+
+  handleScroll = () => {
+    const { lastScrollY } = this.state
+    const currentScrollY = window.scrollY > 75 ? window.scrollY : 0
+
+    if (currentScrollY > lastScrollY) {
+      this.setState({ slide: '-76px' })
+    } else {
+      this.setState({ slide: '0px' })
+    }
+    this.setState({ lastScrollY: currentScrollY })
+  }
+
   onLogoutClick = () => {
     this.props.logoutUser(this.props.history)
   }
@@ -19,7 +47,13 @@ class Navbar extends Component {
     const { productsInCart } = this.props.cart
     const { user, isAuthenticated } = this.props.auth
     return (
-      <div className="navbar__style fixed-top px-0">
+      <div
+        className="navbar__style fixed-top px-0"
+        style={{
+          transform: `translate(0, ${this.state.slide})`,
+          transition: 'transform 130ms linear'
+        }}
+      >
         <nav className="navbar navbar-expand-md d-flex justify-content-center navbar-light bg-light">
           <div id="container" className="container">
             {isAuthenticated ? (

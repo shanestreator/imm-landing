@@ -20,6 +20,7 @@ class Store extends Component {
         className="container store__container-shadow text-center py-5 pb-3 bg-light d-flex justify-content-center"
       >
         <div className="container-md px-md-4">
+          <div className="py-4" />
           <div className="row d-flex justify-content-center align-items-center">
             <div className="row w-100 mt-5">
               <div className="col-3" />
