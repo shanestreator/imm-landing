@@ -11,7 +11,6 @@ import setAuthToken from './Utils/setAuthToken'
 // Components
 import MainLoader from './Components/Common/MainLoader/MainLoader'
 import Navbar from './Components/Navbar/Navbar'
-import Spacer from './Components/Spacer/Spacer'
 import ScrollToTop from './Utils/ScrollToTop'
 import Footer from './Components/Footer/Footer'
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute'
@@ -23,7 +22,7 @@ import store from './Redux/store'
 
 // Pages
 import Home from './Pages/Home/Home'
-import NotFound from './Pages/404/404'
+// import NotFound from './Pages/404/404'
 // import Store from './Pages/Store/Store'
 const Store = lazy(() => import('./Pages/Store/Store'))
 // import Cart from './Pages/Cart/Cart'
@@ -32,7 +31,7 @@ const Cart = lazy(() => import('./Pages/Cart/Cart'))
 const Checkout = lazy(() => import('./Pages/Checkout/Checkout'))
 // import ContactUs from './Pages/ContactUs/ContactUs'
 const ContactUs = lazy(() => import('./Pages/ContactUs/ContactUs'))
-// const NotFound = lazy(() => import('./Pages/404/404'))
+const NotFound = lazy(() => import('./Pages/404/404'))
 
 // Hidden /admin/login
 // import AdminLogin from './Pages/AdminLogin/AdminLogin'
@@ -73,38 +72,33 @@ class App extends Component {
             <div>
               <Navbar />
 
-              <Switch>
-                <Route exact path="/" component={Home} />
+              <Suspense fallback={<MainLoader />}>
+                <Switch>
+                  <Route exact path="/" component={Home} />
 
-                <Suspense fallback={<MainLoader />}>
-                  <Route exact path="/store" render={() => <Store />} />
+                  <Route path="/store" render={() => <Store />} />
 
-                  <Route exact path="/cart" render={() => <Cart />} />
+                  <Route path="/cart" render={() => <Cart />} />
 
-                  <Route exact path="/contact" render={() => <ContactUs />} />
+                  <Route path="/contact" render={() => <ContactUs />} />
 
-                  <Route exact path="/checkout" render={() => <Checkout />} />
+                  <Route path="/checkout" render={() => <Checkout />} />
 
-                  <Route
-                    exact
-                    path="/admin/login"
-                    render={() => <AdminLogin />}
-                  />
+                  <Route path="/admin/login" render={() => <AdminLogin />} />
 
                   <PrivateRoute
-                    exact
                     path="/admin/dashboard"
                     render={() => <AdminDashboard />}
                   />
 
                   <PrivateRoute
-                    exact
                     path="/admin/products"
                     render={() => <AdminProducts />}
                   />
-                </Suspense>
-                <Route path="*" component={NotFound} />
-              </Switch>
+
+                  <Route render={() => <NotFound />} />
+                </Switch>
+              </Suspense>
 
               <Footer />
             </div>
