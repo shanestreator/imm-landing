@@ -41,7 +41,7 @@ const onToken = (
       clearShipToInfoAfterPurchase()
       store.dispatch(removeAllFromCart())
       successPayment(data)
-      history.push('/')
+      history.push('/store')
     }
   } catch (error) {
     console.log('ERROR: ', error)

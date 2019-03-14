@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import TextFieldGroup from '../../Components/Common/TextFieldGroup'
 import {
@@ -188,7 +188,7 @@ class Checkout extends Component {
               clearShipToInfoAfterPurchase()
               removeAllCartItems()
               localStorage.removeItem('shippingId')
-              history.push('/')
+              history.push('/store')
             })
           }
         })
@@ -230,6 +230,8 @@ class Checkout extends Component {
     const cartTotalNum = calcForCartTotal(productsInCart)
     const total = commaNumber(cartTotalNum)
     const totalManuals = totalManualsInCartCalc(productsInCart)
+
+    console.log('this.props: ', this.props)
 
     return (
       <div
@@ -547,4 +549,4 @@ const mapState = ({ cart, checkout, errors }) => ({ cart, checkout, errors })
 export default connect(
   mapState,
   { getShipTo, sendShippingAddress, removeAllFromCart, clearShipTo }
-)(Checkout)
+)(withRouter(Checkout))
