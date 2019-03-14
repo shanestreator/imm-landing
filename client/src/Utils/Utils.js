@@ -21,7 +21,11 @@ export const storeCardAddOneOrTwoZeros = price => {
 }
 
 export const itemModalAddZeros = price => {
-  if (String(price).indexOf('.') > -1) {
+  const arr = String(price).split('.')
+
+  if (arr[1] && arr[1].length > 1) {
+    return price
+  } else if (String(price).indexOf('.') > -1) {
     return `${price}0`
   } else {
     return `${price}.00`

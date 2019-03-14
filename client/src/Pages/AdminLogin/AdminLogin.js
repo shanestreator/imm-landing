@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { loginUser } from '../../Redux/Actions/authActions'
 import TextFieldGroup from '../../Components/Common/TextFieldGroup'
@@ -98,4 +99,4 @@ const mapState = ({ auth, errors }) => ({ auth, errors })
 export default connect(
   mapState,
   { loginUser }
-)(AdminLogin)
+)(withRouter(AdminLogin))

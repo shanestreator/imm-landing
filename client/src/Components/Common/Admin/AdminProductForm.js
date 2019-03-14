@@ -45,7 +45,7 @@ class AdminProductForm extends Component {
           placeholder={product ? product.manualsPerPack : 'Pack of # manuals'}
         />
         <AdminTextFieldGroup
-          onChange={this.onChange}
+          onChange={onChange}
           label="Price"
           value={price}
           name="price"

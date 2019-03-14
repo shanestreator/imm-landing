@@ -88,12 +88,12 @@ class App extends Component {
 
                   <PrivateRoute
                     path="/admin/dashboard"
-                    render={() => <AdminDashboard />}
+                    component={AdminDashboard}
                   />
 
                   <PrivateRoute
                     path="/admin/products"
-                    render={() => <AdminProducts />}
+                    component={AdminProducts}
                   />
 
                   <Route render={() => <NotFound />} />

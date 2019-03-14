@@ -31,7 +31,7 @@ class StoreCartItem extends Component {
             </div>
             <div className="col-4 d-flex justify-content-end align-items-center">
               <span className="text-muted" style={{ fontSize: '18px' }}>
-                ${commaNumber(total)}.00
+                ${itemModalAddZeros(commaNumber(total))}
               </span>
             </div>
           </div>
