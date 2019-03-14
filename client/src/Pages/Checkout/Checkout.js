@@ -231,8 +231,6 @@ class Checkout extends Component {
     const total = commaNumber(cartTotalNum)
     const totalManuals = totalManualsInCartCalc(productsInCart)
 
-    console.log('this.props: ', this.props)
-
     return (
       <div
         id="container"
