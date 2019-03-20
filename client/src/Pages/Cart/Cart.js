@@ -22,7 +22,7 @@ class Cart extends Component {
       itemModalAddZeros(calcForCartTotal(productsInCart))
     )
     const totalManuals = totalManualsInCartCalc(productsInCart)
-    console.log('Total: ', total)
+
     return (
       <div
         id="container"
