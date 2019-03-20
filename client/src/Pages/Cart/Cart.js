@@ -5,7 +5,8 @@ import commaNumber from 'comma-number'
 import {
   calcForCartTotal,
   totalManualsForItemCalc,
-  totalManualsInCartCalc
+  totalManualsInCartCalc,
+  itemModalAddZeros
 } from '../../Utils/Utils'
 
 import OrderSummaryTable from '../../Components/Common/Cart/OrderSummaryTable'
@@ -17,9 +18,11 @@ class Cart extends Component {
   render() {
     const { productsInCart } = this.props.cart
 
-    const total = commaNumber(calcForCartTotal(productsInCart))
+    const total = commaNumber(
+      itemModalAddZeros(calcForCartTotal(productsInCart))
+    )
     const totalManuals = totalManualsInCartCalc(productsInCart)
-
+    console.log('Total: ', total)
     return (
       <div
         id="container"

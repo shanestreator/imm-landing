@@ -44,7 +44,7 @@ class CartItem extends Component {
                   </div>
                   <div className="col-12 mb-1">
                     <span className="text-muted" style={{ fontSize: '18px' }}>
-                      ${commaNumber(total)}.00
+                      ${commaNumber(itemModalAddZeros(total))}
                     </span>
                   </div>
                   <div className="col-12" style={{ fontSize: '10px' }}>
