@@ -16,7 +16,7 @@ export default class Home extends Component {
       >
         <div className="py-4" />
         <div className="container-md px-md-4">
-          <div className="embed-responsive embed-responsive-16by9 home__video rounded mt-5">
+          <div className="embed-responsive embed-responsive-16by9 home__video rounded my-5">
             <iframe
               title="Impact Motivation Manual Video"
               className="embed-responsive-item"
@@ -28,7 +28,7 @@ export default class Home extends Component {
           <div className="d-flex justify-content-center">
             <Link to="/store">
               <img
-                className="mt-5 img-fluid px-5 px-md-0"
+                className="img-fluid px-5 px-md-0"
                 src="/images/Paypal-Buy-Now-Button.webp"
                 alt=""
               />
@@ -403,7 +403,7 @@ export default class Home extends Component {
                 className="card bg-light mt-4 mb-0"
                 style={{ border: 'none' }}
               >
-                <div className="card-body text-center px-0 pb-0">
+                <div className="card-body text-center px-2 pb-0">
                   <h3 className="card-title about__dark-red">
                     <strong>TESTIMONIALS</strong>
                   </h3>
@@ -755,7 +755,7 @@ export default class Home extends Component {
               <hr className="my-5 border" />
 
               <div className="card bg-light my-4" style={{ border: 'none' }}>
-                <div className="card-body text-center">
+                <div className="card-body text-center px-0">
                   <h3 className="card-title about__dark-red">
                     <strong>
                       How does this manual help create mindset change?
@@ -806,7 +806,7 @@ export default class Home extends Component {
                 className="card bg-light mb-5 pt-0"
                 style={{ border: 'none' }}
               >
-                <div className="card-body text-center pt-0">
+                <div className="card-body text-center pt-0 px-0">
                   <h4 className="card-title about__dark-red">
                     Weak minded follower...to Disciplined champion fighter
                   </h4>
@@ -925,7 +925,7 @@ export default class Home extends Component {
               </div>
 
               <div className="card bg-light my-5" style={{ border: 'none' }}>
-                <div className="card-body text-center ">
+                <div className="card-body text-center px-0">
                   <h4 className="card-title about__dark-red">
                     Construction laborer...to Business owner
                   </h4>
@@ -1019,7 +1019,7 @@ export default class Home extends Component {
               </div>
 
               <div className="card bg-light my-5" style={{ border: 'none' }}>
-                <div className="card-body text-center ">
+                <div className="card-body text-center px-0">
                   <h4 className="card-title about__dark-red">
                     Unhappy marriage/divorce...to Amazing, lasting relationship
                   </h4>
@@ -1116,7 +1116,7 @@ export default class Home extends Component {
                 className="card bg-light mt-4 mb-0"
                 style={{ border: 'none' }}
               >
-                <div className="card-body text-center">
+                <div className="card-body text-center px-0">
                   <p className="card-text pb-2">
                     Now I want to share this powerful tool with everyone and
                     anyone who is looking for a positive change in their life or
@@ -1137,7 +1137,7 @@ export default class Home extends Component {
                 low as
               </p>
               <p>
-                <strong className="home__dark-red">$2.50 per manual!</strong>
+                <strong className="home__dark-red">$3.00 per manual!</strong>
               </p>
 
               <Link to="/store">

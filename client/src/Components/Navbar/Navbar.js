@@ -62,13 +62,13 @@ class Navbar extends Component {
                   {matches =>
                     matches ? (
                       <img
-                        style={{ width: '200px', height: '40px' }}
+                        style={{ width: '200px', height: '50px' }}
                         src="/images/imm-logo.webp"
                         alt=""
                       />
                     ) : (
                       <img
-                        style={{ width: '250px', height: '50px' }}
+                        style={{ width: '200px', height: '50px' }}
                         src="/images/imm-logo.webp"
                         alt=""
                       />
@@ -82,13 +82,13 @@ class Navbar extends Component {
                   {matches =>
                     matches ? (
                       <img
-                        style={{ width: '200px', height: '40px' }}
+                        style={{ width: '200px', height: '50px' }}
                         src="/images/imm-logo.webp"
                         alt=""
                       />
                     ) : (
                       <img
-                        style={{ width: '250px', height: '50px' }}
+                        style={{ width: '200px', height: '50px' }}
                         src="/images/imm-logo.webp"
                         alt=""
                       />

@@ -37,6 +37,19 @@ class Store extends Component {
               </div>
             </div>
 
+            <div className="pricing-header px-5 mt-5 text-center">
+              <h3 className="mt-2 mb-0">
+                To contact us about product availability{' '}
+                <Link
+                  className="base__hover-link-underline"
+                  to="/contact"
+                  style={{ color: '#be141b' }}
+                >
+                  Click Here
+                </Link>
+              </h3>
+            </div>
+
             <div className="container px-2 px-md-5 pt-3">
               <div className="card-deck d-flex justify-content-center mb-3 text-center">
                 <div className="row d-flex justify-content-center">

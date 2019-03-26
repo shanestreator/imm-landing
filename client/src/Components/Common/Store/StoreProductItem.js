@@ -75,7 +75,18 @@ class StoreProductItem extends React.Component {
 
             <div className="card-body px-2 px-md-1">
               <div className="card-title pricing-card-title mt-2 mb-3">
-                <h3 className="mb-0 about__media-title">{title}</h3>
+                <h3 className="mb-0 about__media-title d-none d-sm-block">
+                  {title}
+                </h3>
+
+                <div className="row d-block d-sm-none">
+                  <div className="col-12 about__media-title px-0">
+                    <h3 className="mb-0">{title.split(' ')[0]}</h3>
+                  </div>
+                  <div className="col-12 about__media-title px-0">
+                    <h3>{title.split(' ')[1]}</h3>
+                  </div>
+                </div>
               </div>
 
               <form onSubmit={this.onSubmit}>
@@ -101,6 +112,7 @@ class StoreProductItem extends React.Component {
                   </li>
                 </ul>
 
+                {/*
                 <div className="p-1 p-md-4">
                   <button
                     type="submit"
@@ -112,6 +124,7 @@ class StoreProductItem extends React.Component {
                     <strong>Add To Cart</strong>
                   </button>
                 </div>
+                */}
 
                 {this.props.alreadyInCart && (
                   <Link

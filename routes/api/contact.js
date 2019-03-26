@@ -24,7 +24,7 @@ router.post('/', async (req, res, next) => {
     let mailOptionsToSelf = {
       from: email,
       to: keys.GMAIL_USER, // list of receivers
-      subject: 'Question/Inquery...', // Subject line
+      subject: 'Question/Inquiry...', // Subject line
       text: `From: ${name} (${email})
 
 Question: ${description}` // plain text body
@@ -34,7 +34,7 @@ Question: ${description}` // plain text body
     let mailOptionsToSender = {
       to: email, // list of receivers
       subject: 'Impact Motivation Manual', // Subject line
-      text: 'Thank you for your inquery, someone will be in touch shortly!' // plain text body
+      text: 'Thank you for your inquiry, someone will be in touch shortly!' // plain text body
       // html: contact_auto_response.html // html body
     }
 
