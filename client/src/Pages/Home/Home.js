@@ -26,12 +26,18 @@ export default class Home extends Component {
           </div>
 
           <div className="d-flex justify-content-center">
-            <Link to="/store">
-              <img
-                className="img-fluid px-5 px-md-0"
-                src="/images/Paypal-Buy-Now-Button.webp"
-                alt=""
-              />
+            <Link to="/store" className="d-flex justify-content-center">
+              <picture>
+                <source
+                  type="image/webp"
+                  srcset="/images/Paypal-Buy-Now-Button.webp"
+                />
+                <source
+                  type="image/png"
+                  srcset="/images/Paypal-Buy-Now-Button.png"
+                />
+                <img src="image/png" alt="Buy Now Button" />
+              </picture>
             </Link>
           </div>
 
@@ -54,7 +60,7 @@ export default class Home extends Component {
               </strong>
             </h3>
 
-            <hr className="mt-5 border" />
+            <hr className="my-5 border" />
 
             <div className="card bg-light my-4" style={{ border: 'none' }}>
               <div className="card-body text-center px-0">
@@ -69,7 +75,7 @@ export default class Home extends Component {
               </div>
             </div>
 
-            <hr className="mt-5 border" />
+            <hr className="my-5 border" />
 
             <ObserverWrapper>
               <div
@@ -103,11 +109,32 @@ export default class Home extends Component {
                               <tbody className="container">
                                 <tr>
                                   <td className="text-right pl-0 pr-1">
-                                    <img
-                                      src="/images/checkmark-30px.webp"
-                                      alt="checkmark"
-                                      style={{ width: '30px', height: '30px' }}
-                                    />
+                                    <picture>
+                                      <source
+                                        type="image/webp"
+                                        srcset="/images/checkmark-30px.webp"
+                                        style={{
+                                          width: '30px',
+                                          height: '30px'
+                                        }}
+                                      />
+                                      <source
+                                        type="image/png"
+                                        srcset="/images/checkmark-30px.png"
+                                        style={{
+                                          width: '30px',
+                                          height: '30px'
+                                        }}
+                                      />
+                                      <img
+                                        src="image/png"
+                                        alt="checkmark"
+                                        style={{
+                                          width: '30px',
+                                          height: '30px'
+                                        }}
+                                      />
+                                    </picture>
                                   </td>
                                   <td
                                     className="text-left pl-0 pr-3"
@@ -118,11 +145,32 @@ export default class Home extends Component {
                                 </tr>
                                 <tr>
                                   <td className="text-right pl-0 pr-1">
-                                    <img
-                                      src="/images/checkmark-30px.webp"
-                                      alt="checkmark"
-                                      style={{ width: '30px', height: '30px' }}
-                                    />
+                                    <picture>
+                                      <source
+                                        type="image/webp"
+                                        srcset="/images/checkmark-30px.webp"
+                                        style={{
+                                          width: '30px',
+                                          height: '30px'
+                                        }}
+                                      />
+                                      <source
+                                        type="image/png"
+                                        srcset="/images/checkmark-30px.png"
+                                        style={{
+                                          width: '30px',
+                                          height: '30px'
+                                        }}
+                                      />
+                                      <img
+                                        src="image/png"
+                                        alt="checkmark"
+                                        style={{
+                                          width: '30px',
+                                          height: '30px'
+                                        }}
+                                      />
+                                    </picture>
                                   </td>
                                   <td
                                     className="text-left pl-0 pr-3"
@@ -133,11 +181,32 @@ export default class Home extends Component {
                                 </tr>
                                 <tr>
                                   <td className="text-right pl-0 pr-1">
-                                    <img
-                                      src="/images/checkmark-30px.webp"
-                                      alt="checkmark"
-                                      style={{ width: '30px', height: '30px' }}
-                                    />
+                                    <picture>
+                                      <source
+                                        type="image/webp"
+                                        srcset="/images/checkmark-30px.webp"
+                                        style={{
+                                          width: '30px',
+                                          height: '30px'
+                                        }}
+                                      />
+                                      <source
+                                        type="image/png"
+                                        srcset="/images/checkmark-30px.png"
+                                        style={{
+                                          width: '30px',
+                                          height: '30px'
+                                        }}
+                                      />
+                                      <img
+                                        src="image/png"
+                                        alt="checkmark"
+                                        style={{
+                                          width: '30px',
+                                          height: '30px'
+                                        }}
+                                      />
+                                    </picture>
                                   </td>
                                   <td
                                     className="text-left pl-0 pr-3"
@@ -157,11 +226,32 @@ export default class Home extends Component {
                               <tbody className="container">
                                 <tr>
                                   <td className="text-right pl-0 pr-1">
-                                    <img
-                                      src="/images/checkmark-30px.webp"
-                                      alt="checkmark"
-                                      style={{ width: '30px', height: '30px' }}
-                                    />
+                                    <picture>
+                                      <source
+                                        type="image/webp"
+                                        srcset="/images/checkmark-30px.webp"
+                                        style={{
+                                          width: '30px',
+                                          height: '30px'
+                                        }}
+                                      />
+                                      <source
+                                        type="image/png"
+                                        srcset="/images/checkmark-30px.png"
+                                        style={{
+                                          width: '30px',
+                                          height: '30px'
+                                        }}
+                                      />
+                                      <img
+                                        src="image/png"
+                                        alt="checkmark"
+                                        style={{
+                                          width: '30px',
+                                          height: '30px'
+                                        }}
+                                      />
+                                    </picture>
                                   </td>
                                   <td
                                     className="text-left pl-0 pr-3"
@@ -172,11 +262,32 @@ export default class Home extends Component {
                                 </tr>
                                 <tr>
                                   <td className="text-right pl-0 pr-1">
-                                    <img
-                                      src="/images/checkmark-30px.webp"
-                                      alt="checkmark"
-                                      style={{ width: '30px', height: '30px' }}
-                                    />
+                                    <picture>
+                                      <source
+                                        type="image/webp"
+                                        srcset="/images/checkmark-30px.webp"
+                                        style={{
+                                          width: '30px',
+                                          height: '30px'
+                                        }}
+                                      />
+                                      <source
+                                        type="image/png"
+                                        srcset="/images/checkmark-30px.png"
+                                        style={{
+                                          width: '30px',
+                                          height: '30px'
+                                        }}
+                                      />
+                                      <img
+                                        src="image/png"
+                                        alt="checkmark"
+                                        style={{
+                                          width: '30px',
+                                          height: '30px'
+                                        }}
+                                      />
+                                    </picture>
                                   </td>
                                   <td
                                     className="text-left pl-0 pr-3"
@@ -187,11 +298,32 @@ export default class Home extends Component {
                                 </tr>
                                 <tr>
                                   <td className="text-right pl-0 pr-1">
-                                    <img
-                                      src="/images/checkmark-30px.webp"
-                                      alt="checkmark"
-                                      style={{ width: '30px', height: '30px' }}
-                                    />
+                                    <picture>
+                                      <source
+                                        type="image/webp"
+                                        srcset="/images/checkmark-30px.webp"
+                                        style={{
+                                          width: '30px',
+                                          height: '30px'
+                                        }}
+                                      />
+                                      <source
+                                        type="image/png"
+                                        srcset="/images/checkmark-30px.png"
+                                        style={{
+                                          width: '30px',
+                                          height: '30px'
+                                        }}
+                                      />
+                                      <img
+                                        src="image/png"
+                                        alt="checkmark"
+                                        style={{
+                                          width: '30px',
+                                          height: '30px'
+                                        }}
+                                      />
+                                    </picture>
                                   </td>
                                   <td
                                     className="text-left pl-0 pr-0"
@@ -215,11 +347,32 @@ export default class Home extends Component {
                               <tbody className="container">
                                 <tr>
                                   <td className="text-right pl-0 pr-1">
-                                    <img
-                                      src="/images/checkmark-30px.webp"
-                                      alt="checkmark"
-                                      style={{ width: '30px', height: '30px' }}
-                                    />
+                                    <picture>
+                                      <source
+                                        type="image/webp"
+                                        srcset="/images/checkmark-30px.webp"
+                                        style={{
+                                          width: '30px',
+                                          height: '30px'
+                                        }}
+                                      />
+                                      <source
+                                        type="image/png"
+                                        srcset="/images/checkmark-30px.png"
+                                        style={{
+                                          width: '30px',
+                                          height: '30px'
+                                        }}
+                                      />
+                                      <img
+                                        src="image/png"
+                                        alt="checkmark"
+                                        style={{
+                                          width: '30px',
+                                          height: '30px'
+                                        }}
+                                      />
+                                    </picture>
                                   </td>
                                   <td
                                     className="text-left pl-0 pr-3"
@@ -230,11 +383,32 @@ export default class Home extends Component {
                                 </tr>
                                 <tr>
                                   <td className="text-right pl-0 pr-1">
-                                    <img
-                                      src="/images/checkmark-30px.webp"
-                                      alt="checkmark"
-                                      style={{ width: '30px', height: '30px' }}
-                                    />
+                                    <picture>
+                                      <source
+                                        type="image/webp"
+                                        srcset="/images/checkmark-30px.webp"
+                                        style={{
+                                          width: '30px',
+                                          height: '30px'
+                                        }}
+                                      />
+                                      <source
+                                        type="image/png"
+                                        srcset="/images/checkmark-30px.png"
+                                        style={{
+                                          width: '30px',
+                                          height: '30px'
+                                        }}
+                                      />
+                                      <img
+                                        src="image/png"
+                                        alt="checkmark"
+                                        style={{
+                                          width: '30px',
+                                          height: '30px'
+                                        }}
+                                      />
+                                    </picture>
                                   </td>
                                   <td
                                     className="text-left pl-0 pr-3"
@@ -245,11 +419,32 @@ export default class Home extends Component {
                                 </tr>
                                 <tr>
                                   <td className="text-right pl-0 pr-1">
-                                    <img
-                                      src="/images/checkmark-30px.webp"
-                                      alt="checkmark"
-                                      style={{ width: '30px', height: '30px' }}
-                                    />
+                                    <picture>
+                                      <source
+                                        type="image/webp"
+                                        srcset="/images/checkmark-30px.webp"
+                                        style={{
+                                          width: '30px',
+                                          height: '30px'
+                                        }}
+                                      />
+                                      <source
+                                        type="image/png"
+                                        srcset="/images/checkmark-30px.png"
+                                        style={{
+                                          width: '30px',
+                                          height: '30px'
+                                        }}
+                                      />
+                                      <img
+                                        src="image/png"
+                                        alt="checkmark"
+                                        style={{
+                                          width: '30px',
+                                          height: '30px'
+                                        }}
+                                      />
+                                    </picture>
                                   </td>
                                   <td
                                     className="text-left pl-0 pr-3"
@@ -269,11 +464,32 @@ export default class Home extends Component {
                               <tbody className="container">
                                 <tr>
                                   <td className="text-right pl-0 pr-1">
-                                    <img
-                                      src="/images/checkmark-30px.webp"
-                                      alt="checkmark"
-                                      style={{ width: '30px', height: '30px' }}
-                                    />
+                                    <picture>
+                                      <source
+                                        type="image/webp"
+                                        srcset="/images/checkmark-30px.webp"
+                                        style={{
+                                          width: '30px',
+                                          height: '30px'
+                                        }}
+                                      />
+                                      <source
+                                        type="image/png"
+                                        srcset="/images/checkmark-30px.png"
+                                        style={{
+                                          width: '30px',
+                                          height: '30px'
+                                        }}
+                                      />
+                                      <img
+                                        src="image/png"
+                                        alt="checkmark"
+                                        style={{
+                                          width: '30px',
+                                          height: '30px'
+                                        }}
+                                      />
+                                    </picture>
                                   </td>
                                   <td
                                     className="text-left pl-0 pr-0"
@@ -284,11 +500,32 @@ export default class Home extends Component {
                                 </tr>
                                 <tr>
                                   <td className="text-right pl-0 pr-1">
-                                    <img
-                                      src="/images/checkmark-30px.webp"
-                                      alt="checkmark"
-                                      style={{ width: '30px', height: '30px' }}
-                                    />
+                                    <picture>
+                                      <source
+                                        type="image/webp"
+                                        srcset="/images/checkmark-30px.webp"
+                                        style={{
+                                          width: '30px',
+                                          height: '30px'
+                                        }}
+                                      />
+                                      <source
+                                        type="image/png"
+                                        srcset="/images/checkmark-30px.png"
+                                        style={{
+                                          width: '30px',
+                                          height: '30px'
+                                        }}
+                                      />
+                                      <img
+                                        src="image/png"
+                                        alt="checkmark"
+                                        style={{
+                                          width: '30px',
+                                          height: '30px'
+                                        }}
+                                      />
+                                    </picture>
                                   </td>
                                   <td
                                     className="text-left pl-0 pr-3"
@@ -299,11 +536,32 @@ export default class Home extends Component {
                                 </tr>
                                 <tr>
                                   <td className="text-right pl-0 pr-1">
-                                    <img
-                                      src="/images/checkmark-30px.webp"
-                                      alt="checkmark"
-                                      style={{ width: '30px', height: '30px' }}
-                                    />
+                                    <picture>
+                                      <source
+                                        type="image/webp"
+                                        srcset="/images/checkmark-30px.webp"
+                                        style={{
+                                          width: '30px',
+                                          height: '30px'
+                                        }}
+                                      />
+                                      <source
+                                        type="image/png"
+                                        srcset="/images/checkmark-30px.png"
+                                        style={{
+                                          width: '30px',
+                                          height: '30px'
+                                        }}
+                                      />
+                                      <img
+                                        src="image/png"
+                                        alt="checkmark"
+                                        style={{
+                                          width: '30px',
+                                          height: '30px'
+                                        }}
+                                      />
+                                    </picture>
                                   </td>
                                   <td
                                     className="text-left pl-0 pr-0"
@@ -389,11 +647,17 @@ export default class Home extends Component {
 
               <div>
                 <Link to="/store">
-                  <img
-                    className="my-5 img-fluid px-5 px-md-0"
-                    src="/images/Paypal-Buy-Now-Button.webp"
-                    alt=""
-                  />
+                  <picture>
+                    <source
+                      type="image/webp"
+                      srcset="/images/Paypal-Buy-Now-Button.webp"
+                    />
+                    <source
+                      type="image/png"
+                      srcset="/images/Paypal-Buy-Now-Button.png"
+                    />
+                    <img src="image/png" alt="Buy Now Button" />
+                  </picture>
                 </Link>
               </div>
 
@@ -793,12 +1057,23 @@ export default class Home extends Component {
                   <h4 className="card-text" style={{ color: '#be141b' }}>
                     Here's How
                   </h4>
-                  <img
-                    style={{ width: 'auto', height: '75px', opacity: '.65' }}
-                    className="img-fluid mt-4"
-                    src="/images/3-red-arrows-down.webp"
-                    alt="red arrows down"
-                  />
+
+                  <div className="mt-4" />
+                  <picture>
+                    <source
+                      type="image/webp"
+                      srcset="/images/3-red-arrows-down.webp"
+                    />
+                    <source
+                      type="image/png"
+                      srcset="/images/3-red-arrows-down.png"
+                    />
+                    <img
+                      src="image/png"
+                      alt="arrows pointing down"
+                      style={{ width: 'auto', height: '75px', opacity: '.65' }}
+                    />
+                  </picture>
                 </div>
               </div>
 
@@ -837,34 +1112,73 @@ export default class Home extends Component {
                             centerSlidePercentage={100}
                           >
                             <div>
-                              <img
-                                src="/images/fight/fight-pic-1.webp"
-                                alt="..."
-                              />
+                              <picture>
+                                <source
+                                  type="image/webp"
+                                  srcset="/images/fight/fight-pic-1.webp"
+                                />
+                                <source
+                                  type="image/png"
+                                  srcset="/images/fight/fight-pic-1.png"
+                                />
+                                <img src="image/png" alt="fight picture 1" />
+                              </picture>
                             </div>
+
                             <div>
-                              <img
-                                src="/images/fight/fight-pic-2.webp"
-                                alt="..."
-                              />
+                              <picture>
+                                <source
+                                  type="image/webp"
+                                  srcset="/images/fight/fight-pic-3.webp"
+                                />
+                                <source
+                                  type="image/png"
+                                  srcset="/images/fight/fight-pic-3.png"
+                                />
+                                <img src="image/png" alt="fight picture 3" />
+                              </picture>
                             </div>
+
                             <div>
-                              <img
-                                src="/images/fight/fight-pic-3.webp"
-                                alt="..."
-                              />
+                              <picture>
+                                <source
+                                  type="image/webp"
+                                  srcset="/images/fight/fight-pic-2.webp"
+                                />
+                                <source
+                                  type="image/png"
+                                  srcset="/images/fight/fight-pic-2.png"
+                                />
+                                <img src="image/png" alt="fight picture 2" />
+                              </picture>
                             </div>
+
                             <div>
-                              <img
-                                src="/images/fight/fight-pic-4.webp"
-                                alt="..."
-                              />
+                              <picture>
+                                <source
+                                  type="image/webp"
+                                  srcset="/images/fight/fight-pic-4.webp"
+                                />
+                                <source
+                                  type="image/png"
+                                  srcset="/images/fight/fight-pic-4.png"
+                                />
+                                <img src="image/png" alt="fight picture 4" />
+                              </picture>
                             </div>
+
                             <div>
-                              <img
-                                src="/images/fight/fight-pic-5.webp"
-                                alt="..."
-                              />
+                              <picture>
+                                <source
+                                  type="image/webp"
+                                  srcset="/images/fight/fight-pic-5.webp"
+                                />
+                                <source
+                                  type="image/png"
+                                  srcset="/images/fight/fight-pic-5.png"
+                                />
+                                <img src="image/png" alt="fight picture 5" />
+                              </picture>
                             </div>
                           </Carousel>
                         ) : (
@@ -884,37 +1198,73 @@ export default class Home extends Component {
                             centerSlidePercentage={34}
                           >
                             <div>
-                              <img
-                                src="/images/fight/fight-pic-1.webp"
-                                alt="..."
-                              />
+                              <picture>
+                                <source
+                                  type="image/webp"
+                                  srcset="/images/fight/fight-pic-1.webp"
+                                />
+                                <source
+                                  type="image/png"
+                                  srcset="/images/fight/fight-pic-1.png"
+                                />
+                                <img src="image/png" alt="fight picture 1" />
+                              </picture>
                             </div>
 
                             <div>
-                              <img
-                                src="/images/fight/fight-pic-3.webp"
-                                alt="..."
-                              />
+                              <picture>
+                                <source
+                                  type="image/webp"
+                                  srcset="/images/fight/fight-pic-3.webp"
+                                />
+                                <source
+                                  type="image/png"
+                                  srcset="/images/fight/fight-pic-3.png"
+                                />
+                                <img src="image/png" alt="fight picture 3" />
+                              </picture>
                             </div>
 
                             <div>
-                              <img
-                                src="/images/fight/fight-pic-2.webp"
-                                alt="..."
-                              />
+                              <picture>
+                                <source
+                                  type="image/webp"
+                                  srcset="/images/fight/fight-pic-2.webp"
+                                />
+                                <source
+                                  type="image/png"
+                                  srcset="/images/fight/fight-pic-2.png"
+                                />
+                                <img src="image/png" alt="fight picture 2" />
+                              </picture>
                             </div>
 
                             <div>
-                              <img
-                                src="/images/fight/fight-pic-4.webp"
-                                alt="..."
-                              />
+                              <picture>
+                                <source
+                                  type="image/webp"
+                                  srcset="/images/fight/fight-pic-4.webp"
+                                />
+                                <source
+                                  type="image/png"
+                                  srcset="/images/fight/fight-pic-4.png"
+                                />
+                                <img src="image/png" alt="fight picture 4" />
+                              </picture>
                             </div>
+
                             <div>
-                              <img
-                                src="/images/fight/fight-pic-5.webp"
-                                alt="..."
-                              />
+                              <picture>
+                                <source
+                                  type="image/webp"
+                                  srcset="/images/fight/fight-pic-5.webp"
+                                />
+                                <source
+                                  type="image/png"
+                                  srcset="/images/fight/fight-pic-5.png"
+                                />
+                                <img src="image/png" alt="fight picture 5" />
+                              </picture>
                             </div>
                           </Carousel>
                         )
@@ -958,22 +1308,54 @@ export default class Home extends Component {
                             centerSlidePercentage={100}
                           >
                             <div>
-                              <img
-                                src="/images/career/construction-helmets.webp"
-                                alt="..."
-                              />
+                              <picture>
+                                <source
+                                  type="image/webp"
+                                  srcset="/images/career/construction-helmets.webp"
+                                />
+                                <source
+                                  type="image/png"
+                                  srcset="/images/career/construction-helmets.png"
+                                />
+                                <img
+                                  src="image/png"
+                                  alt="construction picture 1"
+                                />
+                              </picture>
                             </div>
+
                             <div>
-                              <img
-                                src="/images/career/hands-in.webp"
-                                alt="..."
-                              />
+                              <picture>
+                                <source
+                                  type="image/webp"
+                                  srcset="/images/career/hands-in.webp"
+                                />
+                                <source
+                                  type="image/png"
+                                  srcset="/images/career/hands-in.png"
+                                />
+                                <img
+                                  src="image/png"
+                                  alt="construction picture 2"
+                                />
+                              </picture>
                             </div>
+
                             <div>
-                              <img
-                                src="/images/career/construction-site.webp"
-                                alt="..."
-                              />
+                              <picture>
+                                <source
+                                  type="image/webp"
+                                  srcset="/images/career/construction-site.webp"
+                                />
+                                <source
+                                  type="image/png"
+                                  srcset="/images/career/construction-site.png"
+                                />
+                                <img
+                                  src="image/png"
+                                  alt="construction picture 3"
+                                />
+                              </picture>
                             </div>
                           </Carousel>
                         ) : (
@@ -993,22 +1375,54 @@ export default class Home extends Component {
                             centerSlidePercentage={34}
                           >
                             <div>
-                              <img
-                                src="/images/career/construction-helmets.webp"
-                                alt="..."
-                              />
+                              <picture>
+                                <source
+                                  type="image/webp"
+                                  srcset="/images/career/construction-helmets.webp"
+                                />
+                                <source
+                                  type="image/png"
+                                  srcset="/images/career/construction-helmets.png"
+                                />
+                                <img
+                                  src="image/png"
+                                  alt="construction picture 1"
+                                />
+                              </picture>
                             </div>
+
                             <div>
-                              <img
-                                src="/images/career/hands-in.webp"
-                                alt="..."
-                              />
+                              <picture>
+                                <source
+                                  type="image/webp"
+                                  srcset="/images/career/hands-in.webp"
+                                />
+                                <source
+                                  type="image/png"
+                                  srcset="/images/career/hands-in.png"
+                                />
+                                <img
+                                  src="image/png"
+                                  alt="construction picture 2"
+                                />
+                              </picture>
                             </div>
+
                             <div>
-                              <img
-                                src="/images/career/construction-site.webp"
-                                alt="..."
-                              />
+                              <picture>
+                                <source
+                                  type="image/webp"
+                                  srcset="/images/career/construction-site.webp"
+                                />
+                                <source
+                                  type="image/png"
+                                  srcset="/images/career/construction-site.png"
+                                />
+                                <img
+                                  src="image/png"
+                                  alt="construction picture 3"
+                                />
+                              </picture>
                             </div>
                           </Carousel>
                         )
@@ -1050,23 +1464,87 @@ export default class Home extends Component {
                             centerSlidePercentage={100}
                           >
                             <div>
-                              <img src="/images/wed/wed-pic-4.webp" alt="..." />
-                            </div>
-                            <div>
-                              <img src="/images/wed/wed-pic-3.webp" alt="..." />
-                            </div>
-                            <div>
-                              <img src="/images/wed/wed-pic-6.webp" alt="..." />
-                            </div>
-                            <div>
-                              <img src="/images/wed/wed-pic-1.webp" alt="..." />
-                            </div>
-                            <div>
-                              <img src="/images/wed/wed-pic-5.webp" alt="..." />
+                              <picture>
+                                <source
+                                  type="image/webp"
+                                  srcset="/images/wed/wed-pic-4.webp"
+                                />
+                                <source
+                                  type="image/png"
+                                  srcset="/images/wed/wed-pic-4.png"
+                                />
+                                <img src="image/png" alt="wedding picture 4" />
+                              </picture>
                             </div>
 
                             <div>
-                              <img src="/images/wed/wed-pic-2.webp" alt="..." />
+                              <picture>
+                                <source
+                                  type="image/webp"
+                                  srcset="/images/wed/wed-pic-3.webp"
+                                />
+                                <source
+                                  type="image/png"
+                                  srcset="/images/wed/wed-pic-3.png"
+                                />
+                                <img src="image/png" alt="wedding picture 3" />
+                              </picture>
+                            </div>
+
+                            <div>
+                              <picture>
+                                <source
+                                  type="image/webp"
+                                  srcset="/images/wed/wed-pic-6.webp"
+                                />
+                                <source
+                                  type="image/png"
+                                  srcset="/images/wed/wed-pic-6.png"
+                                />
+                                <img src="image/png" alt="wedding picture 6" />
+                              </picture>
+                            </div>
+
+                            <div>
+                              <picture>
+                                <source
+                                  type="image/webp"
+                                  srcset="/images/wed/wed-pic-1.webp"
+                                />
+                                <source
+                                  type="image/png"
+                                  srcset="/images/wed/wed-pic-1.png"
+                                />
+                                <img src="image/png" alt="wedding picture 1" />
+                              </picture>
+                            </div>
+
+                            <div>
+                              <picture>
+                                <source
+                                  type="image/webp"
+                                  srcset="/images/wed/wed-pic-5.webp"
+                                />
+                                <source
+                                  type="image/png"
+                                  srcset="/images/wed/wed-pic-5.png"
+                                />
+                                <img src="image/png" alt="wedding picture 5" />
+                              </picture>
+                            </div>
+
+                            <div>
+                              <picture>
+                                <source
+                                  type="image/webp"
+                                  srcset="/images/wed/wed-pic-2.webp"
+                                />
+                                <source
+                                  type="image/png"
+                                  srcset="/images/wed/wed-pic-2.png"
+                                />
+                                <img src="image/png" alt="wedding picture 2" />
+                              </picture>
                             </div>
                           </Carousel>
                         ) : (
@@ -1086,23 +1564,87 @@ export default class Home extends Component {
                             centerSlidePercentage={34}
                           >
                             <div>
-                              <img src="/images/wed/wed-pic-4.webp" alt="..." />
-                            </div>
-                            <div>
-                              <img src="/images/wed/wed-pic-3.webp" alt="..." />
-                            </div>
-                            <div>
-                              <img src="/images/wed/wed-pic-6.webp" alt="..." />
-                            </div>
-                            <div>
-                              <img src="/images/wed/wed-pic-1.webp" alt="..." />
-                            </div>
-                            <div>
-                              <img src="/images/wed/wed-pic-5.webp" alt="..." />
+                              <picture>
+                                <source
+                                  type="image/webp"
+                                  srcset="/images/wed/wed-pic-4.webp"
+                                />
+                                <source
+                                  type="image/png"
+                                  srcset="/images/wed/wed-pic-4.png"
+                                />
+                                <img src="image/png" alt="wedding picture 4" />
+                              </picture>
                             </div>
 
                             <div>
-                              <img src="/images/wed/wed-pic-2.webp" alt="..." />
+                              <picture>
+                                <source
+                                  type="image/webp"
+                                  srcset="/images/wed/wed-pic-3.webp"
+                                />
+                                <source
+                                  type="image/png"
+                                  srcset="/images/wed/wed-pic-3.png"
+                                />
+                                <img src="image/png" alt="wedding picture 3" />
+                              </picture>
+                            </div>
+
+                            <div>
+                              <picture>
+                                <source
+                                  type="image/webp"
+                                  srcset="/images/wed/wed-pic-6.webp"
+                                />
+                                <source
+                                  type="image/png"
+                                  srcset="/images/wed/wed-pic-6.png"
+                                />
+                                <img src="image/png" alt="wedding picture 6" />
+                              </picture>
+                            </div>
+
+                            <div>
+                              <picture>
+                                <source
+                                  type="image/webp"
+                                  srcset="/images/wed/wed-pic-1.webp"
+                                />
+                                <source
+                                  type="image/png"
+                                  srcset="/images/wed/wed-pic-1.png"
+                                />
+                                <img src="image/png" alt="wedding picture 1" />
+                              </picture>
+                            </div>
+
+                            <div>
+                              <picture>
+                                <source
+                                  type="image/webp"
+                                  srcset="/images/wed/wed-pic-5.webp"
+                                />
+                                <source
+                                  type="image/png"
+                                  srcset="/images/wed/wed-pic-5.png"
+                                />
+                                <img src="image/png" alt="wedding picture 5" />
+                              </picture>
+                            </div>
+
+                            <div>
+                              <picture>
+                                <source
+                                  type="image/webp"
+                                  srcset="/images/wed/wed-pic-2.webp"
+                                />
+                                <source
+                                  type="image/png"
+                                  srcset="/images/wed/wed-pic-2.png"
+                                />
+                                <img src="image/png" alt="wedding picture 2" />
+                              </picture>
                             </div>
                           </Carousel>
                         )
@@ -1140,13 +1682,21 @@ export default class Home extends Component {
                 <strong className="home__dark-red">$3.00 per manual!</strong>
               </p>
 
-              <Link to="/store">
-                <img
-                  className="p-5 img-fluid"
-                  src="/images/Paypal-Buy-Now-Button.webp"
-                  alt=""
-                />
-              </Link>
+              <div>
+                <Link to="/store">
+                  <picture>
+                    <source
+                      type="image/webp"
+                      srcset="/images/Paypal-Buy-Now-Button.webp"
+                    />
+                    <source
+                      type="image/png"
+                      srcset="/images/Paypal-Buy-Now-Button.png"
+                    />
+                    <img src="image/png" alt="Buy Now Button" />
+                  </picture>
+                </Link>
+              </div>
 
               <hr className="my-5 border" />
             </ObserverWrapper>

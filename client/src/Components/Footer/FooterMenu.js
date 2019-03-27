@@ -10,11 +10,32 @@ class FooterMenu extends Component {
             <tr className="footer-menu__links">
               <td className="text-center px-0">
                 <Link style={{ color: 'black' }} className="text-dark" to="/">
-                  <img
-                    src="/images/thinking-man.webp"
-                    alt="Thinking Man"
-                    style={{ width: '50px', height: '50px' }}
-                  />
+                  <picture>
+                    <source
+                      type="image/webp"
+                      srcset="/images/thinking-man.webp"
+                      style={{
+                        width: '50px',
+                        height: '50px'
+                      }}
+                    />
+                    <source
+                      type="image/png"
+                      srcset="/images/thinking-man.png"
+                      style={{
+                        width: '50px',
+                        height: '50px'
+                      }}
+                    />
+                    <img
+                      src="image/png"
+                      alt="Impact Motivation Manual Logo Home Button"
+                      style={{
+                        width: '50px',
+                        height: '50px'
+                      }}
+                    />
+                  </picture>
                 </Link>
               </td>
               <td>
@@ -44,12 +65,23 @@ class FooterMenu extends Component {
         </table>
 
         <div className="col-6 d-flex justify-content-end align-items-center">
-          <img
-            className="image-fluid"
-            style={{ width: '140px', height: '70px' }}
-            src="/images/secure-checkout.webp"
-            alt="stripe"
-          />
+          <picture>
+            <source
+              type="image/webp"
+              srcset="/images/secure-checkout.webp"
+              style={{ width: '140px', height: '70px' }}
+            />
+            <source
+              type="image/png"
+              srcset="/images/secure-checkout.png"
+              style={{ width: '140px', height: '70px' }}
+            />
+            <img
+              src="image/png"
+              alt="stripe logo"
+              style={{ width: '140px', height: '70px' }}
+            />
+          </picture>
         </div>
       </div>
     )

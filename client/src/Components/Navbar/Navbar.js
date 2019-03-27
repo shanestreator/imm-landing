@@ -61,17 +61,35 @@ class Navbar extends Component {
                 <Media query="(max-width: 480px)">
                   {matches =>
                     matches ? (
-                      <img
-                        style={{ width: '200px', height: '50px' }}
-                        src="/images/imm-logo.webp"
-                        alt=""
-                      />
+                      <picture style={{ width: '200px', height: '50px' }}>
+                        <source
+                          type="image/webp"
+                          srcset="/images/imm-logo.webp"
+                        />
+                        <source
+                          type="image/png"
+                          srcset="/images/imm-logo.png"
+                        />
+                        <img
+                          src="image/png"
+                          alt="Impact Motivation Manual Logo Home Link"
+                        />
+                      </picture>
                     ) : (
-                      <img
-                        style={{ width: '200px', height: '50px' }}
-                        src="/images/imm-logo.webp"
-                        alt=""
-                      />
+                      <picture style={{ width: '200px', height: '50px' }}>
+                        <source
+                          type="image/webp"
+                          srcset="/images/imm-logo.webp"
+                        />
+                        <source
+                          type="image/png"
+                          srcset="/images/imm-logo.png"
+                        />
+                        <img
+                          src="image/png"
+                          alt="Impact Motivation Manual Logo Home Link"
+                        />
+                      </picture>
                     )
                   }
                 </Media>
@@ -81,17 +99,39 @@ class Navbar extends Component {
                 <Media query="(max-width: 480px)">
                   {matches =>
                     matches ? (
-                      <img
-                        style={{ width: '200px', height: '50px' }}
-                        src="/images/imm-logo.webp"
-                        alt=""
-                      />
+                      <picture>
+                        <source
+                          type="image/webp"
+                          srcset="/images/imm-logo.webp"
+                          style={{ width: '200px', height: '50px' }}
+                        />
+                        <source
+                          type="image/png"
+                          srcset="/images/imm-logo.png"
+                          style={{ width: '200px', height: '50px' }}
+                        />
+                        <img
+                          src="image/png"
+                          alt="Impact Motivation Manual Logo Home Link"
+                          style={{ width: '200px', height: '50px' }}
+                        />
+                      </picture>
                     ) : (
-                      <img
-                        style={{ width: '200px', height: '50px' }}
-                        src="/images/imm-logo.webp"
-                        alt=""
-                      />
+                      <picture style={{ width: '200px', height: '50px' }}>
+                        <source
+                          type="image/webp"
+                          srcset="/images/imm-logo.webp"
+                        />
+                        <source
+                          type="image/png"
+                          srcset="/images/imm-logo.png"
+                        />
+                        <img
+                          src="image/png"
+                          alt="Impact Motivation Manual Logo Home Link"
+                          style={{ width: '200px', height: '50px' }}
+                        />
+                      </picture>
                     )
                   }
                 </Media>

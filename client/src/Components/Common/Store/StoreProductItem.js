@@ -71,7 +71,18 @@ class StoreProductItem extends React.Component {
       <React.Fragment>
         <div className="col-6 col-md-6 col-lg-4 col-xl-4 p-2 mt-5">
           <div className="card h-100 store__card-hover mb-4">
-            <img src={imageUrl} className="card-img-top" alt="..." />
+            <picture>
+              <source type="image/webp" srcset={imageUrl} />
+              <source
+                type="image/png"
+                srcset={`${imageUrl.split('.')[0]}.png`}
+              />
+              <img
+                src="image/png"
+                alt={`Product Picture ${title}`}
+                className="img-fluid px-md-4 px-lg-5"
+              />
+            </picture>
 
             <div className="card-body px-2 px-md-1">
               <div className="card-title pricing-card-title mt-2 mb-3">

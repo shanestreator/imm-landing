@@ -29,24 +29,35 @@ class Store extends Component {
                 <h1 className="display-4 m-0">Pricing</h1>
               </div>
               <div className="col-3 d-flex justify-content-center align-items-end">
-                <img
-                  src="/images/free-shipping-car.webp"
-                  className="img-fluid px-md-4 px-lg-5"
-                  alt="free shipping"
-                />
+                <picture>
+                  <source
+                    type="image/webp"
+                    srcset="/images/free-shipping-car.webp"
+                  />
+                  <source
+                    type="image/png"
+                    srcset="/images/free-shipping-car.png"
+                  />
+                  <img
+                    src="image/png"
+                    alt="free shipping"
+                    className="img-fluid px-md-4 px-lg-5"
+                  />
+                </picture>
               </div>
             </div>
 
             <div className="pricing-header px-5 mt-5 text-center">
               <h3 className="mt-2 mb-0">
-                To contact us about product availability{' '}
+                Online purchase coming soon{' '}
                 <Link
                   className="base__hover-link-underline"
                   to="/contact"
                   style={{ color: '#be141b' }}
                 >
                   Click Here
-                </Link>
+                </Link>{' '}
+                to contact us about product availability
               </h3>
             </div>
 
