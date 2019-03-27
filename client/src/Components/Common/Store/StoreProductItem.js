@@ -80,7 +80,7 @@ class StoreProductItem extends React.Component {
               <img
                 src="image/png"
                 alt={`Product Picture ${title}`}
-                className="img-fluid px-md-4 px-lg-5"
+                className="img-fluid"
               />
             </picture>
 
@@ -101,7 +101,7 @@ class StoreProductItem extends React.Component {
               </div>
 
               <form onSubmit={this.onSubmit}>
-                <ul className="list-unstyled mt-3 mb-4">
+                <ul className="list-unstyled mt-3 mb-0">
                   <li
                     className="about__media-price-total"
                     style={{ color: '#be141b', opacity: '.75' }}
@@ -110,7 +110,7 @@ class StoreProductItem extends React.Component {
                   </li>
 
                   <li>
-                    <p className="card-title about__media-price-each pricing-card-title font-italic">
+                    <p className="card-title about__media-price-each pricing-card-title font-italic mb-0">
                       (${itemModalAddZeros(price)}
                       <small className="text-muted">
                         /

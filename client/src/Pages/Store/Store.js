@@ -48,16 +48,17 @@ class Store extends Component {
             </div>
 
             <div className="pricing-header px-5 mt-5 text-center">
-              <h3 className="mt-2 mb-0">
-                Online purchase coming soon{' '}
+              <h3 className="mt-2">Online purchase coming soon!</h3>
+
+              <h3>
+                To inquire about product availability{' '}
                 <Link
                   className="base__hover-link-underline"
                   to="/contact"
                   style={{ color: '#be141b' }}
                 >
                   Click Here
-                </Link>{' '}
-                to contact us about product availability
+                </Link>
               </h3>
             </div>
 
