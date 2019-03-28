@@ -69,8 +69,11 @@ class StoreProductItem extends React.Component {
 
     return (
       <React.Fragment>
-        <div className="col-6 col-md-6 col-lg-4 col-xl-4 p-2 mt-5">
-          <div className="card h-100 store__card-hover mb-4">
+        <div className="col-6 col-md-6 col-lg-4 col-xl-4 p-2 mt-5 d-flex justify-content-center">
+          <div
+            className="card h-100 store__card-hover mb-4"
+            style={{ maxWidth: '250px' }}
+          >
             <picture>
               <source type="image/webp" srcset={imageUrl} />
               <source
