@@ -84,7 +84,10 @@ class StoreProductItem extends React.Component {
                 src="image/png"
                 alt={`Product Picture ${title}`}
                 className="img-fluid"
-                style={{ borderRadius: '3px' }}
+                style={{
+                  borderTopLeftRadius: '3px',
+                  borderTopRightRadius: '3px'
+                }}
               />
             </picture>
 
